@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CF棉花基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #1565C0;
+            --primary-light: #42A5F5;
+            --bg: #F0F4FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #C8D6E5;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F0F4FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>CF棉花期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>震荡偏强，但上方受政策压制</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等偏高</strong>（各机构对偏多方向共识较强，但对涨幅分歧大）</td></tr>
+            <tr><td>CF2609合约价格区间</td><td><strong>15500—17500元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>逢回调轻仓做多为主，切勿追涨，严控仓位</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>郑棉主力合约CF2609收盘约<strong>16385元/吨</strong></li>
+            <li>全国328级棉花现货价格指数约<strong>17770元/吨</strong></li>
+            <li>期货贴水现货约<strong>1300—1500元/吨</strong>（基差处于高位）</li>
+            <li>ICE美棉主力约<strong>79—80美分/磅</strong>，创近两年新高</li>
+            <li>新疆机采棉在库综合成本均价约<strong>14931元/吨</strong></li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：现货比期货贵1300多元，说明现货市场棉花比较紧俏，期货价格还没有完全跟上。美棉也在涨，主要因为美国产棉区严重干旱。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-bullish">偏多</span></h2>
+
+        <h3>1. 国内减产确定性强</h3>
+        <ul>
+            <li>新疆明确提出调减<strong>10%</strong>的棉花种植面积</li>
+            <li>南疆非核心区全面禁种棉花，和田调减幅度达<strong>84%</strong></li>
+            <li>全国植棉意向面积4311.8万亩，同比下降<strong>3.8%</strong></li>
+            <li>新疆意向面积3951.6万亩，同比下降<strong>3.4%</strong></li>
+            <li>市场预计2026/27年度国内棉花产量约<strong>694—697万吨</strong>，同比降幅<strong>7%—8%</strong></li>
+            <li>USDA预计中国棉花产量697万吨，同比下降8.6%</li>
+        </ul>
+        <div class="highlight-box">
+            简单说：国家主动让新疆少种棉花，今年棉花供应量大概率比去年少7%—8%。这是支撑棉价的核心因素。
+        </div>
+
+        <h3>2. 美国遭遇严重干旱</h3>
+        <ul>
+            <li>美国产棉区干旱比例高达<strong>98%</strong>（去年同期不足30%）</li>
+            <li>得克萨斯州（占全美产量50%以上）旱情逼近2022年历史极值</li>
+            <li>佐治亚州近50%区域为特大干旱</li>
+            <li>2022年曾因干旱导致弃收率高达75%，今年可能重演</li>
+            <li>美棉种植面积预计964万英亩，同比基本持平</li>
+            <li>但市场预期美棉产量将降至<strong>300万吨以下</strong></li>
+        </ul>
+
+        <h3>3. 其他主产国产量下降</h3>
+        <table class="data-table">
+            <tr><th>国家</th><th>2026/27年度产量预期</th><th>同比变化</th></tr>
+            <tr><td>巴西</td><td>产量同比下降约6.9%—10%</td><td>面积下调、单产回落</td></tr>
+            <tr><td>澳大利亚</td><td>产量同比下降约100万包</td><td>面积缩减</td></tr>
+            <tr><td>印度</td><td>小幅回升</td><td>季风与政策仍存不确定性</td></tr>
+        </table>
+
+        <h3>4. 全球供需格局转变</h3>
+        <ul>
+            <li>2025/26年度全球棉花供应宽松、库存累积</li>
+            <li>2026/27年度预计从过剩转向<strong>紧平衡甚至小幅缺口</strong></li>
+            <li>全球库存消费比连续第三年走低</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：全世界主要产棉国都在减产或可能减产，棉花供应收紧是大趋势。美国干旱是最关键的短期驱动因素。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-neutral">中性</span></h2>
+
+        <h3>利多因素</h3>
+        <ul>
+            <li>"金三银四"传统旺季需求已得到验证</li>
+            <li>纺企开机率稳步回升，纯棉纱开机率约77.1%</li>
+            <li>原料和成品库存都在下降</li>
+            <li>后期补库需求正逐步增强</li>
+            <li>一季度纺织服装出口670.8亿美元，同比+1.2%</li>
+            <li>高油价推升涤纶等化纤成本，棉花比价优势改善，用棉比例提升</li>
+        </ul>
+
+        <h3>利空因素</h3>
+        <ul>
+            <li>即将进入5—8月消费淡季，"银四"旺季尾声订单走弱</li>
+            <li>棉纱涨价幅度不及棉花，部分纺企已出现亏损</li>
+            <li>内外棉价差超<strong>2500元/吨</strong>，进口棉纱利润超200元/吨</li>
+            <li>3月进口棉纱21.17万吨，同比大增65.7%，替代国内棉花需求</li>
+            <li>3月纺服出口同比、环比双降，外需有韧性但不强</li>
+            <li>终端纺织服装出口数据不佳，国内消费增速放缓</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：棉花的需求不算差，但也不算好。最大的问题是棉花涨价了，但棉布衣服没怎么涨价，纺织厂利润被压缩，有些甚至亏钱了。而且进口棉纱比国产的便宜很多，很多工厂在用进口棉纱代替国产棉花。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-neutral">多空交织</span></h2>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>商业库存（4月）</td><td>457.94万吨</td><td>环比降33万吨，同比增6.42万吨</td></tr>
+            <tr><td>工业库存</td><td>88.76万吨</td><td>环比降1.31万吨，同比降6.67万吨</td></tr>
+            <tr><td>销售进度</td><td>86.6%</td><td>同比提升17.8个百分点，4年同期最高</td></tr>
+            <tr><td>纺企原料库存</td><td>33.59天</td><td>连续3周下降</td></tr>
+            <tr><td>坯布厂棉纱库存</td><td>9.8天</td><td>连续4周下降</td></tr>
+            <tr><td>国储库存</td><td>估计超300万吨</td><td>以进口棉为主，调控能力强</td></tr>
+        </table>
+        <div class="highlight-box">
+            通俗解释：棉花卖得很快（销售进度创4年新高），商业库存也在下降。但国储手里还有大量棉花，一旦棉价涨太多，国家随时可以抛储压价。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-neutral">中性偏多</span></h2>
+
+        <h3>1. 涤纶短纤——棉花最重要的化纤替代品</h3>
+        <ul>
+            <li>国内三大类棉纺原料棉花、涤纶、粘胶的使用比例约<strong>60:30:10</strong></li>
+            <li>棉花与涤纶短纤价差约<strong>8985元/吨</strong>，同比扩大1072元/吨</li>
+            <li>高油价推升涤纶生产成本，棉花相比化纤的价格优势扩大</li>
+            <li>下游纺织企业为优化成本结构，主动<strong>提高用棉比例</strong></li>
+            <li>这形成了一个正向循环：油价高→涤纶贵→棉花更有竞争力→棉需求增加</li>
+        </ul>
+
+        <h3>2. 粘胶短纤</h3>
+        <ul>
+            <li>棉花与粘胶短纤价差约<strong>3285元/吨</strong>，同比扩大2492元/吨</li>
+            <li>粘胶短纤-涤纶短纤价差已跌至5390元/吨</li>
+            <li>部分纱厂转向粘胶短纤，对棉花有一定替代</li>
+            <li>但粘胶短纤本身也受溶解浆成本支撑，价格同步上涨</li>
+        </ul>
+
+        <h3>3. 进口棉纱</h3>
+        <ul>
+            <li>1%关税下巴西新棉成本较新疆棉低<strong>3250—3550元/吨</strong></li>
+            <li>3月中国进口棉纱21.17万吨，同比大增65.7%</li>
+            <li>进口棉纱对国产低支纱形成持续替代压力</li>
+            <li>2026年已发放关税配额89.4万吨，3月又增发30万吨滑准税配额</li>
+        </ul>
+
+        <h3>4. 替代关系总结</h3>
+        <div class="highlight-box">
+            通俗解释：棉花和化纤（涤纶、粘胶）是竞争关系。现在油价高，涤纶变贵了，棉花反而显得更划算，纺织厂愿意多用棉花少用化纤，这对棉花是好事。但进口棉纱比国产棉花便宜太多，很多工厂在用进口棉纱代替国产棉花，这对国产棉花需求是利空。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-bearish">偏空压制</span></h2>
+
+        <h3>1. 政策调控是最大风险！（核心变量）</h3>
+        <ul>
+            <li><strong>中国棉花协会已发布行业警示</strong>，提示棉价过快上涨风险</li>
+            <li>有关部门表态将<strong>密切跟踪市场</strong>，可能及时采取调控措施</li>
+            <li>如果现货涨至18000元/吨、期货站上17000元/吨，可能触发：
+                <ul>
+                    <li>国储棉拍卖（估计抛储底价约16200元/吨）</li>
+                    <li>增加进口配额</li>
+                </ul>
+            </li>
+            <li>国储库存估计超300万吨，调控能力充足</li>
+            <li>2026年已发放关税配额89.4万吨，3月又增发30万吨滑准税配额</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：棉花涨太多，国家可能会放储或增加进口来压价。这是悬在棉价头上的一把"利剑"，也是当前市场最需要警惕的因素。
+        </div>
+
+        <h3>2. 天气与厄尔尼诺（最大变数）</h3>
+        <ul>
+            <li>多家气象机构预测2026年5—7月厄尔尼诺发生概率<strong>58%—62%</strong></li>
+            <li>10—12月强厄尔尼诺发生概率接近50%</li>
+            <li><strong>对美棉</strong>：厄尔尼诺可能给美国南部带来更多降水，缓解干旱——这是<strong>利空</strong></li>
+            <li><strong>对国内</strong>：厄尔尼诺对新疆棉花单产影响有限（新疆棉花主要靠灌溉）</li>
+            <li>关键时间窗口：如果降水在7月后才来，将错过棉花铃期（6—7月）关键需水期</li>
+            <li>光大期货研究显示：厄尔尼诺对全球、美国、中国棉花单产<strong>不造成显著不利影响</strong></li>
+        </ul>
+
+        <h3>3. 宏观环境</h3>
+        <ul>
+            <li>美联储4月议息会议宣布不降息，降息预期推迟</li>
+            <li>中东地缘冲突持续反复，影响全球航运和贸易</li>
+            <li>中美经贸磋商进行中，5月中旬美国总统访华可能达成农产品采购协议</li>
+            <li>人民币汇率波动影响纺织出口竞争力</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>棉价上涨已近到位，短期买入盈亏比下降；但消费和现货仍有支撑，2026/27产减需增预期支撑涨势</td><td>短期震荡，中期偏多</td></tr>
+            <tr><td>国泰君安期货</td><td>棉花期货预计维持偏强势头；5月是新疆棉花种植关键期，供应担忧下维持偏强</td><td>震荡偏强</td></tr>
+            <tr><td>光大期货</td><td>减产预期是主要驱动，警惕后续预期差；短期上方空间有限，需警惕天气升水逻辑转变</td><td>短期高位震荡，中期谨慎偏多</td></tr>
+            <tr><td>中信建投期货</td><td>成本支撑强但向上驱动弱；内外分化，需等外盘追赶；警惕进口棉纱冲击和政策调控</td><td>震荡偏强，上方有限</td></tr>
+            <tr><td>中信期货</td><td>中长期维持偏多思路，短期缺乏新催化；关注回调低多机会，政策不确定性需警惕</td><td>中期偏多，短期区间震荡</td></tr>
+        </table>
+        <p><strong>共识</strong>：绝大多数机构认为中期偏多，核心逻辑是"减产+去库+外盘强势"。</p>
+        <p><strong>分歧</strong>：对涨幅看法不一。光大、中信建投认为上方空间有限，需警惕预期差和政策调控；永安认为短期盈亏比下降；国泰君安、中信更乐观，认为回调即是买入机会。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约50%）</div>
+            <p><strong>价格区间：15500—17000元/吨</strong></p>
+            <ul>
+                <li>国内减产兑现但幅度温和，美棉干旱部分缓解</li>
+                <li>需求淡季不淡，去库节奏平稳</li>
+                <li>政策适度调控但不强力打压</li>
+                <li>震荡偏强，重心缓慢上移</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约25%）</div>
+            <p><strong>价格区间：16500—18000元/吨</strong></p>
+            <ul>
+                <li>美棉干旱持续恶化，弃收率大幅上升</li>
+                <li>厄尔尼诺未带来有效降水（错过7月关键期）</li>
+                <li>国内去库超预期，纺企集中补库</li>
+                <li>可能触及政策调控红线</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约25%）</div>
+            <p><strong>价格区间：14000—15500元/吨</strong></p>
+            <ul>
+                <li>厄尔尼诺带来充沛降水，美棉旱情大幅缓解</li>
+                <li>需求淡季超预期疲软，纺企大面积亏损停产</li>
+                <li>政策强力调控（大量抛储+增发进口配额）</li>
+                <li>减产幅度不及预期</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：逢低轻仓做多，严控风险</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：
+                <ul>
+                    <li>建议在<strong>15500—15800元/吨</strong>附近轻仓试多</li>
+                    <li>止损设在<strong>15000元/吨</strong>以下</li>
+                    <li>目标看<strong>16800—17500元/吨</strong></li>
+                </ul>
+            </li>
+            <li><strong>如果您想做交易</strong>：
+                <ul>
+                    <li>&#10004; <strong>可以做</strong>：逢回调买入，因为减产逻辑比较确定</li>
+                    <li>&#10008; <strong>不要做</strong>：追涨！当前价格已处于相对高位，政策调控风险大</li>
+                    <li>仓位控制在总资金的<strong>10%—15%</strong>以内</li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月</strong>：USDA发布2026/27年度首份供需报告，美棉种植进度</li>
+                    <li><strong>5月中旬</strong>：新疆实际播种面积确认</li>
+                    <li><strong>6—7月</strong>：美棉关键生长期，天气决定产量（最关键！）</li>
+                    <li><strong>7—8月</strong>：国内消费淡季，去库速度</li>
+                    <li><strong>9—10月</strong>：新棉上市，实际产量验证</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>&#128200; 如果现货涨至18000元/吨以上 → 政策调控概率大增，考虑减仓</li>
+                    <li>&#128202; 如果美棉产区出现大面积降雨 → 干旱逻辑被打破，考虑止损</li>
+                    <li>&#128202; 如果纺企大面积停产 → 需求崩塌，离场观望</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>十、与白糖的对比（帮您理解差异）</h2>
+        <table class="data-table">
+            <tr><th>对比项</th><th>白糖SR</th><th>棉花CF</th></tr>
+            <tr><td>供应趋势</td><td>增产周期，供应充足</td><td>减产周期，供应收紧</td></tr>
+            <tr><td>库存</td><td>偏高（十年高位）</td><td>去化中，销售进度快</td></tr>
+            <tr><td>需求</td><td>增长缓慢</td><td>温和复苏</td></tr>
+            <tr><td>替代品影响</td><td>果葡糖浆替代压制需求</td><td>化纤涨价反而利好棉花</td></tr>
+            <tr><td>政策方向</td><td>保护糖农，托底</td><td>调减面积，调控涨幅</td></tr>
+            <tr><td>中期方向</td><td>偏弱</td><td>偏强</td></tr>
+            <tr><td>核心风险</td><td>厄尔尼诺（可能减产）</td><td>政策调控+需求淡季</td></tr>
+        </table>
+        <div class="highlight-box">
+            简单说：白糖是"糖太多"，棉花是"棉花可能变少"。两个品种方向相反。棉花还有化纤涨价带来的比价优势，白糖则面临果葡糖浆的替代压力。
+        </div>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，可能出现比本金更大的亏损，请务必谨慎</li>
+            <li>当前棉价已处于相对高位，<strong>追涨风险极大</strong>，政策随时可能出手调控</li>
+            <li>天气预测存在很大不确定性，厄尔尼诺的影响可能<strong>与预期相反</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li>内外价差过大可能引发进口冲击，<strong>改变国内供需格局</strong></li>
+            <li>国储库存充足，政策调控能力强大，<strong>不可低估政策力量</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            棉花中期看涨逻辑比较确定（国内减产+美棉干旱+去库+化纤比价优势），但当前价格已不低，政策调控是最大的"天花板"。建议您等回调再轻仓做多，千万不要追涨，严格控制仓位和止损。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：国内减产+美棉干旱+全球供应收紧 → 供应偏紧 → 价格偏强；但政策调控+需求淡季+进口棉纱冲击 → 上方空间受限。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：中国棉花协会、中国棉花信息网、USDA、CFTC、海关总署、Mysteel、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
