@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C玉米基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #1565C0;
+            --primary-light: #42A5F5;
+            --bg: #F0F4FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #C8D6E5;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #2E7D32, #66BB6A);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F0F4FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>C玉米期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>区间震荡，先强后弱</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等</strong>（多空因素势均力敌，方向不明确）</td></tr>
+            <tr><td>C2609合约价格区间</td><td><strong>2350—2550元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>区间内高抛低吸，不宜单边重仓，重点关注新麦上市和陈化稻谷拍卖</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>大商所玉米主力合约C2609收盘约<strong>2430元/吨</strong></li>
+            <li>锦州港二等玉米平仓价约<strong>2410元/吨</strong></li>
+            <li>东北产区现货均价约<strong>2226—2350元/吨</strong></li>
+            <li>CBOT美玉米主力约<strong>470美分/蒲式耳</strong>，连续两周上涨</li>
+            <li>小麦玉米价差约<strong>175元/吨</strong>，处于替代区间</li>
+            <li>全国基层售粮进度约<strong>93%—99%</strong>，粮源基本转移至贸易商</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：玉米市场目前处于"上有顶、下有底"的僵持状态。粮源从农民手里转移到了贸易商手里，贸易商不愿低价卖，所以价格跌不下去；但养猪亏钱、小麦又便宜可以替代玉米，所以价格也涨不上去。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 国内产量创纪录但有效供给缩水</h3>
+        <ul>
+            <li>2025/26年度全国玉米总产量<strong>2.95亿吨</strong>，同比基本持平，创历史高位</li>
+            <li>但受东北秋季降水偏多影响，霉变损耗率上升至2%—3%</li>
+            <li>商品粮有效供应量约<strong>2.88亿吨</strong>，较总产量减少约700万吨</li>
+            <li>华北地区因收获期持续降雨，玉米品质下滑，毒素偏高，优质粮偏紧</li>
+        </ul>
+
+        <h3>2. 基层余粮见底，贸易商惜售挺价</h3>
+        <ul>
+            <li>东北产区售粮进度超95%，华北约89%</li>
+            <li>粮权已从农户转移至贸易商手中</li>
+            <li>贸易商因收购成本较高，且距新粮上市（9月）时间较长，<strong>普遍惜售挺价</strong></li>
+            <li>中储粮在东北启动干粮收购，黑龙江宾县直属库收购价1.15元/斤，<strong>托底信号明确</strong></li>
+            <li>2026年以来中储粮累计采购玉米超310万吨</li>
+        </ul>
+
+        <h3>3. 进口谷物补充有限</h3>
+        <table class="data-table">
+            <tr><th>品种</th><th>2026年一季度进口</th><th>同比变化</th><th>影响</th></tr>
+            <tr><td>玉米</td><td>77万吨</td><td>巴西占60.7%，美国几乎为零</td><td>进口量远低于往年2000万吨级</td></tr>
+            <tr><td>高粱</td><td>3月57.97万吨</td><td>同比增37%</td><td>美高粱买船持续增加</td></tr>
+            <tr><td>大麦</td><td>3月134.18万吨</td><td>同比增65.35%</td><td>进口步伐未放慢</td></tr>
+            <tr><td>能量类合计</td><td>3月379.5万吨</td><td>同比增134.71万吨</td><td>替代谷物到港提速</td></tr>
+        </table>
+
+        <h3>4. 种植成本上升支撑底部</h3>
+        <ul>
+            <li>中东地缘冲突推升国际原油突破90美元/桶</li>
+            <li>尿素等化肥价格一周暴涨30%</li>
+            <li>新季玉米种植成本同比增加<strong>10%—15%</strong></li>
+            <li>成本上升为玉米价格筑起坚实的"底部防线"</li>
+        </ul>
+
+        <h3>5. 美国玉米"旧季宽松、新季收缩"</h3>
+        <ul>
+            <li>2025/26年度美玉米期末库存21.27亿蒲，处于<strong>七年高位</strong></li>
+            <li>3月1日季度库存90.24亿蒲，同比增11%</li>
+            <li>但2026/27年度种植意向面积9533.8万英亩，同比减少345万英亩（-3.4%）</li>
+            <li>预计新季产量157.6亿蒲，同比降约7%</li>
+            <li>美玉米对华出口仍为零，中国进口格局转向巴西</li>
+            <li>巴西中部和北部持续高温干旱，不利于二季玉米授粉</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：玉米总量是够的（产量创纪录），但好品质的玉米偏少，而且粮源都在贸易商手里，他们不愿低价卖。进口的替代谷物在增加，但量还不够大。最大的支撑是种植成本上升了10%—15%，这就像给玉米价格垫了一块厚底板。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 饲料需求——最大的拖累</h3>
+        <ul>
+            <li>生猪养殖深度亏损：自繁自养头均亏损约<strong>246—533元</strong>（不同数据源）</li>
+            <li>猪粮比3.72:1，触发一级预警</li>
+            <li>生猪出栏均价跌至9.05元/公斤，跌回二十年前水平</li>
+            <li>能繁母猪存栏持续去化，同比减少2.9%</li>
+            <li>饲料企业随用随采、拒绝囤货，库存处于偏低水平</li>
+            <li>肉鸡养殖仅微利，鸡蛋利润虽有回暖但饲料占比较低</li>
+        </ul>
+
+        <h3>2. 深加工需求——利润收缩</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>吉林淀粉加工利润</td><td>-79元/吨</td><td>亏损，抑制采购</td></tr>
+            <tr><td>河南酒精加工利润</td><td>-582元/吨</td><td>深度亏损</td></tr>
+            <tr><td>深加工开机率</td><td>约63%</td><td>仅维持刚需生产</td></tr>
+            <tr><td>工业深加工消费</td><td>预计8150万吨</td><td>同比下降0.6%</td></tr>
+        </table>
+        <ul>
+            <li>淀粉行业开工率中等，下游需求不旺</li>
+            <li>燃料乙醇受新能源汽车冲击，产能近十年首次回落</li>
+            <li>深加工企业对高价玉米接受度低，仅维持刚需补库</li>
+        </ul>
+
+        <h3>3. 需求端总结</h3>
+        <div class="highlight-box">
+            通俗解释：养猪亏大钱，饲料厂不敢多买玉米；做淀粉和酒精的也在亏，只能买最少的量维持生产。需求端是目前压制玉米价格的最大因素。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-neutral">多空交织</span></h2>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>2025/26年度期末库存</td><td>1.64亿吨</td><td>库存消费比55.39%，历史高位</td></tr>
+            <tr><td>北方四港库存</td><td>313.5万吨（4月24日）</td><td>环比增13.9万吨，同比降95.9万吨</td></tr>
+            <tr><td>广东港口内贸玉米</td><td>59万吨</td><td>周增10.4万吨，同比降64%</td></tr>
+            <tr><td>南方港口谷物总库存</td><td>228万吨</td><td>环比基本持平</td></tr>
+            <tr><td>饲料企业原料库存</td><td>偏低</td><td>随用随采，补库意愿不足</td></tr>
+            <tr><td>深加工企业库存</td><td>均值下方</td><td>有刚需补货需求</td></tr>
+        </table>
+        <div class="highlight-box">
+            通俗解释：从全年看，玉米库存非常高（够吃半年多），所以不存在"断粮"风险。但从短期看，港口库存比去年低不少，下游企业库存也不高，一旦集中补库可能推动价格短期上涨。这就是"总量宽松、阶段偏紧"的意思。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 小麦——玉米最重要的替代品（核心变量！）</h3>
+        <ul>
+            <li>小麦玉米价差仅<strong>175元/吨</strong>，处于替代区间（通常价差低于200元/吨时替代显著）</li>
+            <li>华北部分地区小麦替代玉米比例已达<strong>40%—60%</strong></li>
+            <li>国家持续投放最低收购价小麦，每周80万吨，成交率约85%</li>
+            <li>拍卖底价2017年产2200元/吨、2020年产2380元/吨</li>
+            <li>参拍主体已放宽至贸易商和饲料企业</li>
+            <li><strong>新麦即将上市</strong>（5月中下旬由南至北），开秤价预期1.22—1.26元/斤</li>
+            <li>各级储备新麦预采购成交价多在2500元/吨以上</li>
+            <li>新麦丰产预期较强，一二类苗占比高</li>
+        </ul>
+
+        <h3>2. 高粱和大麦——进口替代持续增加</h3>
+        <ul>
+            <li>3月高粱进口57.97万吨，同比增37%</li>
+            <li>3月大麦进口134.18万吨，同比增65.35%</li>
+            <li>美高粱买船持续增加，11月底以来累积对华销售323万吨</li>
+            <li>进口谷物到港量提速，有效补充饲用供应</li>
+        </ul>
+
+        <h3>3. 陈化稻谷——悬在头上的"达摩克利斯之剑"</h3>
+        <ul>
+            <li>市场传闻5月将启动陈化稻谷定向邀标拍卖</li>
+            <li>总规模或达<strong>2000万吨</strong>，拍卖底价1490元/吨</li>
+            <li>若落地将对玉米价格形成<strong>显著压制</strong></li>
+            <li>但陈化稻谷总量有限，实际中长期影响可能有限，<strong>情绪影响更大</strong></li>
+            <li>是否启动取决于玉米价格上涨幅度——涨越多越可能启动</li>
+        </ul>
+
+        <h3>4. DDGS（玉米酒糟粕）</h3>
+        <ul>
+            <li>DDGS价格弱势运行，4月现货均价约2299元/吨</li>
+            <li>环比跌幅6.75%，同比跌幅8.79%</li>
+            <li>DDGS价格走弱反映蛋白饲料需求偏弱</li>
+        </ul>
+
+        <h3>5. 替代关系总结</h3>
+        <div class="highlight-box">
+            通俗解释：小麦是玉米最大的"竞争对手"。现在小麦比玉米贵不了多少，很多饲料厂直接用小麦代替玉米喂猪。更关键的是，5月新小麦就要上市了，到时候小麦更多更便宜，对玉米的冲击更大。另外，国家手里还有2000万吨陈化稻谷可以拍卖，一旦玉米涨太多，随时可能放出来压价。这是玉米涨不上去的最重要原因。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 政策调控——"保供稳价"意图明确</h3>
+        <ul>
+            <li><strong>中储粮收储托底</strong>：在东北启动干粮收购，稳定市场信心</li>
+            <li><strong>小麦拍卖放量</strong>：每周80万吨，参拍主体放宽，精准调控</li>
+            <li><strong>陈化稻谷拍卖预期</strong>：5月可能启动，规模或达2000万吨</li>
+            <li><strong>进口配额管理</strong>：2025/26年度进口预测600万吨，远低于往年</li>
+            <li>政策"保供稳价"意图明确，<strong>既不让价格大跌伤农，也不让价格大涨伤企</strong></li>
+        </ul>
+
+        <h3>2. 地缘冲突——推高成本</h3>
+        <ul>
+            <li>中东局势升级，国际原油突破90美元/桶</li>
+            <li>尿素等化肥价格暴涨30%，推升种植成本</li>
+            <li>霍尔木兹海峡航运风险，影响谷物贸易</li>
+            <li>地缘风险溢价支撑农产品价格底部</li>
+        </ul>
+
+        <h3>3. 天气因素——新季变量</h3>
+        <ul>
+            <li>东北春播已展开，当前墒情条件整体较好</li>
+            <li>春播阶段气温和降水变化仍是市场关注焦点</li>
+            <li>美国中西部降雨可能延缓春播进度（截至4月26日播种完成25%）</li>
+            <li>巴西中部和北部持续高温干旱，不利于二季玉米授粉</li>
+            <li>天气炒作窗口已打开，但尚无实质性灾害</li>
+        </ul>
+
+        <h3>4. 期现分化——"现货看现实，期货看预期"</h3>
+        <ul>
+            <li>4月出现罕见的"期强现弱"格局</li>
+            <li>现货反映短期现实：供强需弱，价格走低</li>
+            <li>期货交易远期预期：成本支撑+政策利好+天气炒作，价格偏强</li>
+            <li>这种分化说明市场对后市方向存在明显分歧</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>低库存与成本支撑下偏强反弹，但需求疲软与替代压制限制上行空间，维持区间震荡预期。中长期看种植成本提升拉高远月价格预期</td><td>区间震荡，偏强反弹</td></tr>
+            <tr><td>国泰君安期货</td><td>玉米"等待驱动"，缺乏明确方向性信号。基差走弱，外盘偏强但国内供需双弱。关注小麦拍卖和新麦上市</td><td>震荡，等待驱动</td></tr>
+            <tr><td>光大期货</td><td>美玉米震荡上行，国内涨至高位多空双向增持。政策性粮源供应压力加大，期价区间下移。关注陈化稻谷拍卖</td><td>区间震荡，上方受限</td></tr>
+            <tr><td>中信期货</td><td>玉米市场处于"高周转、低库存、慢累库"通道，基本面支撑价格。二季度进入"供需双增"博弈阶段，价格先下后上</td><td>二季度先稳后落，中期偏多</td></tr>
+            <tr><td>中信建投期货</td><td>中性判断，多空双方均无压倒性优势，预计2375—2450元/吨宽幅区间内拉锯。关注政策收储边际减弱、新麦上市、进口到港与需求疲软</td><td>中性，区间震荡</td></tr>
+        </table>
+        <p><strong>共识</strong>：所有机构都认为玉米短期缺乏单边趋势，以区间震荡为主。底部有成本支撑和贸易商惜售，顶部受需求疲软和替代品压制。</p>
+        <p><strong>分歧</strong>：中信期货相对偏多，认为中长期有上涨空间；光大期货偏谨慎，认为政策粮供应压力大；中信建投最中性，认为多空势均力敌；永安认为短期反弹但空间有限。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约50%）</div>
+            <p><strong>价格区间：2350—2500元/吨</strong></p>
+            <ul>
+                <li>5—6月：新麦上市替代压制，玉米承压回落</li>
+                <li>7—8月：消费淡季延续，但贸易商惜售支撑底部</li>
+                <li>9月：新粮上市前青黄不接，价格小幅回升</li>
+                <li>陈化稻谷拍卖温和落地，不构成重大冲击</li>
+                <li>全年"上有顶、下有底"区间震荡格局</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约20%）</div>
+            <p><strong>价格区间：2450—2650元/吨</strong></p>
+            <ul>
+                <li>东北主产区遭遇严重旱灾或低温，新季减产预期强烈</li>
+                <li>陈化稻谷拍卖未落地或规模远小于预期</li>
+                <li>生猪养殖利润大幅改善，饲用需求爆发</li>
+                <li>美玉米因天气问题大幅上涨，进口成本攀升</li>
+                <li>贸易商形成一致惜售，市场出现抢粮</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约30%）</div>
+            <p><strong>价格区间：2200—2380元/吨</strong></p>
+            <ul>
+                <li>新麦丰收且价格低廉，大规模替代玉米饲用</li>
+                <li>陈化稻谷大规模拍卖（2000万吨），低价冲击市场</li>
+                <li>生猪产能加速去化，饲用需求断崖式下滑</li>
+                <li>进口谷物大量到港，供应宽松</li>
+                <li>新季玉米丰产预期增强</li>
+            </ul>
+        </div>
+        <div class="highlight-box">
+            注意：利空情景概率（30%）高于利多情景（20%），因为替代品压力（新麦+陈化稻谷+进口谷物）是确定性较强的利空因素，而天气减产只是可能性。
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：区间操作，高抛低吸，严控风险</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：
+                <ul>
+                    <li>建议在<strong>2350—2380元/吨</strong>附近轻仓试多</li>
+                    <li>止损设在<strong>2300元/吨</strong>以下</li>
+                    <li>目标看<strong>2480—2550元/吨</strong></li>
+                    <li>或者在<strong>2500元/吨以上</strong>轻仓试空，止损2560，目标2400</li>
+                </ul>
+            </li>
+            <li><strong>如果您想做交易</strong>：
+                <ul>
+                    <li>&#10004; <strong>可以做</strong>：区间内高抛低吸，因为当前市场没有单边趋势</li>
+                    <li>&#10008; <strong>不要做</strong>：单边重仓追涨或追跌！多空因素势均力敌，方向不明</li>
+                    <li>仓位控制在总资金的<strong>10%以内</strong></li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月中下旬</strong>：新麦由南至北陆续上市，开秤价决定替代压力大小</li>
+                    <li><strong>5月</strong>：陈化稻谷拍卖是否落地，规模和底价如何</li>
+                    <li><strong>6—7月</strong>：东北春玉米关键生长期，天气炒作窗口</li>
+                    <li><strong>7—8月</strong>：消费淡季深度，生猪产能去化速度</li>
+                    <li><strong>9月</strong>：新季玉米上市，实际产量验证</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>&#128200; 如果新麦开秤价低于1.20元/斤 → 替代冲击加大，考虑减多或试空</li>
+                    <li>&#128200; 如果陈化稻谷拍卖落地且规模超预期 → 政策利空，离场观望</li>
+                    <li>&#128200; 如果东北出现严重干旱 → 天气炒作可能推动突破上方区间</li>
+                    <li>&#128200; 如果生猪价格持续低迷且加速去产能 → 需求崩塌，坚决离场</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>十、与白糖、棉花的对比（帮您理解差异）</h2>
+        <table class="data-table">
+            <tr><th>对比项</th><th>白糖SR</th><th>棉花CF</th><th>玉米C</th></tr>
+            <tr><td>供应趋势</td><td>增产周期，供应充足</td><td>减产周期，供应收紧</td><td>产量高位，总量宽松</td></tr>
+            <tr><td>库存</td><td>偏高（十年高位）</td><td>去化中，销售快</td><td>年度高库存，短期偏低</td></tr>
+            <tr><td>需求</td><td>增长缓慢</td><td>温和复苏</td><td>养殖亏损压制，疲软</td></tr>
+            <tr><td>替代品影响</td><td>果葡糖浆替代压制</td><td>化纤涨价利好棉花</td><td>小麦替代+陈化稻谷，压制明显</td></tr>
+            <tr><td>政策方向</td><td>保护糖农，托底</td><td>调减面积，调控涨幅</td><td>保供稳价，上下限管控</td></tr>
+            <tr><td>中期方向</td><td>偏弱</td><td>偏强</td><td>区间震荡</td></tr>
+            <tr><td>核心矛盾</td><td>供过于求</td><td>减产vs政策调控</td><td>成本支撑vs替代压制</td></tr>
+        </table>
+        <div class="highlight-box">
+            简单说：白糖是"太多糖"，棉花是"棉花变少"，玉米是"够用但涨跌两难"。玉米最特殊的地方是替代品太多——小麦、高粱、大麦、陈化稻谷都能替代它，所以即使供应偏紧也涨不上去。
+        </div>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，可能出现比本金更大的亏损，请务必谨慎</li>
+            <li>玉米市场当前多空势均力敌，<strong>方向不明确</strong>，单边持仓风险大</li>
+            <li>新麦上市和陈化稻谷拍卖是<strong>最大的利空风险</strong>，可能打破当前平衡</li>
+            <li>天气因素存在很大不确定性，<strong>旱灾可能推动大涨，也可能不发生</strong></li>
+            <li>政策调控力度可能超出预期，<strong>不可低估政策力量</strong></li>
+            <li>生猪养殖持续亏损，<strong>需求端可能进一步恶化</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            玉米中期看区间震荡，"上有顶、下有底"。底部有成本支撑和贸易商惜售，顶部受小麦替代、陈化稻谷拍卖预期和需求疲软压制。建议区间内高抛低吸，重点关注5月新麦上市和陈化稻谷拍卖这两个关键变量。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：成本上升+粮源惜售+渠道低库存 → 底部支撑；但小麦替代+陈化稻谷预期+需求疲软+年度高库存 → 顶部压制。两者力量相当，价格区间震荡。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：中国玉米供需平衡表、USDA、海关总署、我的农产品网、钢联数据、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
