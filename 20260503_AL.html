@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL沪铝基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #1565C0;
+            --primary-light: #42A5F5;
+            --bg: #F0F4FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #C8D6E5;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #455A64, #78909C);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F0F4FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>AL沪铝期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>高位震荡偏强，中枢上移</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等偏高</strong>（供给刚性确定性强，但国内高库存和宏观风险限制涨幅）</td></tr>
+            <tr><td>AL2607合约价格区间</td><td><strong>23500—27000元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>逢回调轻仓做多为主，关注去库拐点，严控仓位</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>沪铝主力合约AL2606收盘约<strong>24430元/吨</strong>，4月中旬曾触及25200元/吨创五年新高</li>
+            <li>长江有色A00铝现货约<strong>24370—24410元/吨</strong>，现货贴水60—100元/吨</li>
+            <li>伦铝（LME）约<strong>3477美元/吨</strong>，海外现货溢价高企</li>
+            <li>国内电解铝社会库存约<strong>146.5万吨</strong>，近五年同期高位</li>
+            <li>LME铝库存约<strong>38—50万吨</strong>，20年历史低位</li>
+            <li>电解铝运行产能<strong>4500.43万吨</strong>，产能利用率超98%，近乎满负荷</li>
+            <li>吨铝利润约<strong>1800—8000元</strong>（不同成本核算口径），冶炼厂盈利丰厚</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：铝价目前处于历史高位区间。最特殊的现象是——国内库存很高（铝堆在仓库里），但海外库存极低（快没铝用了）。这是因为中东打仗导致海外铝厂停产，而贸易壁垒又阻止中国的铝顺畅出口到海外。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-bullish">偏多（核心支撑）</span></h2>
+
+        <h3>1. 国内产能触顶——供给弹性的"天花板"</h3>
+        <ul>
+            <li>国内电解铝合规产能上限<strong>4543万吨</strong>，新增产能仅可等量/减量置换</li>
+            <li>运行产能已达<strong>4500.43万吨</strong>，产能利用率超<strong>98%</strong>，近乎满负荷</li>
+            <li>3月单月产量383.28万吨，同比增长1.6%，处于历史高位</li>
+            <li>全年净增产能<strong>不超过50万吨</strong>，供给弹性几乎为零</li>
+            <li>重点污染区域禁止新增，鼓励产能向清洁能源富集区转移</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：中国电解铝的产能已经"满格"了，就像一个水杯已经装满了水，不能再多倒了。这是2017年供给侧改革定下的规矩，不会改变。这意味着不管铝价多高，国内都很难再多生产铝了。
+        </div>
+
+        <h3>2. 海外供给受地缘冲突冲击——最大的变量</h3>
+        <ul>
+            <li>中东地区占全球铝产量约<strong>9%</strong>，是仅次于中国的第二大产区</li>
+            <li>阿联酋EGA、巴林Alba等核心铝厂因冲突<strong>减产停产超300万吨</strong></li>
+            <li>霍尔木兹海峡航运受阻，原料运输受限</li>
+            <li>电解铝槽冷停后<strong>复产周期长达6—12个月</strong>，供给收缩具有强持续性</li>
+            <li>欧洲能源成本高企，产能维持低位，2026年仍有22万吨老旧产能永久关停</li>
+            <li>印尼新增产能100万吨，<strong>下半年才落地</strong>，短期无补充</li>
+            <li>俄铝出口受地缘扰动，流向不确定性增加</li>
+        </ul>
+
+        <h3>3. 全球供需缺口扩大</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>2026年全球产量</td><td>7500—7540万吨</td><td>增速仅0.5%—1.0%</td></tr>
+            <tr><td>2026年全球需求</td><td>7700—7800万吨</td><td>增速2.0%—2.5%</td></tr>
+            <tr><td>基准情景缺口</td><td>180—205万吨</td><td>结构性短缺</td></tr>
+            <tr><td>悲观情景缺口</td><td>320万吨+</td><td>中东持续停产</td></tr>
+        </table>
+
+        <h3>4. 成本端：氧化铝回落，利润修复</h3>
+        <ul>
+            <li>氧化铝价格2750—2900元/吨，几内亚铝土矿发运恢复，供应过剩</li>
+            <li>电力成本稳定，绿电溢价300—500元/吨</li>
+            <li>吨铝利润处于高位，冶炼厂生产积极性高，但<strong>无新增产能空间</strong></li>
+            <li>成本支撑有所减弱，但产能刚性是更根本的支撑</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-neutral">结构性分化</span></h2>
+
+        <h3>1. 传统需求：旺季不旺，地产拖累明显</h3>
+        <ul>
+            <li>建筑型材开工率仅<strong>57%—65%</strong>，地产复苏不及预期</li>
+            <li>2025年房屋竣工面积同比下降12%，2026年Q1继续下滑3.7%</li>
+            <li>铝下游龙头企业整体开工率仅<strong>64.7%</strong>，低于往年同期</li>
+            <li>家电排产微降，传统汽车产销走弱</li>
+            <li>下游畏高情绪浓厚，只敢按需采购，不愿囤货</li>
+        </ul>
+
+        <h3>2. 新兴需求：新能源+电网+以铝代铜——核心增长引擎</h3>
+        <table class="data-table">
+            <tr><th>领域</th><th>2026年新增用铝需求</th><th>驱动因素</th></tr>
+            <tr><td>新能源汽车</td><td>+33万吨以上</td><td>单车用铝200—250kg，轻量化趋势，全球产量2500万辆</td></tr>
+            <tr><td>光伏</td><td>+40万吨以上</td><td>硅片边框、支架用铝，全球装机量持续增长</td></tr>
+            <tr><td>电网投资</td><td>+46万吨以上</td><td>特高压、储能、IDC用铝，AI算力扩张带动电网升级</td></tr>
+            <tr><td>以铝代铜</td><td>+30万吨以上</td><td>铜价高位驱动，空调、电力设备领域加速替代</td></tr>
+        </table>
+        <div class="highlight-box">
+            通俗解释：虽然房地产不行了（用铝少了），但新能源汽车、光伏、电网建设这些"新经济"领域用铝量大幅增长，完全弥补了地产的下滑。特别是"以铝代铜"——铜价太贵了，很多厂家改用铝来替代铜，这对铝是大利好。
+        </div>
+
+        <h3>3. 出口：中东减产创造机遇</h3>
+        <ul>
+            <li>一季度铝材出口145.6万吨，同比+6.5%</li>
+            <li>3月单月出口48.5万吨，外需回暖</li>
+            <li>中东减产形成全球供应缺口，为中国铝材出口创造机遇</li>
+            <li>但贸易壁垒限制直接出口：美国50%关税、欧盟CBAM碳关税150—300欧元/吨</li>
+            <li>铝杆/铝绞线出口成为破局关键路径</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-neutral">极致分化</span></h2>
+
+        <h3>1. 国内外库存两极分化——当前最突出的矛盾</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>国内</th><th>海外（LME）</th></tr>
+            <tr><td>库存水平</td><td>146.5万吨（近5年同期高位）</td><td>38—50万吨（20年历史低位）</td></tr>
+            <tr><td>趋势</td><td>仍在累库，逼近150万吨</td><td>持续去库，每周净流出1万吨+</td></tr>
+            <tr><td>现货升贴水</td><td>贴水60—340元/吨</td><td>升水500—2200美元/吨</td></tr>
+            <tr><td>供需感受</td><td>"胀库"——铝堆在仓库</td><td>"缺货"——快没铝用了</td></tr>
+        </table>
+
+        <h3>2. 国内高库存的本质——"淤积"而非"过剩"</h3>
+        <ul>
+            <li>供给刚性释放（满产）+ 需求阶段性疲软（旺季不旺）+ 铝水比例下降</li>
+            <li>铝水直供比例从75%—80%降至约72%，多余铝液被迫铸成铝锭入库</li>
+            <li>这不是总量过剩，而是"流动性淤积"——铝从生产线到下游的"最后一公里"堵住了</li>
+            <li>一旦下游需求回暖、铝水比例回升，库存可能被<strong>快速消化</strong></li>
+        </ul>
+
+        <h3>3. 海外低库存的成因</h3>
+        <ul>
+            <li>欧洲能源危机后累计关停超50%产能</li>
+            <li>中东地缘冲突导致300万吨+产能停产</li>
+            <li>海外需求刚性（新能源、电网升级），持续消化有限库存</li>
+            <li>贸易壁垒阻止中国铝锭顺畅流向海外</li>
+        </ul>
+
+        <h3>4. 去库拐点——5月是关键观察期</h3>
+        <ul>
+            <li>累库速度已开始放缓，巩义地区拐点已现</li>
+            <li>五一节后是传统去库启动时点</li>
+            <li>若5月后进入持续去库周期，价格支撑将显著增强</li>
+            <li>若去库不及预期，则高库存压力将持续压制价格</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：国内仓库里堆满了铝，但海外却快断货了。这就像一个水池——国内这边水满了，海外那边快干了，但中间的"管道"（贸易通道）被关税堵住了，水流不过去。国内高库存不是真的铝太多，而是暂时没人来取。一旦需求回暖，这些库存可能很快就被消化掉。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-bullish">偏多</span></h2>
+
+        <h3>1. 再生铝——替代有限，互补为主</h3>
+        <ul>
+            <li>再生铝在铝供应结构中占比逐步提升，是电解铝的重要补充</li>
+            <li>新能源汽车轻量化对低碳铝（含再生铝）支付意愿更强</li>
+            <li>一体化压铸技术增加对高洁净度再生铝合金的需求</li>
+            <li>但再生铝<strong>品质受限</strong>，高端领域（航空、电子等）仍需电解铝</li>
+            <li>废铝供应受欧盟出口政策影响，若收紧将推高再生铝成本</li>
+            <li>总体看，再生铝与电解铝更多是<strong>互补关系</strong>，而非直接替代</li>
+        </ul>
+
+        <h3>2. 钢材——建筑领域有限替代</h3>
+        <ul>
+            <li>在建筑结构领域，钢材与铝型材存在一定竞争</li>
+            <li>但铝的轻量化、耐腐蚀优势明显，高端建筑仍倾向用铝</li>
+            <li>钢材价格相对低廉，但重量是铝的3倍，综合成本差异不大</li>
+            <li>替代范围有限，主要局限于低端建筑模板等</li>
+        </ul>
+
+        <h3>3. "以铝代铜"——铝的需求增量来源（利好铝！）</h3>
+        <ul>
+            <li>铜价高企（约95000元/吨），铝价约24500元/吨，价差超<strong>70000元/吨</strong></li>
+            <li>空调、电力设备、电缆领域加速"以铝代铜"</li>
+            <li>2026年"以铝代铜"带来铝需求增量<strong>30万吨以上</strong></li>
+            <li>这是铝需求增长的重要驱动力，而非替代压力</li>
+        </ul>
+
+        <h3>4. 替代关系总结</h3>
+        <div class="highlight-box">
+            通俗解释：铝的替代品主要是再生铝和钢材，但替代范围有限。更重要的是，铜价太高了，很多领域正在"用铝替代铜"，这反而增加了铝的需求。所以替代品因素对铝价是<strong>利好</strong>而非利空——这与玉米（小麦替代压制）和白糖（果葡糖浆替代压制）正好相反。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 产能政策——最强硬的"底线"</h3>
+        <ul>
+            <li>4500万吨合规产能红线自2017年确立以来<strong>从未松动</strong></li>
+            <li>2024年《节能降碳专项行动计划》+ 2025年《铝产业高质量发展实施方案》进一步强化</li>
+            <li>叠加能效标杆、环保A级标准、清洁能源比例30%以上等多重要求</li>
+            <li>政策意图明确：<strong>既不让产能无序扩张，也不让价格过度上涨</strong></li>
+        </ul>
+
+        <h3>2. 中东地缘冲突——最大的不确定性</h3>
+        <ul>
+            <li>美伊谈判出现进展，但尚未达成协议</li>
+            <li>若冲突缓和、海峡恢复通行 → 海外供应恢复预期 → 外盘回落压力</li>
+            <li>若冲突持续或升级 → 海外缺口扩大 → 伦铝进一步上涨 → 沪铝跟涨</li>
+            <li>电解铝槽复产周期6—12个月，即使停火也<strong>无法立即恢复供应</strong></li>
+        </ul>
+
+        <h3>3. 宏观环境</h3>
+        <ul>
+            <li>美联储4月维持利率不变，内部出现1992年以来最大分歧（8:4投票）</li>
+            <li>美元走强短期压制大宗商品，但降息预期仍在</li>
+            <li>国内4月制造业PMI 50.3%，环比回升0.1个百分点，经济保持扩张</li>
+            <li>国内消费刺激政策+海外降息预期，5月后宏观环境可能改善</li>
+            <li>滞胀风险：若油价持续高位引发CPI反弹，不利于大宗商品估值</li>
+        </ul>
+
+        <h3>4. 贸易壁垒——内外分化的"锁"</h3>
+        <ul>
+            <li>美国对进口铝征收50%基础关税+反倾销反补贴附加税</li>
+            <li>欧盟CBAM碳关税：火电铝出口需额外支付150—300欧元/吨</li>
+            <li>各国进口关税、环保标准层层加码</li>
+            <li>贸易壁垒锁死了铝锭的跨境自由流通，导致"国内胀库、海外缺货"格局持续</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>产能受损为交易主线，短期或冲高；但国内需求未转好前难有明显上行。海峡恢复通行后外盘或回落。需求衰退担忧持续压制，宜进行对冲</td><td>短期偏强，中期谨慎</td></tr>
+            <tr><td>国泰君安期货</td><td>仍偏收敛，需关注海外现货缺口的潜在升级。中东减产扩大预期犹在，若缺口持续扩大，伦铝涨幅难言完全定价。沪铝偏强对待，内外倾向正套</td><td>偏强，关注海外缺口升级</td></tr>
+            <tr><td>光大期货</td><td>二季度先抑后扬。4月初中东地缘影响居上，4月下旬旺季效应加码，国内去库拐点显现。5月后消费刺激+海外降息预期，价格易涨难跌</td><td>先抑后扬，中期偏多</td></tr>
+            <tr><td>中信期货</td><td>电力约束加剧供应扰动，铝价中枢有望持续上移。国内产能天花板+海外缺口扩大，长期紧缺周期确立</td><td>中枢上移，长期偏多</td></tr>
+            <tr><td>中信建投期货</td><td>海外供应扰动提供短期支撑，但国内高利润、高库存、弱消费的现实难以持续。旺季过后（5月后）回调概率较大。年度全球供需或略过剩</td><td>短期偏强，中期有回调风险</td></tr>
+        </table>
+        <p><strong>共识</strong>：所有机构都认同供给刚性（国内产能天花板+海外地缘冲击）是铝价的核心支撑，中期方向偏多。</p>
+        <p><strong>分歧</strong>：中信建投最谨慎，认为国内高库存+弱消费难以支撑当前高位，5月后回调概率大；光大和中信更乐观，认为去库拐点将至，中枢将持续上移；国泰君安关注海外缺口升级的潜在冲击。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约45%）</div>
+            <p><strong>价格区间：24000—26000元/吨</strong></p>
+            <ul>
+                <li>5月后国内进入去库周期，但去库速度温和</li>
+                <li>中东冲突维持现状，不显著升级也不快速解决</li>
+                <li>新能源需求稳步释放，对冲传统需求疲软</li>
+                <li>铝价高位震荡，中枢缓慢上移</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约30%）</div>
+            <p><strong>价格区间：25500—28000元/吨</strong></p>
+            <ul>
+                <li>中东冲突升级，更多铝厂停产，海外缺口急剧扩大</li>
+                <li>国内去库超预期，5月后库存快速下降</li>
+                <li>新能源需求爆发（电网投资加速+新能源汽车销量超预期）</li>
+                <li>美联储降息落地，宏观环境改善</li>
+                <li>"以铝代铜"加速推进</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约25%）</div>
+            <p><strong>价格区间：22000—24000元/吨</strong></p>
+            <ul>
+                <li>中东停火协议达成，海外供应恢复预期强烈</li>
+                <li>国内去库不及预期，库存持续高位</li>
+                <li>滞胀交易升温，大宗商品整体承压</li>
+                <li>传统需求进一步恶化，新能源增速放缓</li>
+                <li>氧化铝成本大幅下移，利润压缩但产量不减</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：逢回调轻仓做多，关注去库拐点，严控风险</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：
+                <ul>
+                    <li>建议在<strong>23800—24200元/吨</strong>附近轻仓试多</li>
+                    <li>止损设在<strong>23300元/吨</strong>以下</li>
+                    <li>第一目标看<strong>25500元/吨</strong>，第二目标看<strong>26500元/吨</strong></li>
+                </ul>
+            </li>
+            <li><strong>如果您想做交易</strong>：
+                <ul>
+                    <li>&#10004; <strong>可以做</strong>：逢回调买入，因为供给刚性是确定的长期支撑</li>
+                    <li>&#10008; <strong>不要做</strong>：追涨！当前价格已处于历史高位区间，国内高库存是现实压力</li>
+                    <li>仓位控制在总资金的<strong>10%—15%</strong>以内</li>
+                    <li>可考虑"买内卖外"的正套策略（如果条件允许）</li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月上旬</strong>：五一节后国内库存是否开启持续去库——<strong>最关键！</strong></li>
+                    <li><strong>5月</strong>：美伊谈判进展，中东冲突走向</li>
+                    <li><strong>6—7月</strong>：传统消费淡季来临，需求能否维持韧性</li>
+                    <li><strong>7—8月</strong>：印尼新产能是否如期投放</li>
+                    <li><strong>9—10月</strong>：消费旺季+新能源需求释放，可能推动第二波上涨</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>&#128200; 如果中东停火协议达成 → 海外供应恢复预期，考虑减仓或离场</li>
+                    <li>&#128200; 如果5月中旬国内库存仍在累加 → 去库预期落空，考虑止损</li>
+                    <li>&#128200; 如果滞胀交易升温（油价飙升+CPI反弹） → 大宗商品整体承压，离场观望</li>
+                    <li>&#128200; 如果铝价突破26000元/吨 → 可考虑部分止盈，落袋为安</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>十、与白糖、棉花、玉米的对比（帮您理解差异）</h2>
+        <table class="data-table">
+            <tr><th>对比项</th><th>白糖SR</th><th>棉花CF</th><th>玉米C</th><th>沪铝AL</th></tr>
+            <tr><td>供应趋势</td><td>增产，供应充足</td><td>减产，供应收紧</td><td>产量高位，总量宽松</td><td>产能触顶，供给刚性</td></tr>
+            <tr><td>库存</td><td>偏高</td><td>去化中</td><td>年度高，短期低</td><td>国内高，海外极低</td></tr>
+            <tr><td>需求</td><td>增长缓慢</td><td>温和复苏</td><td>养殖亏损压制</td><td>传统弱+新兴强</td></tr>
+            <tr><td>替代品影响</td><td>果葡糖浆压制</td><td>化纤涨价利好</td><td>小麦替代压制</td><td>以铝代铜利好！</td></tr>
+            <tr><td>政策方向</td><td>保护糖农</td><td>调控涨幅</td><td>保供稳价</td><td>产能红线托底</td></tr>
+            <tr><td>中期方向</td><td>偏弱</td><td>偏强</td><td>区间震荡</td><td>偏强</td></tr>
+            <tr><td>核心矛盾</td><td>供过于求</td><td>减产vs政策</td><td>成本vs替代</td><td>供给刚性vs高库存</td></tr>
+        </table>
+        <div class="highlight-box">
+            简单说：沪铝和棉花一样偏多，但原因不同——棉花是因为"减产"，铝是因为"产能到顶了不能再多生产"。铝最特殊的地方是"以铝代铜"带来额外需求，以及国内高库存vs海外极低库存的极致分化。这种分化意味着一旦去库启动，价格上涨动力可能很强。
+        </div>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，可能出现比本金更大的亏损，请务必谨慎</li>
+            <li>当前铝价已处于<strong>历史高位区间</strong>，追涨风险极大</li>
+            <li>国内高库存是<strong>现实压力</strong>，若5月后去库不及预期，价格可能明显回调</li>
+            <li>中东地缘冲突是<strong>最大的不确定性</strong>：停火则利空，升级则利多</li>
+            <li>滞胀风险若升温，<strong>大宗商品整体可能承压</strong></li>
+            <li>高利润下冶炼厂满产，一旦需求不及预期，<strong>库存压力将进一步加剧</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            沪铝中期看涨逻辑坚实（国内产能天花板+海外地缘冲击+新能源需求+以铝代铜），但短期受国内高库存压制，价格难以单边上涨。5月去库拐点是关键观察窗口——若去库启动，铝价有望突破上行；若去库不及预期，则高位震荡延续。建议逢回调轻仓做多，切勿追涨。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：国内产能触顶+海外地缘减产 → 全球供给刚性 → 缺口扩大 → 价格中枢上移；但国内高库存+下游畏高+宏观不确定性 → 短期涨幅受限。关键变量：5月去库拐点+中东冲突走向。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：SMM、Mysteel、LME、海关总署、USDA、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
