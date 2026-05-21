@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU沪铜基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #B71C1C;
+            --primary-light: #EF5350;
+            --bg: #FDF5F0;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #D7CCC8;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #B71C1C, #E53935);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #FDF5F0; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>CU沪铜期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>高位震荡偏强，重心上移</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等偏高</strong>（矿端紧缺确定性强，但宏观风险和"以铝代铜"限制涨幅）</td></tr>
+            <tr><td>CU2607合约价格区间</td><td><strong>95000—110000元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>逢回调轻仓做多，关注矿端紧缺与宏观博弈，严控仓位</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>沪铜主力合约CU2606收盘约<strong>100500元/吨</strong>，4月月线上涨5.61%</li>
+            <li>长江现货1#铜均价约<strong>100524元/吨</strong>，同比2025年4月上涨30.73%</li>
+            <li>伦铜（LME）约<strong>12990美元/吨</strong>，同比上涨40.68%</li>
+            <li>国内电解铜社会库存约<strong>19.2万吨</strong>，较3月底下降46.53%，去库显著</li>
+            <li>LME铜库存约<strong>39.97万吨</strong>，创2018年以来新高，同比上涨99.71%</li>
+            <li>铜精矿现货TC（加工费）<strong>-79.77美元/干吨</strong>，历史极端低位</li>
+            <li>4月电解铜产量预计<strong>117.31万吨</strong>，环比减少3.3万吨（检修影响）</li>
+            <li>1-3月电解铜累计产量<strong>352.78万吨</strong>，同比增长10.45%</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：铜价目前处于历史高位（10万元/吨附近），4月涨幅明显。最核心的特征是——铜矿极度紧缺，冶炼厂加工费跌到负数（意味着矿商倒贴钱请冶炼厂加工，但仍不够弥补亏损），导致冶炼厂大面积检修减产。国内库存下降很快，但海外库存很高。和铝类似，铜也面临"内强外弱"的分化格局。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-bullish">偏多（核心支撑）</span></h2>
+
+        <h3>1. 铜矿紧缺——最根本的支撑</h3>
+        <ul>
+            <li>铜精矿现货TC跌至<strong>-79.77美元/干吨</strong>，RC为-8.07美分/磅，历史极端低位</li>
+            <li>TC为负意味着：矿商不仅不给冶炼厂加工费，反而要倒贴钱——这是铜矿极度紧缺的信号</li>
+            <li>南方铜业Q1产量同比下降<strong>4.0%</strong>（秘鲁业务降幅9.8%）</li>
+            <li>自由港（Freeport）下调印尼Grasberg铜矿全年产量指引约<strong>10万吨</strong></li>
+            <li>智利2月铜产量环比下降<strong>8%</strong>，同比减少5%</li>
+            <li>全球铜矿新增供给不足，存量扰动加大，供应干扰率持续上升</li>
+            <li>冶炼产能扩张增速大于矿山供应增速，原材料持续紧张</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：铜矿就像"面粉"，冶炼厂就像"面包房"。现在面粉严重不够，面包房即使想多做面包也做不了。加工费跌到负数，说明面粉紧缺到面包房要倒贴钱才能买到。这是铜价最硬的支撑——不是不想多产铜，是真的没有矿。
+        </div>
+
+        <h3>2. 冶炼端检修潮——供应进一步收紧</h3>
+        <ul>
+            <li>二季度已有<strong>28家大型铜冶炼厂</strong>公布检修计划，合计影响精炼铜产能超<strong>52万吨</strong></li>
+            <li>相当于全国月均产量的近三分之一</li>
+            <li>4月有8家冶炼厂检修（3家从3月延续，4家延续至5月）</li>
+            <li>5月电解铜产量预计继续下降</li>
+            <li>部分小厂因TC持续走低、生产即亏损，<strong>直接停产</strong></li>
+            <li>国内严控新增冶炼产能，供给端无增量来源</li>
+        </ul>
+
+        <h3>3. 硫酸危机——新的供应冲击</h3>
+        <ul>
+            <li>中国自5月起<strong>暂停硫酸出口至年底</strong></li>
+            <li>中东局势下硫磺供应缺失，加剧湿法铜供应紧张预期</li>
+            <li>湿法炼铜产量约占世界铜产量的<strong>15%</strong></li>
+            <li>若国内硫酸暂停出口落实，国内硫酸供应增加→硫酸价格下行→冶炼厂硫酸副产收入减少→倒逼冶炼厂减产</li>
+            <li>这是5月以后需要重点关注的变量</li>
+        </ul>
+
+        <h3>4. 废铜供应——补充有限</h3>
+        <ul>
+            <li>3月再生铜进口量22.76万吨，同比增长19.94%</li>
+            <li>国内带票废铜紧缺，冶炼厂多选择采购进口废铜</li>
+            <li>精废价差走强，但废铜国内供应偏紧，替代效应不佳</li>
+            <li>2025年废铜替代曾缓解精矿紧张局面，但2026年废铜增量有限</li>
+        </ul>
+
+        <h3>5. 全球供需平衡</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>2026年全球铜矿产量增速</td><td>约1.0%—1.5%</td><td>远低于冶炼产能增速</td></tr>
+            <tr><td>2026年全球精铜需求增速</td><td>约2.0%—2.8%</td><td>新能源+电网驱动</td></tr>
+            <tr><td>铜矿供应缺口</td><td>持续扩大</td><td>TC负值是直接体现</td></tr>
+            <tr><td>精铜供需</td><td>紧平衡</td><td>检修+矿紧对冲高产量</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-neutral">结构性分化</span></h2>
+
+        <h3>1. 传统需求：地产拖累，家电承压</h3>
+        <ul>
+            <li>房地产仍为最大拖累项，2025年竣工面积同比降12%，2026年Q1继续下滑</li>
+            <li>铜管企业库存累积，下游装机量不及预期，空调出口受限</li>
+            <li>传统汽车产销走弱，建筑领域铜需求平淡</li>
+            <li>高铜价抑制下游即时采购，企业畏高情绪明显，按需采购为主</li>
+        </ul>
+
+        <h3>2. 新兴需求：新能源+电网+AI——铜的"三大引擎"</h3>
+        <table class="data-table">
+            <tr><th>领域</th><th>2026年铜需求增量</th><th>驱动因素</th></tr>
+            <tr><td>电网/电力投资</td><td>占总需求约50%，增速约3%</td><td>特高压、配电网改造、农村电网升级</td></tr>
+            <tr><td>新能源汽车</td><td>单车用铜80—100kg，增量稳定</td><td>全球产量2500万辆+，轻量化趋势</td></tr>
+            <tr><td>光伏+储能</td><td>储能需求增速41.4%</td><td>全球装机量持续增长，储能爆发</td></tr>
+            <tr><td>AI数据中心</td><td>单兆瓦耗铜约25—30吨</td><td>AI算力爆发拉动电力投资</td></tr>
+            <tr><td>新能源合计</td><td>2026年用铜量预计618万吨（+7.9%）</td><td>能源转型刚性需求，无低成本替代</td></tr>
+        </table>
+        <div class="highlight-box">
+            通俗解释：铜的需求正在经历"换挡"——房地产用铜少了，但电网建设、新能源汽车、光伏储能、AI数据中心用铜大幅增长。特别是电网投资，占了中国铜需求的一半，是国家重点投资方向。AI数据中心是铜需求的"新明星"——每个AI算力中心每兆瓦耗铜25—30吨，随着AI爆发式增长，铜需求跟着水涨船高。
+        </div>
+
+        <h3>3. 出口：铝材出口尚可，铜材出口受限</h3>
+        <ul>
+            <li>1-3月未锻轧铜及铜材出口48.79万吨，同比增长52.2%</li>
+            <li>但3月单月出口同比下降0.4%，增速放缓</li>
+            <li>1-3月未锻轧铜及铜材进口112万吨，同比下降14.2%</li>
+            <li>海外贸易壁垒同样限制铜材出口</li>
+        </ul>
+
+        <h3>4. 需求总量判断</h3>
+        <ul>
+            <li>安泰科预计2026年中国铜需求同比增长约<strong>2.8%</strong></li>
+            <li>摩根士丹利预计2026年中国铜需求同比增长约<strong>2.8%</strong></li>
+            <li>电力/电网领域需求最旺盛（占总需求约50%，增速约3%）</li>
+            <li>新能源相关需求将继续推动铜需求增长</li>
+            <li>但单位消耗量将逐步下降（技术进步、轻量化）</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-neutral">内外分化</span></h2>
+
+        <h3>1. 国内库存：快速去化，提供强支撑</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>国内社会库存</td><td>约19.2万吨（4月底）</td><td>较3月底下降46.53%</td></tr>
+            <tr><td>上期所库存</td><td>约10万吨（仓单）</td><td>阶段性新低</td></tr>
+            <tr><td>同比2025年</td><td>增幅115%</td><td>弱于去年同期旺季水平</td></tr>
+            <tr><td>现货升贴水</td><td>华东升水25元/吨，华南升水215元/吨</td><td>升水坚挺，支撑价格</td></tr>
+        </table>
+
+        <h3>2. 海外库存：持续累积，形成拖累</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>LME铜库存</td><td>约39.97万吨</td><td>创2018年以来新高</td></tr>
+            <tr><td>同比2025年</td><td>涨幅99.71%</td><td>海外库存充裕</td></tr>
+            <tr><td>LME现货升贴水</td><td>贴水约60美元/吨</td><td>海外现货不紧缺</td></tr>
+            <tr><td>趋势</td><td>累积速率放缓</td><td>边际改善</td></tr>
+        </table>
+
+        <h3>3. 库存分化的原因</h3>
+        <ul>
+            <li>国内："银四"旺季备货+冶炼检修+下游刚需补库 → 库存快速下降</li>
+            <li>海外：欧美需求增长有限+中国铜材出口增加+LME交仓增加 → 库存累积</li>
+            <li>与铝类似，贸易壁垒限制了全球铜资源的自由流通</li>
+            <li>国内低库存+海外高库存 = "内强外弱"格局</li>
+        </ul>
+
+        <h3>4. 去库趋势展望</h3>
+        <ul>
+            <li>5月后冶炼检修继续，国内产量预计进一步下降</li>
+            <li>但旺季向淡季过渡，需求可能边际走弱</li>
+            <li>去库速度可能放缓，但低库存格局短期难以逆转</li>
+            <li>若5月后去库持续超预期，铜价有望进一步上行</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：国内铜库存下降很快（利好价格），但海外铜库存很高（利空价格）。这和铝的情况类似——国内缺货，海外堆货，中间有贸易壁垒挡着。国内低库存是铜价的重要支撑，但海外高库存像一把悬在头上的"剑"，限制了铜价的上涨空间。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-bearish">偏空（铜的特有压力）</span></h2>
+
+        <h3>1. "以铝代铜"——铜需求的最大威胁</h3>
+        <ul>
+            <li>铜价约100000元/吨，铝价约24500元/吨，价差超<strong>75000元/吨</strong></li>
+            <li>巨大的价差驱动下游加速"以铝代铜"：</li>
+            <li>— <strong>空调领域</strong>：铝代铜连接管已大规模推广，铝绕线电机研发加速</li>
+            <li>— <strong>电力电缆</strong>：中低压电缆领域铝芯电缆替代铜芯电缆</li>
+            <li>— <strong>变压器</strong>：铝绕组变压器在配电领域逐步推广</li>
+            <li>— <strong>汽车散热器</strong>：铝散热器已基本替代铜散热器</li>
+            <li>2026年"以铝代铜"预计减少铜需求<strong>30万吨以上</strong></li>
+            <li>替代趋势<strong>不可逆</strong>：一旦完成替代，即使铜价回落也不会转回铜</li>
+        </ul>
+
+        <h3>2. 再生铜——重要补充，但品质受限</h3>
+        <ul>
+            <li>再生铜在铜供应结构中占比逐步提升</li>
+            <li>3月再生铜进口22.76万吨，同比增长19.94%</li>
+            <li>但高端领域（电子、新能源）对铜的纯度要求高，再生铜难以替代</li>
+            <li>国内带票废铜紧缺，限制了再生铜的供应弹性</li>
+            <li>再生铜更多是精铜的<strong>补充</strong>，而非完全替代</li>
+        </ul>
+
+        <h3>3. 其他替代品</h3>
+        <ul>
+            <li><strong>光纤</strong>：在通信领域替代铜缆，但这是长期趋势，短期影响有限</li>
+            <li><strong>超导材料</strong>：仍处于实验室阶段，不具备商业化替代条件</li>
+            <li><strong>碳纤维复合材料</strong>：在特定领域可替代铜，但成本极高</li>
+        </ul>
+
+        <h3>4. 替代关系总结</h3>
+        <div class="highlight-box">
+            通俗解释：铜和铝的替代关系是<strong>双向的</strong>——对铝来说是利好（"以铝代铜"增加铝需求），对铜来说是利空（"以铝代铜"减少铜需求）。这是铜价面临的一个长期压力。铜价越高，替代动力越强，替代量越大。不过，铜在导电性、导热性方面的优势是铝无法完全替代的，特别是在高端电子、新能源汽车、AI数据中心等领域，铜仍然是不可替代的。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 中东地缘冲突——最大的不确定性</h3>
+        <ul>
+            <li>美伊冲突经历"紧张—缓和—再升级"的波折</li>
+            <li>停火谈判曾一度提振风险偏好，但月末陷入僵局</li>
+            <li>霍尔木兹海峡通航受阻+美国制裁加码，避险情绪重燃</li>
+            <li>油价飙升引发通胀担忧，压制铜价表现</li>
+            <li>但冲突对铜价的边际影响在逐步减弱（市场反复定价后脱敏）</li>
+            <li>若冲突升级 → 短期利空（通胀+避险），但供应扰动可能利多</li>
+            <li>若冲突缓和 → 短期利多（风险偏好回升），但供应恢复预期利空</li>
+        </ul>
+
+        <h3>2. 美联储政策——维持中性</h3>
+        <ul>
+            <li>4月维持利率不变，内部出现1992年以来最大分歧（8:4投票）</li>
+            <li>降息预期大幅降温，美元指数高位运行压制铜价</li>
+            <li>但市场对年内降息仍有预期，若降息落地将利好铜价</li>
+            <li>滞胀风险：若油价持续高位引发CPI反弹，不利于铜等大宗商品估值</li>
+        </ul>
+
+        <h3>3. 国内政策——托底支撑</h3>
+        <ul>
+            <li>一季度GDP同比增长5.0%，环比上年提速0.5个百分点</li>
+            <li>4月制造业PMI 50.3%，继续处于扩张区间</li>
+            <li>政治局会议定调扩大内需及加强算力网建设</li>
+            <li>电网投资持续加码，是铜需求的"定海神针"</li>
+            <li>房地产及制造业PMI回暖，为市场提供信心支撑</li>
+        </ul>
+
+        <h3>4. 硫酸出口政策——新的变量</h3>
+        <ul>
+            <li>中国自5月起暂停硫酸出口至年底</li>
+            <li>可能倒逼冶炼厂减产 → 利多铜价</li>
+            <li>但也可能缓解国内硫酸紧张 → 降低冶炼成本 → 利空铜价</li>
+            <li>具体影响需观察5月后实际执行情况</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>整体维持对二季度铜价偏乐观判断，关注98000/102000两个支撑位，季度视角可考虑继续布局多单。但国内消费指标环比有走弱迹象，需密切关注</td><td>偏多，关注支撑位</td></tr>
+            <tr><td>国泰君安期货</td><td>仓单库存减少支撑价格。宏观逻辑对价格影响权重较大，若中东地缘政治烈度上升，铜价可能阶段性承压。但供应扰动对价格的影响逐步增强</td><td>中性偏多，关注宏观</td></tr>
+            <tr><td>光大期货</td><td>铜价预计延续高位震荡，5月将延续高位震荡偏强走势，策略上建议以逢低做多为主。核心逻辑：供应端收缩预期持续强化与宏观压制反复博弈</td><td>偏多，逢低做多</td></tr>
+            <tr><td>中信期货</td><td>电力约束加剧供应扰动，铜价中枢有望持续上移。矿端紧缺+冶炼检修+新能源需求，长期紧缺周期确立</td><td>中枢上移，长期偏多</td></tr>
+            <tr><td>中信建投期货</td><td>宏观情绪受地缘局势反复仍有波动，但铜原料紧张、海外冶炼收缩趋势，加之下游需求韧性，价格或维持高位运行。宏观若风险减弱甚至出清，有望进一步打开价格上行空间</td><td>高位运行，等待突破</td></tr>
+        </table>
+        <p><strong>共识</strong>：所有机构都认同铜矿紧缺+冶炼检修是铜价的核心支撑，中期方向偏多，策略上建议逢低做多。</p>
+        <p><strong>分歧</strong>：永安关注国内消费走弱迹象；国泰君安更强调宏观风险的权重；光大最明确看多；中信建投认为需要等待宏观风险出清才能打开上行空间。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约45%）</div>
+            <p><strong>价格区间：98000—106000元/吨</strong></p>
+            <ul>
+                <li>铜矿紧缺持续，TC维持低位，冶炼检修按计划进行</li>
+                <li>国内去库速度放缓但维持低位，海外库存高位但累积放缓</li>
+                <li>新能源需求稳步释放，对冲传统需求疲软</li>
+                <li>中东冲突维持现状，宏观环境中性</li>
+                <li>铜价高位震荡，重心缓慢上移</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约25%）</div>
+            <p><strong>价格区间：105000—115000元/吨</strong></p>
+            <ul>
+                <li>铜矿供应扰动加剧（秘鲁、智利罢工或新减产）</li>
+                <li>硫酸出口暂停倒逼更多冶炼厂减产</li>
+                <li>国内去库超预期，库存降至极低水平</li>
+                <li>美联储降息落地，美元走弱，宏观环境改善</li>
+                <li>AI数据中心+电网投资需求爆发</li>
+                <li>"以铝代铜"推进不及预期</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约30%）</div>
+            <p><strong>价格区间：88000—98000元/吨</strong></p>
+            <ul>
+                <li>中东停火协议达成，油价大幅回落，通胀预期降温</li>
+                <li>铜矿供应恢复超预期，TC触底回升</li>
+                <li>国内旺季过后需求明显走弱，库存拐头回升</li>
+                <li>"以铝代铜"加速推进，铜需求被大幅替代</li>
+                <li>滞胀交易升温，大宗商品整体承压</li>
+                <li>LME高库存持续施压，海外铜向国内回流</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            注意：利空情景概率设为30%（高于铝的25%），原因是铜面临"以铝代铜"的长期替代压力，且海外LME库存处于历史高位，这两个因素是铝不具备的额外利空。
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：逢回调轻仓做多，关注矿端紧缺与宏观博弈，严控风险</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：
+                <ul>
+                    <li>建议在<strong>96000—99000元/吨</strong>附近轻仓试多</li>
+                    <li>止损设在<strong>93000元/吨</strong>以下</li>
+                    <li>第一目标看<strong>104000元/吨</strong>，第二目标看<strong>108000元/吨</strong></li>
+                </ul>
+            </li>
+            <li><strong>如果您想做交易</strong>：
+                <ul>
+                    <li>&#10004; <strong>可以做</strong>：逢回调买入，矿端紧缺是确定的长期支撑</li>
+                    <li>&#10008; <strong>不要做</strong>：追涨！铜价已处历史高位，宏观风险和"以铝代铜"是现实压力</li>
+                    <li>仓位控制在总资金的<strong>10%以内</strong>（铜的波动比铝更大，仓位要更轻）</li>
+                    <li>铜价波动剧烈，务必设好止损</li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月上旬</strong>：五一节后国内库存变化+硫酸出口政策实际执行情况</li>
+                    <li><strong>5月</strong>：美伊谈判进展，中东冲突走向</li>
+                    <li><strong>6—7月</strong>：传统消费淡季来临，需求能否维持韧性</li>
+                    <li><strong>7—8月</strong>：铜矿TC是否触底回升，冶炼厂复产进度</li>
+                    <li><strong>9—10月</strong>：消费旺季+新能源需求释放，可能推动第二波上涨</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>&#128200; 如果中东停火协议达成 → 宏观利空+供应恢复预期，考虑减仓</li>
+                    <li>&#128200; 如果TC触底回升 → 矿端紧缺逻辑弱化，考虑离场</li>
+                    <li>&#128200; 如果5月中旬国内库存拐头回升 → 去库预期落空，考虑止损</li>
+                    <li>&#128200; 如果"以铝代铜"政策加速推进 → 铜需求被替代，中长期偏空</li>
+                    <li>&#128200; 如果铜价突破108000元/吨 → 可考虑部分止盈，落袋为安</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>十、与白糖、棉花、玉米、沪铝的对比</h2>
+        <table class="data-table">
+            <tr><th>对比项</th><th>白糖SR</th><th>棉花CF</th><th>玉米C</th><th>沪铝AL</th><th>沪铜CU</th></tr>
+            <tr><td>供应趋势</td><td>增产</td><td>减产</td><td>产量高位</td><td>产能触顶</td><td>矿端紧缺</td></tr>
+            <tr><td>库存</td><td>偏高</td><td>去化中</td><td>年度高</td><td>国内高/海外极低</td><td>国内低/海外高</td></tr>
+            <tr><td>需求</td><td>增长缓慢</td><td>温和复苏</td><td>养殖压制</td><td>传统弱+新兴强</td><td>传统弱+新兴极强</td></tr>
+            <tr><td>替代品影响</td><td>果葡糖浆压制</td><td>化纤涨价利好</td><td>小麦替代压制</td><td>以铝代铜利好</td><td>以铝代铜压制！</td></tr>
+            <tr><td>政策方向</td><td>保护糖农</td><td>调控涨幅</td><td>保供稳价</td><td>产能红线托底</td><td>严控新增冶炼</td></tr>
+            <tr><td>中期方向</td><td>偏弱</td><td>偏强</td><td>区间震荡</td><td>偏强</td><td>偏强</td></tr>
+            <tr><td>核心矛盾</td><td>供过于求</td><td>减产vs政策</td><td>成本vs替代</td><td>刚性vs高库存</td><td>矿紧vs替代</td></tr>
+        </table>
+        <div class="highlight-box">
+            简单说：沪铜和沪铝都偏多，但原因不同——铝是因为"产能到顶"，铜是因为"矿不够用"。铜最特殊的地方有两个：一是"以铝代铜"对铜是利空（和铝正好相反！），二是铜的需求增长引擎更强劲（AI数据中心+电网投资）。铜的利空情景概率比铝高5%，就是因为"以铝代铜"这个铜独有的压力。
+        </div>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，可能出现比本金更大的亏损，请务必谨慎</li>
+            <li>当前铜价已处于<strong>历史高位区间</strong>（10万元/吨附近），追涨风险极大</li>
+            <li>铜价波动比铝更大，<strong>单日波动可能超过1000元/吨</strong>，务必控制仓位</li>
+            <li>"以铝代铜"是铜面临的<strong>长期结构性利空</strong>，铜价越高替代越快</li>
+            <li>海外LME库存处于<strong>2018年以来高位</strong>，若向国内回流将显著增加供应压力</li>
+            <li>中东地缘冲突是<strong>最大的不确定性</strong>：影响油价、通胀预期、风险偏好</li>
+            <li>滞胀风险若升温，<strong>大宗商品整体可能承压</strong></li>
+            <li>旺季过后（6—7月）需求可能明显走弱，<strong>去库速度放缓甚至拐头</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            沪铜中期看涨逻辑坚实（铜矿紧缺+冶炼检修+新能源需求+电网投资），但面临"以铝代铜"长期替代压力和海外高库存拖累。5月去库延续+硫酸出口政策是关键观察窗口——若去库持续超预期，铜价有望突破上行；若旺季过后需求走弱，则高位震荡延续。建议逢回调轻仓做多，切勿追涨，严控风险。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：铜矿紧缺→TC历史低位→冶炼厂亏损检修→精铜供应收紧→库存去化→价格支撑；但"以铝代铜"加速+海外高库存+宏观不确定性→涨幅受限。关键变量：5月去库持续性+硫酸出口政策+中东冲突走向+"以铝代铜"进度。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：SMM、Mysteel、LME、海关总署、安泰科、摩根士丹利、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
