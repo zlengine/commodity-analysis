@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I铁矿石基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #8B4513;
+            --primary-light: #A0522D;
+            --bg: #F5F0EB;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #C4A882;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #5D3A1A, #8B4513);
+            color: #FFF;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F0EB; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>I铁矿石期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>震荡偏弱，重心下移</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中偏高</strong>（供应宽松确定性强，需求走弱趋势明确）</td></tr>
+            <tr><td>I2609合约价格区间</td><td><strong>650—810元/吨</strong></td></tr>
+            <tr><td>普氏62%指数区间</td><td><strong>85—108美元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>反弹做空为主，关注700元/吨成本支撑</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>铁矿石主力合约I2609收盘约<strong>796元/吨</strong>，4月先跌后涨</li>
+            <li>61%进口矿指数报<strong>108.06美元/吨</strong>，环比上涨0.37%</li>
+            <li>天津港PB粉价格报<strong>790元/吨</strong>，环比下跌1%</li>
+            <li>45港进口矿库存<strong>15666万吨</strong>，环比减少108.71万吨，同比仍高出17.28%</li>
+            <li>247家钢厂日均铁水产量<strong>239.32万吨</strong>，环比微降0.18万吨，连续两周未突破240万吨</li>
+            <li>钢厂盈利率<strong>49.78%</strong>，月环比回升7.36个百分点</li>
+            <li>45港日均疏港量<strong>317.74万吨</strong>，环比减少3.44万吨</li>
+            <li>钢厂进口矿库存<strong>8884.1万吨</strong>，环比减少48.3万吨</li>
+            <li>进口矿可用天数<strong>20天</strong>，环比下降1天</li>
+            <li>全球铁矿石发运总量<strong>3250.1万吨</strong>，环比增加176.2万吨，刷新八周高位</li>
+            <li>澳洲发运量<strong>1909.5万吨</strong>，环比增加73.2万吨</li>
+            <li>1—3月中国累计进口铁矿砂<strong>3.15亿吨</strong>，同比增加2900万吨</li>
+            <li>4月普氏指数均值<strong>107美元/吨</strong>，对应盘面估值约764元/吨</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：铁矿石目前处于"供应多、需求见顶、库存高"的三重压力下。全球矿山发运量已经回到年度高位，1—3月中国多进口了2900万吨铁矿石，港口库存虽然最近在降但比去年同期还高了17%。钢厂铁水产量239万吨已经连续两周上不去了，说明钢厂的生产已经接近极限。五一节前钢厂补了一波库存，节后采购需求会减少。简单说就是"矿在拼命挖，钢厂快用不完了，仓库里还堆着1.56亿吨"。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-bearish">偏空（核心利空）</span></h2>
+
+        <h3>1. 四大矿山——产量稳增，发运回升</h3>
+        <table class="data-table">
+            <tr><th>矿山</th><th>Q1产量</th><th>同比变化</th><th>2026年发运目标</th><th>预计增量</th></tr>
+            <tr><td>力拓</td><td>7880万吨</td><td>+13%/+900万吨</td><td>3.23—3.38亿吨</td><td>+300万吨</td></tr>
+            <tr><td>淡水河谷(VALE)</td><td>6970万吨</td><td>+3%/+200万吨</td><td>3.35—3.45亿吨（上调）</td><td>+500万吨</td></tr>
+            <tr><td>必和必拓(BHP)</td><td>6980万吨</td><td>+2.8%/+190万吨</td><td>2.84—2.96亿吨</td><td>+200万吨</td></tr>
+            <tr><td>Fortescue</td><td>4780万吨</td><td>同比持平</td><td>1.95—2.05亿吨</td><td>+500万吨</td></tr>
+            <tr><td><strong>合计</strong></td><td>—</td><td><strong>+5.2%/+1300万吨</strong></td><td>—</td><td><strong>+1500万吨</strong></td></tr>
+        </table>
+        <ul>
+            <li>四大矿山Q1总产量同比增加5.2%（+1300万吨），发运量同比增加2.7%（+680万吨）</li>
+            <li>VALE上调产量目标1000万吨，S11D和布鲁库图矿区创纪录产量</li>
+            <li>2026年四大矿山总发运预计增加<strong>1500万吨</strong></li>
+        </ul>
+
+        <h3>2. 非主流矿山——高价刺激增产</h3>
+        <ul>
+            <li>非主流地区发运量骤增逾两成至<strong>657万吨</strong>，创三个月新高</li>
+            <li>1—3月非澳巴进口同比增加<strong>17%/+900万吨</strong></li>
+            <li>印度进口同比增加<strong>13%/+100万吨</strong></li>
+            <li>高矿价刺激非主流矿山积极出货</li>
+            <li>几内亚西芒杜铁矿投产，2026年产能爬坡至<strong>2000万吨</strong></li>
+        </ul>
+
+        <h3>3. 全球新增产能——供给过剩周期开启</h3>
+        <ul>
+            <li>2026年全球铁矿新增产能达<strong>6660万吨</strong></li>
+            <li>西芒杜、VALE扩建项目陆续投产</li>
+            <li>国金证券判断：2026年是铁矿<strong>过剩周期的起点</strong></li>
+            <li>澳大利亚国库部预测全年铁矿均价跌至<strong>85美元/吨</strong>，极端情景下探60美元/吨</li>
+        </ul>
+
+        <h3>4. 发运节奏——已进入年度高位周期</h3>
+        <ul>
+            <li>全球发运总量3250.1万吨，刷新八周高位，处于同期最高水平</li>
+            <li>澳洲发运持续回升，巴西发运稳中有增</li>
+            <li>5月起供给压力将逐步加大，到港资源充裕</li>
+        </ul>
+
+        <div class="highlight-box">
+            通俗解释：铁矿石的供应端是最大的利空。四大矿山（力拓、淡水河谷、必和必拓、Fortescue）一季度产量同比增加5.2%，2026年预计多发运1500万吨。非主流矿山（印度、非洲等）在高价刺激下也在拼命出货，一季度多运了900万吨。更关键的是，几内亚西芒杜这个巨型铁矿投产了，2026年产能就要爬坡到2000万吨。国金证券直接说"2026年是铁矿过剩周期的起点"，澳大利亚政府预测矿价可能跌到85美元甚至60美元。简单说就是"全世界都在挖矿，矿越挖越多"。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 铁水产量——见顶信号明确</h3>
+        <ul>
+            <li>247家钢厂日均铁水产量239.32万吨，连续两周未能突破240万吨关口</li>
+            <li>4月日均铁水约239万吨，环比微降0.18万吨</li>
+            <li>钢厂盈利率50%附近徘徊，部分钢厂已制定短期检修计划</li>
+            <li>高炉产能利用率89.72%，提升空间有限</li>
+            <li>市场对铁水产量进一步回升的空间持谨慎态度</li>
+            <li>5月后随着淡季来临，铁水产量大概率见顶回落</li>
+        </ul>
+
+        <h3>2. 钢厂利润——制约铁水进一步回升</h3>
+        <ul>
+            <li>华东长流程螺纹利润约90元/吨，利润空间不大</li>
+            <li>钢厂盈利率49.78%，近半数钢厂仍在亏损</li>
+            <li>利润空间有限 → 钢厂继续加速复产动力不足</li>
+            <li>成材利润窄幅波动，废铁价差小幅走弱</li>
+            <li>一季度黑色金属冶炼和压延加工业亏损33.4亿元</li>
+        </ul>
+
+        <h3>3. 终端需求——旺季不旺，淡季将至</h3>
+        <ul>
+            <li>1—4月粗钢产量同比下降400万吨</li>
+            <li>建筑用钢同比下降400万吨，制造业用钢同比持平</li>
+            <li>4月建筑钢材日均成交量10.98万吨，同比下降5.5%</li>
+            <li>1—3月粗钢表观消费量2.20亿吨，同比下降4.4%</li>
+            <li>5月后南方梅雨季+高温，终端需求将进一步走弱</li>
+            <li>房地产持续探底，新开工面积同比-16%，拖累建筑用钢</li>
+        </ul>
+
+        <h3>4. 钢厂补库——阶段性结束</h3>
+        <ul>
+            <li>五一节前钢厂小幅补库，库存可用天数20天</li>
+            <li>节后补库需求消退，采购节奏回归常态</li>
+            <li>港口现货成交量回落至109.9万吨，终端以刚需采购为主</li>
+            <li>钢厂进口矿库存环比减少48.3万吨，补库意愿下降</li>
+        </ul>
+
+        <h3>5. 钢材出口——同比下降</h3>
+        <ul>
+            <li>1—3月累计出口钢材2471.7万吨，同比下降9.9%</li>
+            <li>出口均价684.7美元/吨，环比下跌6.1%</li>
+            <li>海外需求复苏缓慢，出口难有持续性高增</li>
+        </ul>
+
+        <div class="highlight-box">
+            通俗解释：铁矿石的需求端也是偏空的。钢厂铁水产量239万吨已经连续两周上不去了，说明钢厂生产到了天花板——因为近半数钢厂还在亏损，没钱继续扩产了。五一节前钢厂补了一波库存，节后就不需要再大量采购了。更关键的是，5月以后南方要下梅雨，工地干不了活，钢材需求会下降，钢厂就会减产，铁矿石需求自然跟着减少。简单说就是"钢厂生产到顶了，节后不买了，雨季来了钢厂还要减产"。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 港口库存——高位运行</h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>45港进口矿库存</td><td>15666万吨</td><td>环比-108.71万吨，但同比+17.28%</td></tr>
+            <tr><td>贸易矿占比</td><td>65.97%</td><td>贸易商库存占比高，可流动性大</td></tr>
+            <tr><td>45港日均疏港量</td><td>317.74万吨</td><td>环比-3.44万吨，需求边际走弱</td></tr>
+            <tr><td>钢厂进口矿库存</td><td>8884.1万吨</td><td>环比-48.3万吨，补库意愿下降</td></tr>
+            <tr><td>进口矿可用天数</td><td>20天</td><td>环比-1天，处于偏低水平</td></tr>
+        </table>
+
+        <h3>2. 库存趋势——去库不可持续，即将重新累库</h3>
+        <ul>
+            <li>一季度港口库存累库幅度约<strong>1300万吨</strong>，供需基本面弱化</li>
+            <li>4月去库主要靠节前补库+铁水高位刚需，去库斜率慢于往年同期</li>
+            <li>国泰君安预测：节后第二周开始转为供需平衡，港口库存走平</li>
+            <li>往后随着供给回升+钢厂减产，港口库存继续<strong>高位累库</strong></li>
+            <li>1.56亿吨的港口库存是巨大的"堰塞湖"，压制矿价上行空间</li>
+        </ul>
+
+        <div class="highlight-box">
+            通俗解释：铁矿石库存是最大的压力之一。港口里堆着1.56亿吨铁矿石，比去年同期还多了17%（约2300万吨）。4月库存虽然降了一点，但主要是五一节前钢厂补库存造成的，节后就不补了。国泰君安预测，节后第二周库存就会重新开始增加。1.56亿吨是什么概念？相当于中国钢厂40多天的用量。这么大的库存量，矿价很难涨上去。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-neutral">中性偏空（长期利空铁矿）</span></h2>
+
+        <h3>1. 废钢——铁矿石的核心替代品</h3>
+        <ul>
+            <li>废钢与铁矿石是<strong>强替代关系</strong>：铁矿石用于长流程（高炉炼铁），废钢用于短流程（电炉炼钢）</li>
+            <li>2026年1—2月全国重点钢厂废钢添加比例从14.2%降至<strong>12.8%</strong></li>
+            <li>单吨钢废钢用量减少15公斤，对应全年废钢需求减少超1000万吨</li>
+            <li>但废钢替代铁矿石是<strong>长期趋势</strong>，受三大约束限制短期替代速度</li>
+        </ul>
+
+        <h3>2. 废钢替代的三大约束（短期限制替代速度）</h3>
+        <ul>
+            <li><strong>约束一：社会钢铁蓄积量不足</strong>——中国大量钢铁仍在使用中（建筑、桥梁、汽车），尚未进入报废周期，废钢资源不够</li>
+            <li><strong>约束二：高炉资产折旧周期</strong>——中国700多座高炉大部分投产于近20年，远未到淘汰时间，企业不可能提前报废</li>
+            <li><strong>约束三：能源结构清洁化</strong>——电炉钢的碳排放取决于电力来源，煤电为主时减排效果有限</li>
+        </ul>
+
+        <h3>3. 废钢供应增长——长期利空铁矿石</h3>
+        <ul>
+            <li>预计2026年废钢铁总供给达<strong>3.2亿吨</strong>，同比增长12.28%</li>
+            <li>汽车拆解量年增12%，建筑废钢释放增加</li>
+            <li>进口废钢政策放宽，1—2月废钢进口同比增长132.7%</li>
+            <li>电炉钢产能占比预计提升至<strong>30%</strong></li>
+            <li>废钢供应增长 → 长期减少铁矿石需求</li>
+        </ul>
+
+        <h3>4. 当前废钢与铁矿的博弈</h3>
+        <ul>
+            <li>铁矿石价格下跌时，钢厂更倾向用铁矿石（成本更低），压低废钢添加比例</li>
+            <li>铁矿石价格上涨时，钢厂增加废钢用量，抑制铁矿需求</li>
+            <li>当前铁矿石价格下跌，废钢议价空间被持续挤压</li>
+            <li>唐山地区长流程铁水不含税成本约2280元/吨，重型废钢2350元/吨，废钢每吨贵70元</li>
+            <li>废钢定价权"牢牢绑定在铁矿石价格走势上"</li>
+        </ul>
+
+        <div class="highlight-box">
+            通俗解释：废钢是铁矿石的"竞争对手"——废钢可以替代铁矿石炼钢。但短期来看，中国废钢不够用（很多钢铁还在房子、桥梁里，还没报废），而且700多座高炉还没到退役时间，所以废钢短期内替代不了太多铁矿石。但长期来看，废钢供应在快速增长（2026年增长12%），电炉钢占比在提升，这对铁矿石是长期利空。当前铁矿石价格在跌，钢厂更愿意用便宜的铁矿石而不是贵的废钢，所以废钢替代暂时在减弱。但这个趋势是不可逆的——随着中国钢铁蓄积量增加，废钢会越来越多，铁矿石的需求会越来越少。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 供给过剩周期——中长期核心逻辑</h3>
+        <ul>
+            <li>国金证券：2026年是铁矿<strong>过剩周期的起点</strong>，原料端宽松为钢厂盈利改善提供基础</li>
+            <li>中钢协呼吁钢铁企业<strong>自律控产</strong>化解"高库存、低需求"矛盾</li>
+            <li>《钢铁行业稳增长工作方案》实施产能产量精准调控，严禁新增产能</li>
+            <li>粗钢产量持续受控，供需错配只会持续加剧</li>
+        </ul>
+
+        <h3>2. 地缘冲突——边际影响减弱</h3>
+        <ul>
+            <li>美伊冲突推高能源成本和海运费，间接支撑矿价</li>
+            <li>但市场对中东局势关注度下降，对铁矿扰动边际减弱</li>
+            <li>海运费同比偏高80%，但影响正在消退</li>
+        </ul>
+
+        <h3>3. BHP长协谈判——利空出尽</h3>
+        <ul>
+            <li>BHP与中国钢企的长协定价谈判已初步落地</li>
+            <li>市场解读为"利空出尽"，短期支撑矿价反弹</li>
+            <li>但谈判本身反映的是铁矿供给本已进入过剩周期</li>
+        </ul>
+
+        <h3>4. 政策预期——趋于谨慎</h3>
+        <ul>
+            <li>4月末政治局会议增量政策信号有所弱化</li>
+            <li>二季度政策刺激力度可能低于市场预期</li>
+            <li>前期政策预期溢价正在消化，价格回归产业供需</li>
+            <li>超长期特别国债1.3万亿+专项债4.4万亿，但4月专项债发行仅完成37%</li>
+        </ul>
+
+        <h3>5. 铁矿石定价权博弈</h3>
+        <ul>
+            <li>中国铁矿石进口依赖度极高（澳+巴占比超80%）</li>
+            <li>BHP谈判的底气是"铁矿供给本已进入过剩周期"</li>
+            <li>国金证券：这是"铁矿已进入中长期过剩周期的国家级背书"</li>
+            <li>定价权从矿山端向钢厂端转移的趋势正在形成</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>供应偏松，需求短期弱稳，库存缓慢积累，总量库存偏高但结构性矛盾仍存。中期下游库存压力或抑制价格上行空间，预计现货价格震荡运行</td><td>中性偏空，震荡</td></tr>
+            <tr><td>国泰君安期货</td><td>节前补库支撑矿价企稳，但节后第二周随着供给回升，铁矿有累库预期，矿价依然承压。港口库存走平后继续高位累库</td><td>短稳中空</td></tr>
+            <tr><td>光大期货</td><td>铁水基本见顶，库存呈现高库存小幅去库格局。多空交织下，预计短期铁矿石盘面将继续震荡走势，关注下游需求情况</td><td>中性，震荡</td></tr>
+            <tr><td>中信期货</td><td>供应端仍存扰动预期（美伊冲突、燃料供应反复），短期基本面边际改善，长期宽松压力仍存，铁矿预计表现震荡，注意市场波动风险</td><td>中性偏空</td></tr>
+            <tr><td>中信建投期货</td><td>2026年普氏61%指数主要运行区间85—110美元，价格中枢将从100美元下降至90—95美元。供给步入释放周期，逢高做空</td><td>偏空，逢高做空</td></tr>
+        </table>
+        <p><strong>共识</strong>：所有机构都认同铁矿石"供应宽松+需求见顶+库存高位"的基本面格局，中期价格承压是共识。</p>
+        <p><strong>分歧</strong>：短期节奏上有分歧——国泰君安认为节后即承压，光大认为短期震荡，中信建投最坚定看空（价格中枢90—95美元）。分歧的核心在于铁水产量回落的节奏和幅度。</p>
+        <p><strong>其他机构</strong>：银河期货建议"高位偏空对待"；正信期货"等待反弹结束的做空机会"；紫金天风"供给小幅回升，铁水或窄幅波动，短期震荡"；中泰期货"中长期依然维持弱势格局"；国金证券"2026年是铁矿过剩周期起点"。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约50%）</div>
+            <p><strong>价格区间：680—790元/吨（普氏90—105美元/吨）</strong></p>
+            <ul>
+                <li>5月铁水产量高位震荡后逐步回落，6—7月淡季减产</li>
+                <li>外矿发运维持高位，到港资源充裕</li>
+                <li>港口库存先平后升，重新进入累库周期</li>
+                <li>钢厂利润有限，铁水产量难以突破240万吨</li>
+                <li>政策预期趋于谨慎，无超预期刺激</li>
+                <li>矿价震荡下行，重心从780逐步下移至700附近</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约15%）</div>
+            <p><strong>价格区间：770—850元/吨（普氏100—115美元/吨）</strong></p>
+            <ul>
+                <li>专项债发行加速，基建需求超预期，铁水产量突破245万吨</li>
+                <li>海外矿山发运受阻（天气、罢工等），供应阶段性收紧</li>
+                <li>地缘冲突升级，能源和海运成本大幅上涨</li>
+                <li>房地产政策大幅放松，建筑用钢需求回暖</li>
+                <li>港口库存快速去化至1.4亿吨以下</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约35%）</div>
+            <p><strong>价格区间：600—720元/吨（普氏75—95美元/吨）</strong></p>
+            <ul>
+                <li>梅雨季+高温双重压制，铁水产量快速回落至225万吨以下</li>
+                <li>四大矿山+非主流矿山发运持续高位，到港量大幅增加</li>
+                <li>港口库存重新大幅累积至1.7亿吨以上</li>
+                <li>房地产持续探底，建筑用钢需求断崖式下滑</li>
+                <li>钢厂大面积亏损减产，铁矿石需求骤降</li>
+                <li>西芒杜铁矿加速投产，全球供给过剩加剧</li>
+                <li>矿价跌破90%现金成本分位数（80—85美元）</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            注意：铁矿石的利空情景概率设为35%，高于利多情景的15%，原因是"供应宽松+需求走弱+库存高位"的三重压力较为确定，且供给过剩周期刚刚开启。中信建投预测价格中枢90—95美元，澳大利亚国库部预测85美元，极端情景60美元。利多情景需要"供应端出问题+需求超预期"双重配合，概率较低。
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：反弹做空为主，关注700元/吨成本支撑</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：
+                <ul>
+                    <li>建议在<strong>790—810元/吨</strong>附近轻仓试空</li>
+                    <li>止损设在<strong>830元/吨</strong>以上</li>
+                    <li>第一目标看<strong>730元/吨</strong>，第二目标看<strong>680元/吨</strong></li>
+                </ul>
+            </li>
+            <li><strong>如果您想做多</strong>：
+                <ul>
+                    <li>&#10004; 仅建议<strong>短线</strong>操作，在680—700元/吨附近轻仓试多</li>
+                    <li>止损设在<strong>650元/吨</strong>以下</li>
+                    <li>目标看<strong>740—770元/吨</strong>，不宜贪多</li>
+                    <li>中期做多需等待供应端出现实质性扰动（矿山减产、天气影响等）</li>
+                </ul>
+            </li>
+            <li><strong>如果您已持有空单</strong>：
+                <ul>
+                    <li>&#10004; <strong>可继续持有</strong>，"供应宽松+需求走弱"的中期逻辑没有改变</li>
+                    <li>在700元/吨以下可考虑部分止盈，锁定利润</li>
+                    <li>关注铁水产量变化，若铁水快速回落可加仓</li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月上旬</strong>：节后钢厂采购恢复情况，铁水产量是否回落</li>
+                    <li><strong>5月中下旬</strong>：南方梅雨季来临，建材需求拐点，铁水是否减产</li>
+                    <li><strong>6月</strong>：外矿发运是否维持高位，港口库存是否重新累库</li>
+                    <li><strong>7—8月</strong>：高温淡季，铁水产量回落幅度，库存累积速度</li>
+                    <li><strong>9—10月</strong>：传统"金九银十"，需求是否季节性回暖，铁水是否复产</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>&#128200; 如果海外矿山发运大幅下降 → 供应收紧，空单需警惕</li>
+                    <li>&#128200; 如果铁水产量突破245万吨 → 需求超预期，空单考虑减仓</li>
+                    <li>&#128200; 如果地缘冲突升级 → 能源成本上涨，矿价可能反弹</li>
+                    <li>&#128200; 如果港口库存快速去化至1.4亿吨以下 → 供需改善，空单需谨慎</li>
+                    <li>&#128200; 如果钢厂大面积亏损减产 → 铁矿需求骤降，可加空</li>
+                    <li>&#128200; 如果西芒杜投产加速 → 供给过剩加剧，可加空</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>十、与螺纹钢RB的联动分析</h2>
+        <p>铁矿石与螺纹钢是黑色产业链中关系最紧密的上下游品种：</p>
+        <table class="data-table">
+            <tr><th>对比项</th><th>铁矿石I</th><th>螺纹钢RB</th></tr>
+            <tr><td>产业链位置</td><td>上游原料</td><td>下游成品</td></tr>
+            <tr><td>核心逻辑</td><td>供给过剩周期开启</td><td>需求端房地产拖累</td></tr>
+            <tr><td>供应端</td><td>四大矿+非主流增产</td><td>钢厂利润恢复推动复产</td></tr>
+            <tr><td>需求端</td><td>铁水见顶+淡季减产</td><td>地产下滑+梅雨季</td></tr>
+            <tr><td>库存</td><td>1.56亿吨高位</td><td>766万吨去化中</td></tr>
+            <tr><td>中期方向</td><td>震荡偏弱</td><td>震荡偏弱</td></tr>
+            <tr><td>价格区间</td><td>650—810元/吨</td><td>2950—3400元/吨</td></tr>
+            <tr><td>核心变量</td><td>铁水产量+发运量</td><td>房地产+基建</td></tr>
+        </table>
+        <div class="highlight-box">
+            通俗解释：铁矿石和螺纹钢是"父子关系"——铁矿石是原料，螺纹钢是成品。它们的命运紧密相连：螺纹钢需求差→钢厂减产→铁矿石需求下降→矿价下跌。反过来也一样。但铁矿石比螺纹钢多了一个利空——"供给过剩"，四大矿山在增产，西芒杜在投产，矿越挖越多。螺纹钢的供应端（钢厂）至少还可以通过减产来调节，但铁矿石的供应端（海外矿山）是刚性的，很难说减就减。所以铁矿石的中期基本面比螺纹钢更弱一些。
+        </div>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，杠杆效应可能放大亏损，请务必谨慎</li>
+            <li>铁矿石价格受海外矿山发运影响极大，<strong>天气、罢工等突发事件可能改变短期供应</strong></li>
+            <li>地缘冲突（美伊）可能推高能源和海运成本，<strong>短期支撑矿价反弹</strong></li>
+            <li>做空的风险：若海外矿山发运受阻或政策超预期，矿价可能出现<strong>逼空式反弹</strong></li>
+            <li>做多的风险：若供给过剩周期加速兑现，矿价可能<strong>跌破成本线</strong></li>
+            <li>铁矿石是高度依赖进口的品种，<strong>汇率波动</strong>也会影响价格</li>
+            <li>1.56亿吨的港口库存是巨大的"堰塞湖"，一旦贸易商抛售，<strong>价格可能加速下跌</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            铁矿石中期震荡偏弱，核心逻辑是"供给过剩周期开启+需求见顶回落+库存高位压制"。四大矿山2026年预计增产1500万吨，非主流矿山在高价刺激下积极出货，西芒杜投产加剧供给压力。铁水产量239万吨已见顶，5月后淡季减产确定性高。1.56亿吨港口库存是巨大的上行压制。建议反弹做空为主，关注700元/吨（普氏90美元）成本支撑。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：四大矿山+非主流增产→全球铁矿供给进入过剩周期→1—3月中国多进口2900万吨→港口库存同比+17%→铁水产量见顶239万吨→5月后淡季减产→需求走弱→港口库存重新累库→矿价承压下行。废钢替代是长期趋势但短期受限。关键变量：铁水产量回落节奏+外矿发运量+港口库存变化+地缘冲突演变。铁矿石与螺纹钢同为黑色产业链偏空品种，但铁矿石因供给过剩更弱。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：Mysteel、路透、中国钢铁工业协会、国家统计局、海关总署、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
