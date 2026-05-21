@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品期货基本面分析</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --primary-light: #34495E;
+            --accent: #E74C3C;
+            --bg: #F5F6FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #DEE2E6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 30px; margin-bottom: 8px; }
+        header .subtitle { font-size: 16px; opacity: 0.85; }
+        .intro {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: var(--text-light);
+        }
+        .intro strong { color: var(--accent); }
+        .table-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+        .table-section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+        }
+        .analysis-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            min-width: 700px;
+        }
+        .analysis-table th {
+            background: var(--primary);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .analysis-table th:first-child { text-align: left; }
+        .analysis-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            vertical-align: middle;
+        }
+        .analysis-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .analysis-table tr:nth-child(even) { background: #F8F9FA; }
+        .analysis-table tr:hover { background: #E8F4FD; }
+        .link-cell a {
+            display: inline-block;
+            padding: 5px 14px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .link-cell a:hover { background: #C0392B; }
+        .summary-text {
+            font-size: 14px;
+            color: var(--text-light);
+            max-width: 200px;
+            text-align: left;
+            line-height: 1.5;
+        }
+        .direction-bear { color: #D32F2F; font-weight: bold; }
+        .direction-bull { color: #2E7D32; font-weight: bold; }
+        .direction-neutral { color: #1565C0; font-weight: bold; }
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-bear { background: #D32F2F; }
+        .dot-bull { background: #2E7D32; }
+        .dot-neutral { background: #1565C0; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 24px; }
+            .analysis-table { font-size: 14px; }
+            .analysis-table th, .analysis-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>商品期货基本面分析</h1>
+        <div class="subtitle">综合永安期货、国泰君安期货、光大期货、中信期货、中信建投期货等机构研究</div>
+    </header>
+
+    <div class="intro">
+        <p>本网站汇总国内主要期货机构的研究观点，按照统一的<strong>供需-库存-宏观-政策-替代品</strong>分析框架，为投资者提供清晰、易懂的商品期货基本面分析和中期价格预测。</p>
+        <p>点击下方表格中的<strong>"查看详情"</strong>链接，可阅读完整的分析报告。</p>
+    </div>
+
+    <div class="table-section">
+        <h2>分析报告索引</h2>
+        <table class="analysis-table">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>SR 白糖</th>
+                    <th>CU 沪铜</th>
+                    <th>AL 沪铝</th>
+                    <th>AG 沪银</th>
+                    <th>AU 沪金</th>
+                    <th>RU 橡胶</th>
+                    <th>RB 螺纹钢</th>
+                    <th>I 铁矿石</th>
+                    <th>CF 棉花</th>
+                    <th>C 玉米</th>
+                    <th>IF 沪深300</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2026-05-03</td>
+                    <td class="link-cell">
+                        <a href="20260503_SR.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bear">震荡偏弱</span><br>区间：5100—5800<br>信心：中等</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_CU.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">震荡偏强</span><br>区间：95000—110000<br>信心：中偏高</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_AL.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">震荡偏强</span><br>区间：23500—27000<br>信心：中偏高</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_AG.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">宽幅震荡偏强</span><br>区间：18000—23000<br>信心：中等</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_AU.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">震荡偏强</span><br>区间：950—1200<br>信心：中偏高</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_RU.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">宽幅震荡偏强</span><br>区间：15500—18500<br>信心：中等</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_RB.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bear">震荡偏弱</span><br>区间：2950—3400<br>信心：中等</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_I.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bear">震荡偏弱</span><br>区间：650—810<br>信心：中偏高</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_CF.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">震荡偏强</span><br>区间：15500—17500<br>信心：中偏高</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_C.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-neutral">区间震荡</span><br>区间：2350—2550<br>信心：中等</div>
+                    </td>
+                    <td class="link-cell">
+                        <a href="20260503_IF.html">查看详情</a>
+                        <div class="summary-text">方向：<span class="direction-bull">震荡偏强</span><br>区间：4600—5300<br>信心：中偏高</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot dot-bear"></div>偏空/震荡偏弱</div>
+            <div class="legend-item"><div class="legend-dot dot-bull"></div>偏多/震荡偏强</div>
+            <div class="legend-item"><div class="legend-dot dot-neutral"></div>中性/震荡</div>
+        </div>
+    </div>
+
+    <div class="table-section">
+        <h2>品种说明</h2>
+        <table class="analysis-table">
+            <thead>
+                <tr>
+                    <th>品种代码</th>
+                    <th>品种名称</th>
+                    <th>交易所</th>
+                    <th>合约单位</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>SR</td><td>白糖</td><td>郑州商品交易所</td><td>10吨/手</td></tr>
+                <tr><td>CU</td><td>沪铜</td><td>上海期货交易所</td><td>5吨/手</td></tr>
+                <tr><td>AL</td><td>沪铝</td><td>上海期货交易所</td><td>5吨/手</td></tr>
+                <tr><td>AG</td><td>沪银</td><td>上海期货交易所</td><td>15千克/手</td></tr>
+                <tr><td>AU</td><td>沪金</td><td>上海期货交易所</td><td>1000克/手</td></tr>
+                <tr><td>RU</td><td>天然橡胶</td><td>上海期货交易所</td><td>10吨/手</td></tr>
+                <tr><td>RB</td><td>螺纹钢</td><td>上海期货交易所</td><td>10吨/手</td></tr>
+                <tr><td>I</td><td>铁矿石</td><td>大连商品交易所</td><td>100吨/手</td></tr>
+                <tr><td>CF</td><td>棉花</td><td>郑州商品交易所</td><td>5吨/手</td></tr>
+                <tr><td>C</td><td>玉米</td><td>大连商品交易所</td><td>10吨/手</td></tr>
+                <tr><td>IF</td><td>沪深300股指</td><td>中国金融期货交易所</td><td>300元/点</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footnote">
+        <p>&#9888; 风险提示：期货交易风险很大，本网站内容仅供参考，不构成任何投资建议。请咨询专业金融顾问后再做投资决定。</p>
+        <p>数据来源：各期货机构公开研报、行业协会、海关总署、USDA等</p>
+    </div>
+</div>
+</body>
+</html>
