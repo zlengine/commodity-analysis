@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR白糖基本面分析 - 2026年5月3日</title>
+    <style>
+        :root {
+            --primary: #8B4513;
+            --primary-light: #D2691E;
+            --bg: #FFF8F0;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E8D5C4;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #FAF5F0; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>SR白糖期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月3日 | 预测区间：2026年5月—2026年10月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>震荡偏弱，但下方空间有限</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等</strong>（多空因素交织，机构分歧较大）</td></tr>
+            <tr><td>SR2609合约价格区间</td><td><strong>5100—5800元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>不建议追空，也不建议重仓做多，以观望或轻仓区间操作为主</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年4月30日：</p>
+        <ul>
+            <li>郑糖主力合约SR2609收盘价约<strong>5406元/吨</strong></li>
+            <li>广西制糖集团现货报价<strong>5320—5410元/吨</strong></li>
+            <li>云南制糖集团报价<strong>5150—5230元/吨</strong></li>
+            <li>加工糖厂主流报价<strong>5610—5880元/吨</strong></li>
+            <li>ICE原糖主力约<strong>14.5—15美分/磅</strong></li>
+            <li>配额内进口估算价<strong>3780—3810元/吨</strong>，配额外进口估算价<strong>4770—4820元/吨</strong></li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：白糖期货价格在5400元/吨附近，已经接近国内制糖成本线（5300—5500元/吨），继续下跌的空间不大，但上涨也缺乏强劲动力。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供应端分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 国内增产明显</h3>
+        <ul>
+            <li>2025/26榨季全国食糖产量预计约<strong>1250万吨</strong>（农业农村部4月预测），同比大幅增加，创十年新高</li>
+            <li>广西产糖约740—780万吨，同比增加约94—130万吨</li>
+            <li>云南产糖约213万吨，甜菜糖约120万吨</li>
+            <li>5月后广西绝大部分糖厂收榨，云南5月底收榨，新增供应压力减弱</li>
+        </ul>
+        <div class="highlight-box">
+            简单说：国产糖比去年多了很多，供应压力增大。但5月后进入纯去库阶段，新增供应利空出尽。
+        </div>
+
+        <h3>2. 进口量逐步放量</h3>
+        <ul>
+            <li>配额内外进口利润窗口均已打开，配额外进口利润约<strong>970元/吨</strong></li>
+            <li>2026年1—3月累计进口52万吨，同比增加44万吨</li>
+            <li>进口食糖许可证发放延迟，短期缓解供应压力，但后期放量预期强</li>
+            <li>2025/26年度预计进口量约500万吨</li>
+        </ul>
+
+        <h3>3. 全球三大产糖国集体增产</h3>
+        <table class="data-table">
+            <tr><th>国家</th><th>2025/26榨季产量预估</th><th>同比变化</th></tr>
+            <tr><td>巴西</td><td>4100—4420万吨</td><td>同比增长0.1%—1.6%</td></tr>
+            <tr><td>印度</td><td>2900万吨以上</td><td>同比增长约9.5%—20%</td></tr>
+            <tr><td>泰国</td><td>约1200万吨</td><td>同比增长约15%</td></tr>
+        </table>
+        <ul>
+            <li>全球过剩：ISO预计过剩122万吨，Czarnikow预计过剩580—670万吨</li>
+            <li>巴西4月上半月产糖64.7万吨，同比下降11.9%，短期因降雨压榨偏慢</li>
+            <li>但Conab预计巴西全年产糖4420万吨，后期供应压力犹存</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：全世界都在产更多的糖，而吃糖的人没有明显增加，糖价自然承压。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>三、需求端分析 <span class="tag tag-neutral">中性偏弱</span></h2>
+        <ul>
+            <li>国内食糖消费量约1570—1590万吨/年，增长缓慢（年增速约1%）</li>
+            <li>4月为消费淡季，饮料、食品加工采购谨慎</li>
+            <li>6月后进入消费旺季（中秋、国庆备货、夏季饮料），需求有望改善</li>
+            <li>终端成品糖及软饮料产量同比增加明显，需求有所好转</li>
+            <li>食品工业企业"随用随买"，不愿囤货，采购节奏偏慢</li>
+        </ul>
+        <div class="highlight-box">
+            简单说：糖的供应在增加，但需求没有跟上。不过6月后进入旺季，需求端有望边际改善。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、库存分析 <span class="tag tag-bearish">偏空</span></h2>
+        <table class="data-table">
+            <tr><th>指标</th><th>数据</th><th>解读</th></tr>
+            <tr><td>全国工业库存</td><td>约710万吨</td><td>创十年新高</td></tr>
+            <tr><td>广西工业库存</td><td>约434—500万吨</td><td>同比大幅增加</td></tr>
+            <tr><td>广西销糖率（3月底）</td><td>41.38%</td><td>同比-12.45%，去库偏慢</td></tr>
+            <tr><td>库存拐点</td><td>预计5月中下旬</td><td>6月起加速去库</td></tr>
+        </table>
+        <ul>
+            <li>高库存意味着市场不缺糖，价格难有大涨</li>
+            <li>5月中下旬库存见顶，6—9月旺季月均去库或达80万吨</li>
+            <li>9月底库存或降至400万吨以下，进入偏紧区间</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：仓库里堆了很多糖，短期不缺货。但5月后库存开始下降，如果去库速度快，可能对价格形成支撑。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、替代品分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 淀粉糖（果葡糖浆）——白糖最核心的替代品</h3>
+        <ul>
+            <li>2026年4月国内F55果葡糖浆市场价格约<strong>2735元/吨</strong></li>
+            <li>白糖现货价格约5300—5400元/吨，同等甜度换算后价差仍超<strong>2000元/吨</strong></li>
+            <li>当价差超过2000元/吨时，下游厂商替代意愿显著增强</li>
+            <li>中国已成为全球最大淀粉糖生产国，2024年产量1450万吨，2026年预计达<strong>1663万吨</strong></li>
+            <li>果葡糖浆产能约900万吨，2026年新增产能约234万吨持续释放</li>
+        </ul>
+
+        <h3>2. 糖浆和预拌粉进口</h3>
+        <ul>
+            <li>2026年1—2月糖浆与白砂糖预混粉进口14.22万吨，同比增加3.41万吨（增幅31%）</li>
+            <li>2025/26榨季（10—2月）合计进口44.20万吨，同比减少30.54万吨（降幅41%）</li>
+            <li>政策管控收紧是减少主因，但仍有流入，进口压力不容忽视</li>
+        </ul>
+
+        <h3>3. 替代关系总结</h3>
+        <div class="highlight-box">
+            通俗解释：果葡糖浆是用玉米做的甜味剂，比白糖便宜很多。饮料厂、食品厂在白糖贵的时候会多用果葡糖浆代替白糖。现在白糖比果葡糖浆贵一倍多，很多工厂已经在替代了，这减少了白糖的需求。糖浆预拌粉虽然政策管得严了，但还是有进口，也在替代白糖。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>六、宏观与政策因素 <span class="tag tag-bullish">偏多支撑</span></h2>
+
+        <h3>1. 厄尔尼诺天气风险（最大变数！）</h3>
+        <ul>
+            <li>NOAA预测2026年5—7月厄尔尼诺发生概率<strong>61%—75%</strong></li>
+            <li>超强厄尔尼诺（海温超2℃）概率约<strong>25%</strong></li>
+            <li>厄尔尼诺导致印度、泰国干旱，甘蔗减产——利多糖价</li>
+            <li>但厄尔尼诺给巴西带来更多降雨，有利于甘蔗生长——利空糖价</li>
+            <li>6月后预测可靠性提高，届时方向更明确</li>
+        </ul>
+        <div class="highlight-box">
+            通俗解释：厄尔尼诺是一种气候现象，可能让印度和泰国变干旱，甘蔗长不好，糖就少了，糖价可能涨。但巴西反而可能雨更多，糖更多。这是目前最大的不确定因素。
+        </div>
+
+        <h3>2. 原油价格</h3>
+        <ul>
+            <li>原油维持80—85美元/桶高位运行</li>
+            <li>油价高→乙醇利润高→巴西糖厂减少制糖比例→原糖供应减少</li>
+            <li>2026/27榨季巴西制糖比可能从50.74%降至48%以下</li>
+            <li>巴西汽油降价削弱乙醇竞争力，但整体制糖比仍有下降预期</li>
+        </ul>
+
+        <h3>3. 政策托底</h3>
+        <ul>
+            <li>糖浆预拌粉进口政策收紧，限制替代品冲击</li>
+            <li>糖价已跌至成本线附近，国家收储、进口配额调整等托底政策概率增大</li>
+            <li>进口食糖许可证发放延迟，短期缓解供应压力</li>
+        </ul>
+
+        <h3>4. 地缘政治</h3>
+        <ul>
+            <li>中东冲突影响全球航运，进口糖到港可能延迟</li>
+            <li>尿素等化肥价格上涨，抬升甘蔗种植成本</li>
+            <li>但地缘影响偏短期，糖价终将回归基本面</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、主要机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>价格判断</th></tr>
+            <tr><td>永安期货</td><td>糖价承压运行是大概率事件，价格中枢下移；关注进口排船及浆粉政策</td><td>偏空</td></tr>
+            <tr><td>国泰君安期货</td><td>震荡偏弱，内强外弱格局延续；定价锚定生产成本，关注内外价差收窄</td><td>广西现货5200—5800元/吨</td></tr>
+            <tr><td>光大期货</td><td>原糖增产价格弱势运行；阶段性利多来自天气；下有成本及政策支撑、上有高库存压力</td><td>原糖13.5—19.5美分/磅</td></tr>
+            <tr><td>中信建投期货</td><td>短期走势偏弱，进口压力压制盘面；厄尔尼诺风险抬升，或拉长熊市周期</td><td>郑糖主力5100—5500元/吨</td></tr>
+            <tr><td>中信期货</td><td>短期受中东冲突影响区间震荡；中长期关注厄尔尼诺，26/27榨季可能转向</td><td>震荡偏弱</td></tr>
+        </table>
+        <p><strong>共识</strong>：各机构普遍认为中期偏空，但对下方空间有分歧，部分机构认为成本线附近有支撑。</p>
+        <p><strong>分歧</strong>：厄尔尼诺的影响程度存在较大不确定性。永安、中信建投偏空，认为供应过剩主导；中信、光大认为厄尔尼诺可能改变中期格局；国泰君安认为内强外弱格局延续。</p>
+    </div>
+
+    <div class="section">
+        <h2>八、中期价格预测（2026年5月—10月）</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title" style="color:var(--blue);">情景一：基准情景（概率约55%）</div>
+            <p><strong>价格区间：5100—5700元/吨</strong></p>
+            <ul>
+                <li>厄尔尼诺影响有限或形成时间偏晚，全球增产兑现</li>
+                <li>国内进口正常放量，去库节奏平稳</li>
+                <li>糖价在成本线附近震荡，重心缓慢下移</li>
+                <li>6月后旺季消费提供阶段性支撑</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title" style="color:var(--green);">情景二：利多情景（概率约25%）</div>
+            <p><strong>价格区间：5500—6200元/吨</strong></p>
+            <ul>
+                <li>厄尔尼诺6月前确认形成且强度超预期，印度、泰国减产</li>
+                <li>巴西制糖比大幅下降（降至48%以下），国际糖价反弹</li>
+                <li>国内去库加速，旺季消费超预期</li>
+                <li>进口政策进一步收紧</li>
+            </ul>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title" style="color:var(--red);">情景三：利空情景（概率约20%）</div>
+            <p><strong>价格区间：4800—5300元/吨</strong></p>
+            <ul>
+                <li>全球大幅过剩，进口大量涌入</li>
+                <li>厄尔尼诺未兑现，巴西丰产超预期</li>
+                <li>消费持续低迷，去库缓慢</li>
+                <li>糖价跌破成本线，但政策托底限制下方空间</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>九、给您的建议</h2>
+
+        <h3>总体建议：谨慎观望为主</h3>
+
+        <ol>
+            <li><strong>如果您目前没有持仓</strong>：建议先观望，等待更明确的信号。当前多空因素交织，方向不明确。</li>
+            <li><strong>如果您想做交易</strong>：
+                <ul>
+                    <li>在5100—5200元/吨附近可考虑轻仓试多（接近成本支撑）</li>
+                    <li>在5700—5800元/吨附近可考虑轻仓试空（进口成本压制）</li>
+                    <li>严格控制仓位，不超过总资金的10%—20%</li>
+                </ul>
+            </li>
+            <li><strong>重点关注时间节点</strong>：
+                <ul>
+                    <li><strong>5月中旬</strong>：云南收榨，库存拐点确认</li>
+                    <li><strong>6—7月</strong>：厄尔尼诺是否兑现，巴西压榨进度，印度季风雨</li>
+                    <li><strong>7—8月</strong>：国内夏季消费旺季，去库速度</li>
+                    <li><strong>9—10月</strong>：新榨季开榨前，北半球估产情况</li>
+                </ul>
+            </li>
+            <li><strong>关键风险信号</strong>：
+                <ul>
+                    <li>如果厄尔尼诺确认形成且强度超预期 → 糖价可能快速反弹</li>
+                    <li>如果进口量突然大幅增加 → 糖价可能加速下跌</li>
+                    <li>如果国家出台收储政策 → 糖价底部确认</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示（请务必注意）</h2>
+        <ul>
+            <li><strong>期货交易风险很大</strong>，可能出现比本金更大的亏损，请务必谨慎</li>
+            <li>以上分析基于当前公开信息和机构研报，<strong>情况随时可能变化</strong></li>
+            <li>机构的研究报告也可能出错，<strong>过去判断正确不代表未来也对</strong></li>
+            <li>厄尔尼诺等天气因素<strong>预测难度大</strong>，实际影响可能与预期差别很大</li>
+            <li>替代品（果葡糖浆等）持续扩产，<strong>长期压制白糖需求</strong></li>
+            <li><strong>建议您在做任何投资决定前，咨询专业的金融顾问</strong></li>
+            <li>本分析<strong>不构成任何投资建议</strong>，仅供参考</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>总结</h2>
+        <p style="font-size:20px;font-weight:bold;color:var(--primary);">
+            当前白糖市场"糖多、需求弱、库存高、替代品便宜"，中期价格大概率偏弱运行。但成本线附近有支撑，厄尔尼诺是最大的变数。建议您以观望为主，不要急于入场，等方向更清晰再做决定。
+        </p>
+        <p style="margin-top:15px;">核心逻辑链：全球增产+国内增产+进口放量 → 供应充足 → 库存高企 → 价格承压；但成本线+政策托底+厄尔尼诺预期 → 下方空间有限。</p>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：中国糖业协会、UNICA、ISMA、OCSB、Conab、USDA、海关总署、CFTC、各期货机构研报</p>
+        <p>分析机构参考：永安期货、国泰君安期货、光大期货、中信期货、中信建投期货</p>
+        <p>本页面生成时间：2026年5月3日</p>
+    </div>
+</div>
+</body>
+</html>
