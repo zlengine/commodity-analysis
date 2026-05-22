@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RB螺纹钢基本面分析 - 2026年5月22日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #263238, #546E7A);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>RB螺纹钢期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月22日 | 预测区间：2026年5月—2026年11月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>供增需降、淡季承压，震荡偏弱</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等</strong>（产量跳增+厂库拐头+淡季来临压制明显，但产能置换政策托底限制下方空间）</td></tr>
+            <tr><td>RB2610合约价格区间</td><td><strong>3050—3250元/吨</strong></td></tr>
+            <tr><td>现货均价区间</td><td><strong>3300—3500元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>反弹至3200上方逢高短空，3050附近政策底可轻仓试多，关注产能置换执行力度与梅雨季需求变化</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年5月22日：</p>
+        <ul>
+            <li>螺纹钢期货主力合约RB2610收盘<strong>3175元/吨</strong>，日跌0.44%，5月上旬冲高3286后持续回落</li>
+            <li>全国31城20mm三级抗震螺纹钢均价<strong>3435元/吨</strong>，日跌5元/吨，周内累跌20-30元/吨</li>
+            <li>唐山迁安普方坯出厂含税<strong>3040元/吨</strong>，日降10元/吨，成本重心下移</li>
+            <li>期货贴水现货约<strong>260元/吨</strong>（以杭州理计3290为基准），基差处于偏高水平</li>
+            <li>持仓量从5月高点217.3万手降至205万手附近，多头资金持续离场</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>&#9888; 核心矛盾：</strong>产量周环比暴增9.8%至221万吨，厂库由降转增（+7.82万吨），库存结构性拐点已现；同时"金三银四"旺季结束，南方梅雨季来临，需求加速走弱。供增需降格局下，短期钢价承压明显。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供需基本面分析</h2>
+
+        <h3>2.1 供应端：产量跳增，复产动力强劲 <span class="tag tag-bearish">利空</span></h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>最新值</th><th>环比变化</th><th>评价</th></tr>
+            <tr><td>螺纹钢周产量</td><td>221.14万吨</td><td>+19.74万吨（+9.80%）</td><td>产量跳增，复产加速</td></tr>
+            <tr><td>螺纹钢厂开工率</td><td>42.9%</td><td>环比回升</td><td>前期检修钢厂加速复产</td></tr>
+            <tr><td>产能利用率</td><td>45.3%</td><td>环比回升</td><td>仍低于去年同期</td></tr>
+            <tr><td>日均铁水产量</td><td>240.81万吨</td><td>+1.48万吨</td><td>高位运行，接近上限</td></tr>
+            <tr><td>247家高炉开工率</td><td>83.54%</td><td>+0.30个百分点</td><td>同比仍偏低</td></tr>
+            <tr><td>电炉开工率</td><td>72.97%</td><td>-2.03个百分点</td><td>电炉利润转亏，开工走弱</td></tr>
+            <tr><td>钢厂盈利率</td><td>63.2%</td><td>环比回升</td><td>高炉微利，电炉转亏</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li>产量周环比暴增9.8%是近期最值得警惕的信号，前期检修钢厂在高炉利润尚可（57元/吨）的驱动下加速复产</li>
+            <li>长流程与短流程出现分化：高炉铁水维持高位，但正逐步向利润更好的工业材（热卷、中厚板）转移；电炉因利润转亏（-5元/吨）开工走弱</li>
+            <li>铁水向板材分流意味着螺纹钢后续增产空间可能受限，但短期供应压力已明显上升</li>
+            <li>1-4月国内钢坯出口494.16万吨，同比+47.8%，部分缓解国内供应压力</li>
+        </ul>
+
+        <h3>2.2 需求端：旺季结束，淡季效应加速显现 <span class="tag tag-bearish">利空</span></h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>最新值</th><th>环比变化</th><th>评价</th></tr>
+            <tr><td>螺纹钢表观消费量</td><td>241.79万吨</td><td>-0.73万吨（-0.30%）</td><td>由增转降，拐头信号</td></tr>
+            <tr><td>全国建材日成交量</td><td>约9.64万吨</td><td>维持10万吨以下</td><td>成交偏弱</td></tr>
+            <tr><td>1-4月房地产开发投资</td><td>同比-13.7%</td><td>持续下行</td><td>地产用钢大幅收缩</td></tr>
+            <tr><td>房屋新开工面积</td><td>同比-22.0%</td><td>持续下行</td><td>新开工拖累最大</td></tr>
+            <tr><td>竣工面积</td><td>同比-24.0%</td><td>持续下行</td><td>保交楼支撑有限</td></tr>
+            <tr><td>1-4月基建投资</td><td>同比+4.3%</td><td>较1-3月放缓0.8pct</td><td>增速放缓</td></tr>
+            <tr><td>1-4月钢材出口</td><td>3421.4万吨</td><td>同比-9.7%</td><td>出口回落</td></tr>
+            <tr><td>1-3月螺纹出口</td><td>121.19万吨</td><td>同比+34%</td><td>螺纹出口亮眼</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li>表观消费量"由增转降"是重要拐头信号——"金三银四"旺季已结束，市场正加速向淡季过渡</li>
+            <li>地产端持续拖累：新开工同比-22%意味着未来3-6个月地产用钢需求难有起色，地产占螺纹钢下游需求的45%</li>
+            <li>基建端托底但力度有限：1-4月基建投资增速放缓至4.3%，资金到位周期拉长，实物工作量形成滞后</li>
+            <li>南方即将全面进入梅雨季，雨季对工地施工的持续抑制将进一步加剧需求下滑，预计6-7月建材需求加速回落</li>
+            <li>"六张网"7万亿投资计划已启动（水网、电网、算力网、通信网、地下管网、物流网），但项目落地到用钢需求释放需要时间</li>
+        </ul>
+
+        <h3>2.3 库存分析：社库连降但厂库拐头，结构性拐点已现 <span class="tag tag-neutral">中性偏空</span></h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>最新值</th><th>环比变化</th><th>评价</th></tr>
+            <tr><td>螺纹钢总库存</td><td>665.29万吨</td><td>-20.65万吨</td><td>连续十周去库</td></tr>
+            <tr><td>社会库存</td><td>约489.82万吨</td><td>-28.47万吨</td><td>社库去化加速</td></tr>
+            <tr><td>钢厂库存</td><td>约175.47万吨</td><td>+7.82万吨</td><td>厂库由降转增！</td></tr>
+            <tr><td>五大材总库存</td><td>1556.91万吨</td><td>-18.38万吨</td><td>去库斜率放缓</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li>社库连续十周去化，绝对库存水平持续下降，是近期价格获得支撑的重要因素</li>
+            <li>但厂库由降转增（+7.82万吨）是最值得警惕的信号——产量跳增后，钢厂出货压力上升，库存从社库向厂库转移</li>
+            <li>库存结构性拐点意味着：贸易商补库意愿减弱，钢厂开始被动累库，后续若产量继续上升+需求继续下降，总库存可能止降转增</li>
+            <li>同比来看，螺纹钢库存仍处于近年同期偏高位置，库销比维持同比偏高</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>三、成本与利润分析</h2>
+
+        <h3>3.1 钢厂利润：高炉微利，电炉转亏</h3>
+        <table class="data-table">
+            <tr><th>利润类型</th><th>当前利润</th><th>环比变化</th><th>评价</th></tr>
+            <tr><td>高炉螺纹利润</td><td>约57元/吨</td><td>环比下降15元/吨</td><td>微利运行，同比降50元/吨</td></tr>
+            <tr><td>电炉平均利润</td><td>约-5元/吨</td><td>环比转亏</td><td>电炉进入亏损区间</td></tr>
+            <tr><td>电炉谷电利润</td><td>约30-40元/吨</td><td>环比收窄</td><td>仅谷电时段微利</td></tr>
+            <tr><td>热卷生产利润</td><td>约120元/吨</td><td>环比改善</td><td>板材利润明显好于建材</td></tr>
+        </table>
+
+        <h3>3.2 原料成本：铁矿偏弱，焦炭博弈</h3>
+        <ul>
+            <li><strong>铁矿石：</strong>港口库存1.7亿吨历史高位，供应宽松格局延续，铁矿价格偏弱运行，对螺纹钢成本支撑减弱</li>
+            <li><strong>焦炭：</strong>第四轮提涨已开启，能否落地仍在博弈中。焦煤受安全检查和进口管控支撑，价格偏强，焦炭刚需坚挺</li>
+            <li><strong>废钢：</strong>废钢价格近期回落，电炉成本下移，但电炉利润仍转亏，反映螺纹钢价格跌幅快于废钢</li>
+            <li><strong>方坯：</strong>唐山迁安普方坯3040元/吨，日降10元/吨，成本重心下移</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>成本端小结：</strong>铁矿港口高库存压制矿价，焦炭提涨博弈中，整体成本支撑偏弱。高炉微利+电炉亏损的组合意味着：若钢价继续下跌，电炉将率先减产形成底部支撑；若钢价反弹，高炉复产动力增强形成顶部压制。成本端呈现"下有电炉成本托底、上有高炉利润压制"的格局。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、政策与宏观环境</h2>
+
+        <h3>4.1 钢铁行业政策 <span class="tag tag-bullish">利多</span></h3>
+        <table class="data-table">
+            <tr><th>政策</th><th>核心内容</th><th>影响评估</th></tr>
+            <tr><td>2026版产能置换办法</td><td>全国置换比例统一不低于1.5:1，鼓励兼并重组（1.25:1），2年过渡期后取消跨企业置换</td><td>中长期供给约束强化，新增产能难度大幅提升</td></tr>
+            <tr><td>节能监察工作启动</td><td>工信部对钢铁等行业开展2026年度节能监察</td><td>短期可能引起成本上升和产量收缩预期</td></tr>
+            <tr><td>发改委"反内卷"基调</td><td>严控低效产能，推动行业整合</td><td>中长期利好行业集中度提升</td></tr>
+            <tr><td>氢冶金/电炉钢差别化支持</td><td>对绿色低碳项目给予置换优惠</td><td>推动行业转型升级</td></tr>
+        </table>
+
+        <h3>4.2 下游宏观环境 <span class="tag tag-neutral">中性</span></h3>
+        <ul>
+            <li><strong>房地产：</strong>"房住不炒"定位不变，新增建设用地原则上不得用于经营性房地产开发，地产政策以"保交楼"为主，大规模刺激预期落空。1-4月地产投资同比-13.7%，新开工-22%，用钢需求持续收缩</li>
+            <li><strong>基建：</strong>"六张网"7万亿投资计划已启动，4-5月进入项目集中开工期，但资金到位周期拉长，实物工作量形成滞后。1-4月基建投资+4.3%，增速放缓</li>
+            <li><strong>金融数据：</strong>4月社融仅0.62万亿元，远低于预期1.2万亿；人民币贷款减少4006亿元，实体融资需求偏弱</li>
+            <li><strong>中美关系：</strong>5月特朗普访华，关税缓和，机电、汽车等下游制成品出口预期改善，间接利好工业用钢</li>
+            <li><strong>美联储：</strong>通胀反弹，降息预期推迟，美元强势压制大宗商品</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>政策端小结：</strong>产能置换新规是中长期最大的利好因素，1.5:1的置换比例将实质性约束未来产能增长。但短期来看，政策落地到实际减产需要时间，2年过渡期内反而可能刺激部分产能提前释放。短期政策托底效果有限，中长期供给约束预期强化。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、技术面参考</h2>
+        <ul>
+            <li><strong>趋势：</strong>RB2610自5月上旬3286高点持续回落，MACD死叉绿柱放大，RSI位于23-50弱势区间，技术面全面偏空</li>
+            <li><strong>支撑位：</strong>3150元/吨（近期低点3169已触及）、3050元/吨（前期震荡区间下沿+电炉成本线）</li>
+            <li><strong>阻力位：</strong>3220元/吨（5日均线附近）、3300元/吨（前期高点+心理关口）</li>
+            <li><strong>持仓：</strong>从217.3万手高点降至205万手，多头资金持续离场，缩量减仓格局</li>
+            <li><strong>基差：</strong>期货贴水现货约260元/吨，基差偏大，期货相对低估</li>
+            <li><strong>月度走势：</strong>5月运行区间3172-3286，呈现先扬后抑，"放量滞涨"后回落</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>六、机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>方向判断</th><th>核心逻辑</th></tr>
+            <tr><td>中信建投期货</td><td>偏空</td><td>供增需降，淡季特征显现，RB2610关注3150支撑</td></tr>
+            <tr><td>瑞达期货</td><td>偏空</td><td>成交偏弱，期钢持续走跌，焦炭提涨博弈中</td></tr>
+            <tr><td>光大期货</td><td>震荡偏弱</td><td>产量跳增+厂库拐头，基本面矛盾累积</td></tr>
+            <tr><td>上海中期</td><td>区间震荡</td><td>5月螺纹先强后弱，去库斜率放缓，供需压力向价格传导</td></tr>
+            <tr><td>南华期货</td><td>震荡</td><td>二季度供需弱平衡，成本抬升托底，区间3000-3300</td></tr>
+            <tr><td>兰格钢铁</td><td>区间震荡</td><td>成本韧性+政策托底 vs 需求走弱+去库放缓</td></tr>
+        </table>
+        <p><strong>机构共识：</strong>多数机构对螺纹钢短期持偏空或震荡偏弱看法，核心逻辑一致——供增需降+淡季来临。但下方空间有限，产能置换政策+电炉成本线提供底部支撑。中期（3-6个月）关注"金九银十"旺季需求恢复力度。</p>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <ul>
+            <li><strong>上行风险：</strong>产能置换政策超预期严格执行导致大规模减产；"六张网"项目加速落地拉动基建用钢；梅雨季结束后需求超预期恢复；焦炭连续提涨推升成本</li>
+            <li><strong>下行风险：</strong>产量继续大幅攀升突破230万吨/周；厂库连续累积引发贸易商抛售；房地产数据进一步恶化；铁矿价格大幅下跌打开成本下行空间；宏观风险事件（海外衰退等）</li>
+            <li><strong>政策风险：</strong>2年过渡期内部分企业可能抢在政策收紧前加速释放产能，短期反而增加供应压力</li>
+            <li><strong>天气风险：</strong>2026年厄尔尼诺中等偏强，南涝北旱，极端天气可能超预期抑制施工需求</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、综合研判与操作建议</h2>
+
+        <h3>7.1 情景分析</h3>
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">&#127760; 基准情景（概率55%）：震荡偏弱，3050-3250区间运行</div>
+            <p>产量维持215-225万吨/周，需求随淡季逐步回落至220-235万吨/周，库存去化放缓后转为小幅累积。产能置换政策托底但短期效果有限，钢价在电炉成本线附近获得支撑，反弹至高炉成本线附近承压。RB2610运行区间3050-3250元/吨。</p>
+        </div>
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">&#128200; 乐观情景（概率25%）：政策驱动反弹，3200-3400区间</div>
+            <p>产能置换政策严格执行导致部分钢厂减产，产量回落至200万吨/周以下；"六张网"项目加速落地，基建用钢需求超预期；梅雨季结束后需求快速恢复；焦炭提涨落地推升成本。RB2610反弹至3200-3400元/吨。</p>
+        </div>
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">&#128201; 悲观情景（概率20%）：负反馈下跌，2850-3100区间</div>
+            <p>产量继续攀升突破230万吨/周，厂库连续累积引发贸易商抛售恐慌；房地产数据进一步恶化；铁矿价格大幅下跌打开成本下行空间；宏观风险事件爆发。钢价跌破电炉成本线，触发负反馈减产。RB2610下探2850-3100元/吨。</p>
+        </div>
+
+        <h3>7.2 分阶段预判</h3>
+        <table class="data-table">
+            <tr><th>时间段</th><th>核心逻辑</th><th>方向判断</th><th>价格区间</th></tr>
+            <tr><td>5月下旬-6月</td><td>产量高位+淡季需求下滑+梅雨季压制</td><td>震荡偏弱</td><td>3050-3200</td></tr>
+            <tr><td>7月-8月</td><td>高温淡季+电炉减产+库存累积</td><td>底部磨底</td><td>3000-3150</td></tr>
+            <tr><td>9月-11月</td><td>"金九银十"旺季+产能置换政策效果显现</td><td>震荡偏强</td><td>3100-3350</td></tr>
+        </table>
+
+        <h3>7.3 操作建议</h3>
+        <div class="advice-box">
+            <h2>&#128176; 具体操作建议</h2>
+            <ol>
+                <li><strong>短期（5月下旬-6月）：</strong>反弹至3200上方可逢高短空，止损3280上方，目标3050-3100；3050附近不宜追空，电炉成本线支撑较强</li>
+                <li><strong>中期（7-8月）：</strong>若钢价跌至3000-3050区间，可轻仓布局多单，博弈"金九银十"旺季预期+产能置换政策效果，止损2950下方</li>
+                <li><strong>套利策略：</strong>关注做缩卷螺差（热卷利润好于螺纹，螺纹供应压力更大），卷螺差有望从当前约200元/吨扩大至300元/吨以上</li>
+                <li><strong>期权策略：</strong>卖出RB2610-P-3000看跌期权收取权利金（判断3000为强支撑），或买入RB2610-C-3300看涨期权博弈旺季反弹（7-8月布局）</li>
+                <li><strong>关键观测指标：</strong>螺纹钢周产量是否突破230万吨；厂库是否连续累积；电炉开工率变化；"六张网"项目资金到位与开工进度</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p>&#9888; 风险提示：期货交易风险很大，本分析内容仅供参考，不构成任何投资建议。请咨询专业金融顾问后再做投资决定。</p>
+        <p>数据来源：Mysteel我的钢铁网、中信建投期货、瑞达期货、光大期货、上海中期期货、南华期货、兰格钢铁网、国家统计局、海关总署等</p>
+        <p>分析日期：2026年5月22日 | 下次更新预计：2026年6月中旬</p>
+    </div>
+</div>
+</body>
+</html>
