@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR白糖基本面分析 - 2026年5月22日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #1B5E20, #388E3C);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&#8592; 返回首页</a>
+        <header>
+            <h1>SR白糖期货基本面分析</h1>
+            <div class="subtitle">分析日期：2026年5月22日 | 预测区间：2026年5月—2026年11月</div>
+        </header>
+
+        <div class="summary-box">
+            <h2>&#9733; 核心结论（先看这里）</h2>
+            <table class="summary-table">
+                <tr><td>中期方向</td><td><strong>弱现实压制，强预期托底，震荡偏弱运行</strong></td></tr>
+                <tr><td>信心水平</td><td><strong>中等（国内供应宽松明确，下方成本支撑亦明确）</strong></td></tr>
+                <tr><td>郑糖主力价格区间</td><td><strong>5300—5600元/吨（2个月内），下半年5400—5800</strong></td></tr>
+                <tr><td>ICE原糖参考</td><td><strong>14—17美分/磅（短期），26/27榨季或转短缺</strong></td></tr>
+                <tr><td>核心建议</td><td><strong>5300—5350附近逢低轻仓试多，5600以上逢高短空，区间操作为主，不宜追单边</strong></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>一、市场概况</h2>
+            <p>2025/26榨季中国食糖产量创12年新高，工业库存升至历史高位，供需格局由紧转松。郑糖主力SR2609合约5月以来持续承压，围绕5400元/吨一线震荡。国际原糖受巴西丰产预期压制，但印度出口禁令和厄尔尼诺预期为远月提供支撑。</p>
+            <table class="data-table">
+                <tr><th>指标</th><th>当前值</th><th>趋势</th></tr>
+                <tr><td>郑糖主力SR2609</td><td>约5430元/吨</td><td>震荡偏弱</td></tr>
+                <tr><td>ICE原糖主力</td><td>约14.9美分/磅</td><td>区间震荡</td></tr>
+                <tr><td>广西南宁现货</td><td>约5410元/吨</td><td>小幅走弱</td></tr>
+                <tr><td>云南昆明现货</td><td>约5230元/吨</td><td>小幅走弱</td></tr>
+                <tr><td>加工糖主流报价</td><td>5820—5930元/吨</td><td>下调20元/吨</td></tr>
+                <tr><td>配额外巴西进口成本</td><td>约5533元/吨</td><td>持续下行</td></tr>
+                <tr><td>SR609基差</td><td>约-20元/吨</td><td>小幅贴水</td></tr>
+            </table>
+            <div class="highlight-box">
+                <strong>核心矛盾：</strong>"弱现实+强预期"博弈——国内增产超预期、工业库存高位、销糖率偏低构成现实压制；但厄尔尼诺升温预期、印度出口禁令、国际油价高位支撑乙醇生产、成本底线等因素为远月提供托底支撑。短期缺乏突破性驱动，震荡为主。
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>二、供需基本面分析</h2>
+
+            <h3>1. 国内供应：产量创12年新高，库存压力显著 <span class="tag tag-bearish">偏空</span></h3>
+            <p>2025/26榨季全国食糖产量预计1280万吨，同比大增164万吨（+14.7%），为2014/15榨季以来最高水平。广西增产最为突出，产糖约770—780万吨，同比增长14.65%。</p>
+            <table class="data-table">
+                <tr><th>产区</th><th>2025/26产量（万吨）</th><th>同比变化</th><th>评价</th></tr>
+                <tr><td>全国合计</td><td>1280</td><td>+164（+14.7%）</td><td>12年新高</td></tr>
+                <tr><td>广西</td><td>770—780</td><td>+95（+14.65%）</td><td>核心增产区</td></tr>
+                <tr><td>云南</td><td>270—280</td><td>+13（+6.25%）</td><td>进口甘蔗增量</td></tr>
+                <tr><td>广东</td><td>约65</td><td>略降</td><td>台风影响</td></tr>
+                <tr><td>甜菜糖（内蒙+新疆）</td><td>约157</td><td>基本持平</td><td>天气不利</td></tr>
+            </table>
+
+            <h3>2. 工业库存：历史高位，去库压力巨大 <span class="tag tag-bearish">偏空</span></h3>
+            <table class="data-table">
+                <tr><th>库存指标</th><th>数据</th><th>评价</th></tr>
+                <tr><td>4月底全国工业库存</td><td>651万吨</td><td>同比+264.74万吨，历史高位</td></tr>
+                <tr><td>广西三方仓库库存</td><td>约394万吨（3月底）</td><td>同比+123万吨</td></tr>
+                <tr><td>累计销糖率（4月底）</td><td>48.98%</td><td>同比放缓16.24个百分点</td></tr>
+                <tr><td>累计销糖量（4月底）</td><td>625万吨</td><td>同比减少99.46万吨</td></tr>
+                <tr><td>5/26年度结余变化</td><td>+192万吨</td><td>上年度为-5万吨，逆转</td></tr>
+            </table>
+            <div class="highlight-box">
+                <strong>库存压力是当前最大利空：</strong>工业库存651万吨创历史新高，销糖率仅48.98%远低于去年同期65.22%，去库节奏将决定糖价下行深度。当前已进入纯销售期，最大供应期已过，但库存消化仍需时间。
+            </div>
+
+            <h3>3. 进口：配额外利润打开，远期供应压力待兑现 <span class="tag tag-bearish">偏空</span></h3>
+            <table class="data-table">
+                <tr><th>进口指标</th><th>数据</th><th>评价</th></tr>
+                <tr><td>2026年1—4月累计进口</td><td>65.29万吨</td><td>同比+36.97万吨</td></tr>
+                <tr><td>2026年4月单月进口</td><td>3万吨</td><td>同比-10.48万吨，低位</td></tr>
+                <tr><td>2025/26年度进口预测</td><td>500万吨</td><td>与上年462万吨增加</td></tr>
+                <tr><td>2026/27年度进口预测</td><td>480万吨</td><td>同比略减</td></tr>
+                <tr><td>配额外巴西进口成本</td><td>约5533元/吨</td><td>持续下行，利润窗口打开</td></tr>
+                <tr><td>4月糖浆+预拌粉进口</td><td>14.27万吨</td><td>同比+5.75万吨</td></tr>
+            </table>
+            <p>当前配额外进口利润窗口已打开，进口成本持续下行。4月进口量仅3万吨处于低位，但配额外进口许可已发放约260万吨，后期进口到港增量是重要压制因素。糖浆及预拌粉进口持续增长，对国产糖消费形成替代。</p>
+
+            <h3>4. 需求：消费平稳，替代品挤压 <span class="tag tag-neutral">中性</span></h3>
+            <p>2025/26年度食糖消费量预计1570万吨，与上年基本持平。淀粉糖等替代品持续挤压白糖消费空间，下游采购以随采随用为主，夏季消费旺季备货需求释放平稳但难超预期。市场谨慎心态上升，终端持糖价走低预期，难以带来糖价上涨驱动。</p>
+        </div>
+
+        <div class="section">
+            <h2>三、成本与利润分析</h2>
+            <table class="data-table">
+                <tr><th>指标</th><th>当前状态</th><th>影响</th></tr>
+                <tr><td>广西甘蔗收购价</td><td>约520元/吨（政府指导价）</td><td>成本刚性支撑</td></tr>
+                <tr><td>广西制糖完全成本</td><td>约5300—5450元/吨</td><td>5300附近为成本底线</td></tr>
+                <tr><td>配额内进口利润</td><td>约1266元/吨</td><td>进口动力充足</td></tr>
+                <tr><td>配额外进口利润</td><td>约盈亏平衡附近</td><td>利润窗口打开</td></tr>
+                <tr><td>加工糖与国产糖价差</td><td>400—500元/吨</td><td>加工糖溢价偏高</td></tr>
+                <tr><td>化肥柴油成本</td><td>能源价格高位推升</td><td>远期成本抬升预期</td></tr>
+            </table>
+            <div class="highlight-box">
+                <strong>成本底线明确：</strong>广西制糖完全成本约5300—5450元/吨，当前期价已接近成本区域。政府甘蔗指导收购价构成刚性成本支撑，糖厂深度亏损将触发减产预期，5300元/吨附近为重要支撑位。
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>四、政策与宏观环境</h2>
+
+            <h3>1. 国内政策：进口管控+甘蔗保护价 <span class="tag tag-bullish">偏多</span></h3>
+            <ul>
+                <li><strong>进口许可证管控：</strong>管理部门可能收紧进口许可证以稳定糖价、保护国内蔗农和糖厂利益</li>
+                <li><strong>甘蔗指导收购价：</strong>广西政府设定甘蔗收购指导价520元/吨，保障蔗农收益，构成成本底线</li>
+                <li><strong>糖浆管控：</strong>对糖浆及预拌粉进口管控趋严，但4月进口仍同比增长</li>
+                <li><strong>扶贫政策：</strong>蔗糖种植作为地区扶贫措施之一持续推动，种植面积稳中有增</li>
+            </ul>
+
+            <h3>2. 国际政策：印度出口禁令 <span class="tag tag-bullish">偏多</span></h3>
+            <ul>
+                <li><strong>印度食糖出口禁令：</strong>5月中旬宣布立即生效，禁止原糖、白糖和精制糖出口至9月30日或另行通知</li>
+                <li><strong>禁令影响：</strong>印度是全球第二大糖生产国，出口禁令收紧全球贸易流供应，支撑国际糖价</li>
+                <li><strong>禁令性质：</strong>预防性举措，防止国内糖价飙升，但反映印度对供应的谨慎态度</li>
+            </ul>
+
+            <h3>3. 厄尔尼诺预期 <span class="tag tag-bullish">偏多</span></h3>
+            <ul>
+                <li><strong>ENSO报告：</strong>2026年4—6月期间可能进入厄尔尼诺状态，概率61%，并可能持续至年底</li>
+                <li><strong>影响路径：</strong>厄尔尼诺通常导致东南亚和印度干旱，影响甘蔗生长；巴西中南部则可能多雨影响收割</li>
+                <li><strong>市场影响：</strong>为远月合约提供天气溢价支撑，是"强预期"的核心来源</li>
+            </ul>
+
+            <h3>4. 能源价格与乙醇 <span class="tag tag-bullish">偏多</span></h3>
+            <ul>
+                <li><strong>国际油价高位：</strong>美伊冲突推动原油维持100美元/桶附近，提升巴西乙醇生产收益</li>
+                <li><strong>制糖比偏低：</strong>巴西中南部4月制糖比仅32.93%，远低于正常48—51%水平，糖厂倾向产乙醇</li>
+                <li><strong>乙醇分流：</strong>高油价→乙醇收益提升→制糖比下降→食糖供应减少，构成利多支撑</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>五、国际糖市分析</h2>
+            <table class="data-table">
+                <tr><th>全球供需指标</th><th>2025/26榨季</th><th>2026/27榨季</th></tr>
+                <tr><td>ISO全球产量</td><td>1.8129亿吨</td><td>预计下降200万吨</td></tr>
+                <tr><td>ISO全球消费</td><td>1.8007亿吨</td><td>继续温和增长</td></tr>
+                <tr><td>ISO供需平衡</td><td>过剩224.4万吨</td><td>短缺26.2万吨</td></tr>
+                <tr><td>StoneX供需平衡</td><td>过剩229万吨</td><td>短缺55万吨</td></tr>
+                <tr><td>Czarnikow供需平衡</td><td>过剩580万吨</td><td>过剩110万吨</td></tr>
+                <tr><td>USDA全球产量</td><td>1.893亿吨</td><td>—</td></tr>
+            </table>
+
+            <h3>巴西：丰产预期但制糖比偏低 <span class="tag tag-neutral">中性</span></h3>
+            <ul>
+                <li>4月下半月产糖预计同比+72.7%至148万吨，甘蔗入榨量同比+102.2%</li>
+                <li>甘蔗单产同比+13%至83.4吨/公顷，可回收糖分同比+0.5%</li>
+                <li>但制糖比仅32.93%，乙醇产量同比+33.32%，高油价分流效应明显</li>
+                <li>Datagro预计2026/27榨季中南部产糖4235万吨，StoneX预计4170万吨</li>
+            </ul>
+
+            <h3>印度：出口禁令收紧全球供应 <span class="tag tag-bullish">偏多</span></h3>
+            <ul>
+                <li>2025/26榨季截至4月底累计产糖2752.8万吨，同比增加</li>
+                <li>出口禁令立即生效，至9月30日或另行通知</li>
+                <li>消费量预测下调至2770万吨，受地缘政治与寒冷天气影响</li>
+            </ul>
+
+            <h3>泰国：增产显著 <span class="tag tag-bearish">偏空</span></h3>
+            <ul>
+                <li>2025/26榨季已于5月3日收榨，产糖1199.69万吨，同比+194.63万吨（+19.37%）</li>
+                <li>甘蔗入榨量10586万吨，同比+15.01%</li>
+                <li>增产幅度超预期，增加全球供应压力</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>全球糖市牛熊转换信号：</strong>2025/26榨季全球过剩224万吨，但2026/27榨季ISO和StoneX均预测转为短缺。这意味着当前可能是本轮熊市的尾声，远月合约已开始定价短缺预期。今明两年或面临牛熊转换的周期性变动。
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>六、技术面参考</h2>
+            <table class="data-table">
+                <tr><th>技术指标</th><th>位置/状态</th></tr>
+                <tr><td>SR2609短期支撑</td><td>5350—5390元/吨（成本区域）</td></tr>
+                <tr><td>SR2609短期压力</td><td>5500—5600元/吨</td></tr>
+                <tr><td>SR2609强支撑</td><td>5300元/吨（制糖完全成本底线）</td></tr>
+                <tr><td>ICE原糖短期支撑</td><td>14美分/磅</td></tr>
+                <tr><td>ICE原糖短期压力</td><td>16—17美分/磅</td></tr>
+                <tr><td>郑糖仓单</td><td>22935张，周环比+402张</td></tr>
+                <tr><td>SR609-SR701价差</td><td>-166元/吨（近弱远强）</td></tr>
+                <tr><td>前二十名净持仓</td><td>-180666手（净空）</td></tr>
+            </table>
+            <p>技术面偏空，期价在5400附近窄幅震荡，仓单持续增加反映现货压力。但5300—5350成本区域支撑较强，SR609-SR701价差-166元/吨反映远月升水结构，市场已部分定价远期好转预期。</p>
+        </div>
+
+        <div class="section">
+            <h2>七、机构观点汇总</h2>
+            <table class="data-table">
+                <tr><th>机构</th><th>短期观点</th><th>策略/区间</th></tr>
+                <tr><td>格林大华</td><td>弱现实+强预期博弈</td><td>SR609区间5300—5500，高抛低吸</td></tr>
+                <tr><td>华泰期货</td><td>中性，区间波动</td><td>关注去库节奏及许可证发放</td></tr>
+                <tr><td>瑞达期货</td><td>短期震荡</td><td>厄尔尼诺+成本支撑，价格回归理性</td></tr>
+                <tr><td>长江期货</td><td>冲高回落，振幅加大</td><td>短线思路，高空低多区间交易</td></tr>
+                <tr><td>广发期货</td><td>内外共振走弱</td><td>参考区间5600—5850，逢高做空</td></tr>
+                <tr><td>国信期货</td><td>缺乏显著矛盾</td><td>5750—6000区间，波段交易</td></tr>
+                <tr><td>国联期货</td><td>盘面超跌，低多思路</td><td>大贴水下做空空间有限，网格越跌越买</td></tr>
+                <tr><td>农业农村部</td><td>供需由紧转松</td><td>国内糖价预测5500—6000元/吨</td></tr>
+            </table>
+        </div>
+
+        <div class="risk-box">
+            <h2>&#9888; 风险提示</h2>
+            <ul>
+                <li><strong>厄尔尼诺发展超预期：</strong>若厄尔尼诺强度超预期，可能导致印度、泰国、中国主产区干旱减产，推动糖价大幅反弹</li>
+                <li><strong>进口到港超预期：</strong>配额外进口许可已发放约260万吨，若集中到港将加剧国内供应压力</li>
+                <li><strong>巴西制糖比变化：</strong>若油价回落导致巴西糖厂提高制糖比，将增加全球食糖供应</li>
+                <li><strong>去库节奏不及预期：</strong>若夏季消费旺季需求疲软，工业库存去化缓慢，糖价承压时间延长</li>
+                <li><strong>宏观风险：</strong>美联储紧缩预期升温、美元走强压制大宗商品整体估值</li>
+                <li><strong>政策风险：</strong>进口许可证发放节奏、糖浆管控力度变化</li>
+                <li><strong>地缘冲突：</strong>美伊冲突推升油价→乙醇收益提升→制糖比下降→利多糖价（反之若缓和则利空）</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>八、综合研判与操作建议</h2>
+
+            <div class="scenario-box scenario-base">
+                <div class="scenario-title">基准情景（概率50%）：区间震荡，弱现实主导</div>
+                <p>国内增产超预期+库存高位压制糖价上方空间，但成本底线+政策托底+厄尔尼诺预期限制下方空间。郑糖SR2609在5300—5600元/吨区间震荡，ICE原糖在14—17美分/磅区间运行。去库节奏偏慢，夏季消费温和释放，无趋势性行情。</p>
+            </div>
+
+            <div class="scenario-box scenario-bull">
+                <div class="scenario-title">看多情景（概率25%）：厄尔尼诺+印度禁令驱动反弹</div>
+                <p>厄尔尼诺强度超预期，印度、泰国干旱加剧减产预期；巴西制糖比持续偏低；国内去库加速叠加进口管控收紧。郑糖突破5600元/吨上行至5800—6000区间，ICE原糖反弹至17—19美分/磅。下半年26/27榨季短缺预期升温推动价格中枢上移。</p>
+            </div>
+
+            <div class="scenario-box scenario-bear">
+                <div class="scenario-title">看空情景（概率25%）：供应压力集中释放，破位下行</div>
+                <p>进口糖集中到港+糖浆替代加速+夏季消费不及预期；巴西制糖比回升至50%以上；厄尔尼诺发展不及预期。工业库存去化缓慢，郑糖跌破5300元/吨成本线至5100—5200区间，ICE原糖跌破14美分/磅至12—13美分。</p>
+            </div>
+
+            <div class="advice-box">
+                <h2>&#10004; 操作建议</h2>
+                <ol>
+                    <li><strong>短线操作：</strong>SR2609在5300—5600区间高抛低吸，5350以下轻仓试多（止损5280），5550以上轻仓短空（止损5620）</li>
+                    <li><strong>中线布局：</strong>5300元/吨附近为战略买入区（成本底线+政策托底），可分批建仓中线多单，仓位控制在总资金15%以内，博弈下半年厄尔尼诺+26/27榨季短缺驱动</li>
+                    <li><strong>套利策略：</strong>SR609-SR701价差-166元/吨，远月升水结构明确，可关注买远卖近的正套机会</li>
+                    <li><strong>期权策略：</strong>卖出SR2609看跌期权（行权价5300），收取权利金增强收益，同时买入看涨期权（行权价5600）博弈上行</li>
+                    <li><strong>对冲关注：</strong>若做多郑糖，需关注ICE原糖走势和人民币汇率变化对进口成本的影响</li>
+                    <li><strong>风险控制：</strong>单边仓位不超过总资金20%，严格止损；重点关注国内去库速度、巴西制糖比数据、厄尔尼诺发展</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="footnote">
+            <p>免责声明：以上分析仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。数据来源：中国糖业协会、农业农村部、ISO、UNICA、USDA、郑商所、各期货公司研报。</p>
+            <p>分析日期：2026年5月22日 | 下次更新关注：6月UNICA双周报、国内5月产销数据、厄尔尼诺发展、进口到港节奏</p>
+        </div>
+    </div>
+</body>
+</html>
