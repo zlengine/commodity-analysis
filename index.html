@@ -73,20 +73,27 @@
             font-weight: bold;
             white-space: nowrap;
         }
-        .analysis-table th:first-child { text-align: left; }
+        .analysis-table th:first-child { text-align: center; }
         .analysis-table td {
             padding: 12px 15px;
             border-bottom: 1px solid var(--border);
             text-align: center;
             vertical-align: middle;
         }
-        .analysis-table td:first-child {
-            text-align: left;
+        .date-header td {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            font-size: 18px;
             font-weight: bold;
-            white-space: nowrap;
+            padding: 10px 15px;
+            text-align: left;
+            letter-spacing: 1px;
+        }
+        .date-header td .date-icon {
+            margin-right: 8px;
         }
         .analysis-table tr:nth-child(even) { background: #F8F9FA; }
-        .analysis-table tr:hover { background: #E8F4FD; }
+        .analysis-table tr:hover:not(.date-header) { background: #E8F4FD; }
         .link-cell a {
             display: inline-block;
             padding: 5px 14px;
@@ -161,7 +168,6 @@
         <table class="analysis-table">
             <thead>
                 <tr>
-                    <th>日期</th>
                     <th>SR 白糖</th>
                     <th>CU 沪铜</th>
                     <th>AL 沪铝</th>
@@ -176,8 +182,8 @@
                 </tr>
             </thead>
             <tbody>
+                <tr class="date-header"><td colspan="11"><span class="date-icon">&#128197;</span>2026-05-03 分析</td></tr>
                 <tr>
-                    <td>2026-05-03</td>
                     <td class="link-cell">
                         <a href="20260503_SR.html">查看详情</a>
                         <div class="summary-text">方向：<span class="direction-bear">震荡偏弱</span><br>区间：5100—5800<br>信心：中等</div>
