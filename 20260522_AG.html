@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG沪银基本面分析 - 2026年5月22日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #263238, #546E7A);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>AG沪银期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月22日 | 预测区间：2026年5月—2026年11月</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>宏观压制+供需缺口收窄，宽幅震荡偏弱</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等</strong>（美联储鹰派+ETF资金流出+光伏需求走弱压制明显，但全球供需仍有缺口+工业需求结构性支撑限制下方空间）</td></tr>
+            <tr><td>AG2612合约价格区间</td><td><strong>16500—19500元/千克</strong></td></tr>
+            <tr><td>国际银价区间</td><td><strong>68—82美元/盎司</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>反弹至19000上方逢高短空，17000以下可轻仓试多，关注美联储沃什政策表态与光伏需求实际变化</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>一、当前市场概况</h2>
+        <p>截至2026年5月22日：</p>
+        <ul>
+            <li>沪银主力合约AG2608收盘<strong>18,681元/千克</strong>，日涨0.78%，5月20日盘中最低触及17,850元/千克</li>
+            <li>沪银2606合约收盘<strong>18,643元/千克</strong>，日涨0.79%</li>
+            <li>伦敦现货白银约<strong>76.2美元/盎司</strong>，较1月历史高位121美元/盎司已下跌37%</li>
+            <li>白银T+D报价<strong>18,618元/千克</strong>，现货升水约24元/千克</li>
+            <li>金银比约<strong>59:1</strong>（以伦敦金4520/伦敦银76.2计算），处于历史偏低水平</li>
+            <li>沪银周跌9.53%，周度运行区间17,850—19,185元/千克，持仓量增加36,310手（双边），多头资金有所回流</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>&#9888; 核心矛盾：</strong>白银正经历"宏观压制+供需缺口收窄"的双重压力。美联储鹰派立场强化（沃什今晚就任主席）、美债收益率高位、美元走强从金融属性端持续压制银价；同时光伏减银技术加速、ETF资金大幅流出、印度上调进口关税削弱实物需求，供需缺口从此前3亿盎司预估急剧收窄至6000-7000万盎司。但全球连续六年供不应求、交易所库存极低、AI/新能源工业需求结构性增长，下方仍有较强支撑。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>二、供需基本面分析</h2>
+
+        <h3>2.1 供应端：矿山产量微增，供应刚性约束仍存 <span class="tag tag-neutral">中性</span></h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>2025年实际</th><th>2026年预测</th><th>变化</th></tr>
+            <tr><td>全球矿产银</td><td>8.33亿盎司（25,905吨）</td><td>8.48亿盎司（26,370吨）</td><td>+1.8%</td></tr>
+            <tr><td>全球再生银</td><td>1.97亿盎司（6,130吨）</td><td>2.16亿盎司（6,720吨）</td><td>+9.6%</td></tr>
+            <tr><td>全球总供应</td><td>10.30亿盎司</td><td>10.64亿盎司</td><td>+3.3%</td></tr>
+            <tr><td>中国矿产银产量</td><td>约4,000吨</td><td>约4,100吨</td><td>+2.5%</td></tr>
+            <tr><td>中国白银进口量（1-3月）</td><td>—</td><td>1,600吨+（3月836吨创纪录）</td><td>大幅增长</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li>全球约70-72%白银为铜/锌/铅矿伴生，产量调整依赖主金属开采节奏，扩产周期5-10年，短期增产乏力</li>
+            <li>汇丰预计2026年矿山产量8.48亿盎司，较2025年小幅增加，主要来自摩洛哥Zgounder矿和智利Salares Norte矿投产</li>
+            <li>再生银是供应端最大增量来源，高银价刺激回收积极性提升，预计同比增长9.6%，但总量仍不足以弥补需求</li>
+            <li>中国1月实施白银出口"一单一审"许可证制度，预计减少全球银板料供应4,500-5,000吨，加剧区域供应紧张</li>
+            <li>秘鲁因能源危机实施紧急法令，矿山开采受限；墨西哥拟立法禁止露天开采，长期供给约束强化</li>
+        </ul>
+
+        <h3>2.2 需求端：工业需求分化，投资需求大幅退潮 <span class="tag tag-bearish">偏空</span></h3>
+        <table class="data-table">
+            <tr><th>需求领域</th><th>2025年</th><th>2026年预测</th><th>变化</th><th>评价</th></tr>
+            <tr><td>光伏用银</td><td>6,000-6,100吨</td><td>4,500-5,000吨</td><td>-17%至-25%</td><td>大幅下降，最大拖累</td></tr>
+            <tr><td>AI/半导体用银</td><td>3,500吨</td><td>4,000-4,200吨</td><td>+15%至+20%</td><td>强劲增长</td></tr>
+            <tr><td>新能源车用银</td><td>1,000吨</td><td>1,050-1,100吨</td><td>+5%至+10%</td><td>稳定增长</td></tr>
+            <tr><td>珠宝首饰</td><td>1.65亿盎司</td><td>1.57亿盎司</td><td>-4.8%</td><td>高价抑制需求</td></tr>
+            <tr><td>投资需求（ETF+实物）</td><td>4亿盎司+</td><td>约3亿盎司</td><td>-25%+</td><td>大幅退潮</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li><strong>光伏是需求端最大变量：</strong>2026年国内光伏装机量从315GW下调至180-240GW，叠加银包铜/铜电镀等减银技术加速渗透，光伏用银量预计下降1,000-1,500吨。瑞银测算光伏与首饰两大赛道合计减少约5,000万盎司白银消耗量</li>
+            <li><strong>AI/半导体是需求端最大亮点：</strong>AI服务器出货量同比增速超40%，单台AI服务器耗银1.2-1.5公斤，2026年国内AI服务器用银量预计翻倍至600-700吨。半导体封装用银量达4,000吨，同比+18%</li>
+            <li><strong>投资需求大幅退潮：</strong>全球白银ETF持仓累计减少近7,000万盎司，SLV持仓降至15,179吨，环比减少0.29%。瑞银将全年投资需求预估从4亿盎司以上下调至3亿盎司</li>
+            <li><strong>印度上调金银进口关税</strong>，直接削弱全球第二大白银消费国的实物需求</li>
+            <li><strong>银价高位运行</strong>持续抑制光伏、银饰等领域的工业消费需求，"需求破坏"效应正在显现</li>
+        </ul>
+
+        <h3>2.3 供需平衡：缺口急剧收窄但仍存 <span class="tag tag-neutral">中性</span></h3>
+        <table class="data-table">
+            <tr><th>机构</th><th>2026年供需缺口预估</th><th>较此前预期变化</th></tr>
+            <tr><td>瑞银</td><td>6,000-7,000万盎司</td><td>从此前3亿盎司断崖式缩水</td></tr>
+            <tr><td>汇丰</td><td>7,300万盎司</td><td>较2025年1.43亿盎司大幅收窄</td></tr>
+            <tr><td>世界白银协会</td><td>6,700万盎司</td><td>连续第六年供不应求</td></tr>
+            <tr><td>乐观派综合预测</td><td>1.30-1.45亿盎司</td><td>缺口扩大17.3%</td></tr>
+        </table>
+        <p><strong>关键解读：</strong></p>
+        <ul>
+            <li>各机构对供需缺口的预估分歧较大，核心分歧在于光伏减银速度与AI需求增量的对冲效果</li>
+            <li>瑞银和汇丰的预估更为保守（6000-7300万盎司），反映需求端走弱+供应端改善的判断</li>
+            <li>即使按最保守估算，2026年白银市场仍为供不应求，连续第六年短缺，累计缺口已超8亿盎司</li>
+            <li>缺口收窄意味着：从此前的"严重短缺驱动暴涨"逻辑转向"温和短缺支撑底部"逻辑，银价上方空间受限但下方有底</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>三、库存与ETF分析</h2>
+
+        <h3>3.1 交易所库存：极低水平提供底部支撑 <span class="tag tag-bullish">利多</span></h3>
+        <table class="data-table">
+            <tr><th>库存指标</th><th>当前水平</th><th>趋势</th><th>评价</th></tr>
+            <tr><td>COMEX白银注册仓单</td><td>约8,800万盎司</td><td>较2020年下降75%</td><td>历史极低水平</td></tr>
+            <tr><td>LBMA白银库存</td><td>约233吨</td><td>持续下降</td><td>现货升水高企</td></tr>
+            <tr><td>上期所白银库存</td><td>十年低位</td><td>5月22日仓单减少2,897千克</td><td>国内现货紧张</td></tr>
+            <tr><td>SLV白银ETF持仓</td><td>15,179.19吨</td><td>环比减少0.29%</td><td>资金持续流出</td></tr>
+            <tr><td>COMEX白银净持仓</td><td>26,111张</td><td>环比增加4.81%</td><td>投机多头小幅回升</td></tr>
+        </table>
+
+        <h3>3.2 资金流向：ETF大幅流出，期货多头回流 <span class="tag tag-bearish">偏空</span></h3>
+        <ul>
+            <li><strong>ETF端：</strong>全球公开可统计白银ETF持仓累计减少近7,000万盎司，当前持仓规模回落至7.94亿盎司附近，资金撤离迹象明显</li>
+            <li><strong>期货端：</strong>COMEX白银投机净多头头寸约1亿盎司上方，环比增加4.81%，显示部分资金在低位重新布局</li>
+            <li><strong>国内端：</strong>沪银持仓量增加36,310手（双边），多头资金有所回流，5月22日成交量82.8万手，交投活跃</li>
+            <li><strong>租赁利率：</strong>白银租赁利率从此前8%年化的历史高位回落，但仍高于正常水平，显示实物市场仍偏紧</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>库存端小结：</strong>交易所库存处于历史极低水平，是白银下方最强支撑——一旦出现供应中断或需求脉冲式回升，极低库存可能触发挤仓行情。但ETF资金持续流出表明投资需求退潮，削弱了库存紧张对价格的推升力度。库存端呈现"物理紧张+金融退潮"的矛盾格局。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、政策与宏观环境</h2>
+
+        <h3>4.1 美联储政策：鹰派主导，高利率延续 <span class="tag tag-bearish">利空</span></h3>
+        <table class="data-table">
+            <tr><th>宏观因素</th><th>当前状态</th><th>对白银影响</th></tr>
+            <tr><td>联邦基金利率</td><td>3.50-3.75%（连续三次维持）</td><td>持有无息白银的机会成本高企</td></tr>
+            <tr><td>4月CPI</td><td>同比3.8%，超预期</td><td>通胀黏性，降息预期降温</td></tr>
+            <tr><td>5月制造业PMI</td><td>55.3，创四年新高</td><td>经济韧性强劲，降息必要性下降</td></tr>
+            <tr><td>10年期美债收益率</td><td>逼近4.7%</td><td>资金分流至生息资产</td></tr>
+            <tr><td>美元指数</td><td>接近100关口</td><td>计价压制</td></tr>
+            <tr><td>沃什就任美联储主席</td><td>5月22日晚宣誓</td><td>偏鹰派，降息阻力加大</td></tr>
+            <tr><td>2026年降息预期</td><td>接近于零</td><td>市场甚至开始计价年末加息</td></tr>
+        </table>
+
+        <h3>4.2 地缘政治：美伊博弈反复，避险溢价波动 <span class="tag tag-neutral">中性</span></h3>
+        <ul>
+            <li><strong>美伊停火谈判：</strong>霍尔木兹海峡通行谈判实际进展有限，美伊和谈反复无常。阿拉伯卫星电视台驳斥伊朗媒体关于"美伊达成协议"的报道，分歧仍在海峡开放与浓缩铀问题</li>
+            <li><strong>原油价格：</strong>布伦特原油维持109美元/桶高位，高油价推升通胀预期，强化美联储鹰派立场，从金融属性端压制白银</li>
+            <li><strong>避险属性：</strong>地缘风险对白银的影响已从避险买盘驱动转变为强化货币紧缩预期的推手，"避险→通胀→紧缩→压制"的传导路径对白银偏空</li>
+        </ul>
+
+        <h3>4.3 中国政策：出口管制+战略储备 <span class="tag tag-bullish">利多</span></h3>
+        <ul>
+            <li><strong>白银出口"一单一审"：</strong>2026年1月实施，预计减少全球银板料供应4,500-5,000吨，保护国内光伏、新能源产业</li>
+            <li><strong>战略储备：</strong>白银被纳入战略性储备资源，国家层面加大收储力度</li>
+            <li><strong>光伏出口退税调整：</strong>4月1日起光伏产品出口退税政策调整，企业提前赶工生产导致1-3月白银进口量激增</li>
+            <li><strong>国内溢价：</strong>上海白银较国际基准长期维持高溢价，峰值超35%，1-2月平均溢价11.3%，吸引全球白银流入中国</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>宏观端小结：</strong>美联储鹰派立场是压制白银的核心宏观因素——高利率+强美元+高美债收益率的组合从金融属性端持续施压。地缘风险通过通胀渠道转化为利空而非利多。中国出口管制和战略储备政策是唯一的政策端利好，但影响主要在国内市场。宏观面整体偏空，需等待美联储政策转向信号。
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>五、技术面参考</h2>
+        <ul>
+            <li><strong>趋势：</strong>白银自1月121美元/盎司历史高位大幅回落，5月13日反弹至89.3美元后再度急跌，目前处于下行通道中</li>
+            <li><strong>支撑位：</strong>17,850元/千克（5月20日低点）、17,000元/千克（心理关口+前期平台）、16,500元/千克（极端支撑）</li>
+            <li><strong>阻力位：</strong>19,000元/千克（5日均线附近）、19,500元/千克（前期反弹高点）、20,000元/千克（心理关口）</li>
+            <li><strong>国际银价支撑/阻力：</strong>支撑73-74.5美元/盎司、68美元/盎司（汇丰预测区间下沿）；阻力81美元/盎司、88美元/盎司</li>
+            <li><strong>金银比：</strong>当前约59:1，处于历史偏低水平（历史均值60-80:1），白银相对黄金偏贵，存在金银比修复空间</li>
+            <li><strong>波动率：</strong>白银隐含波动率仍处历史高位区间，2月实际波动率曾逼近150%，当前波动率虽回落但仍远高于正常水平</li>
+            <li><strong>持仓：</strong>沪银持仓量增加36,310手，多头资金有所回流，但整体仍处于5月暴跌后的修复期</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>六、机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>方向判断</th><th>核心逻辑</th></tr>
+            <tr><td>瑞银</td><td>震荡偏弱</td><td>全面下调银价目标：Q2末85美元，9月85美元，年末80美元；供需缺口从3亿盎司缩至6000-7000万盎司；建议卖出波动率策略</td></tr>
+            <tr><td>汇丰</td><td>温和走低</td><td>2026年白银均价75美元/盎司，年末70美元/盎司；运行区间68-88美元；供需缺口从1.43亿盎司收窄至7300万盎司</td></tr>
+            <tr><td>瑞达期货</td><td>震荡整理</td><td>矿山供应回升+需求端疲软限制上方空间，制造业PMI超预期提供工业属性支撑，逢低布局思路</td></tr>
+            <tr><td>国投期货</td><td>短期偏空</td><td>宏观叙事从宽松转向紧缩，系统性调整；地缘风险通过通胀渠道转化为利空</td></tr>
+            <tr><td>紫金天风</td><td>震荡偏弱</td><td>供需缺口收窄动摇长期看涨根基；美联储政策路径明朗化前上行阻力大</td></tr>
+            <tr><td>一德期货</td><td>偏空</td><td>高利率+强美元持续压制；纽约白银交割不及预期，库存紧张行情难复刻</td></tr>
+        </table>
+        <p><strong>机构共识：</strong>主流机构对白银短期持偏空或震荡偏弱看法，核心逻辑一致——美联储鹰派+供需缺口收窄+ETF资金流出。但下方空间有限，极低库存+连续六年供不应求提供底部支撑。汇丰和瑞银均认为2026年下半年银价将温和走低，但大幅下跌的可能性也不大。</p>
+    </div>
+
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <ul>
+            <li><strong>上行风险：</strong>美联储意外转鸽（通胀快速回落）；美伊冲突升级触发避险买盘；极低库存引发挤仓行情；AI/新能源需求超预期爆发；中国出口管制进一步收紧</li>
+            <li><strong>下行风险：</strong>美联储年末加息（通胀持续超预期）；美伊达成协议油价暴跌→通缩预期；光伏减银速度超预期；ETF资金加速流出；再生银供应超预期增长；印度需求持续萎缩</li>
+            <li><strong>波动率风险：</strong>白银波动率远高于黄金，2月实际波动率曾逼近150%，单日涨跌5-10%是常态，杠杆交易爆仓风险极高</li>
+            <li><strong>政策风险：</strong>美国232条款关键矿产关税政策变化；中国白银出口管制政策调整；印度进口关税进一步上调</li>
+            <li><strong>技术风险：</strong>铜电镀等替代技术2027年左右成熟落地，可能加速白银在光伏领域的替代，中长期利空</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>七、综合研判与操作建议</h2>
+
+        <h3>7.1 情景分析</h3>
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">&#127760; 基准情景（概率50%）：宽幅震荡偏弱，16500-19500区间运行</div>
+            <p>美联储维持高利率，沃什偏鹰派立场延续；供需缺口收窄至6000-7000万盎司；ETF资金温和流出；光伏减银但AI需求增长对冲部分。银价在极低库存支撑下难以深跌，但宏观压制下反弹空间有限。AG2612运行区间16,500-19,500元/千克，国际银价68-82美元/盎司。</p>
+        </div>
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">&#128200; 乐观情景（概率25%）：供需紧张驱动反弹，19000-22000区间</div>
+            <p>美联储下半年意外转鸽（通胀快速回落至3%以下）；极低库存触发挤仓行情；AI/新能源需求超预期爆发；美伊冲突升级避险买盘涌入；中国出口管制进一步收紧。AG2612反弹至19,000-22,000元/千克，国际银价重返85-95美元/盎司。</p>
+        </div>
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">&#128201; 悲观情景（概率25%）：宏观+供需双杀，14000-17000区间</div>
+            <p>美联储年末加息；美伊达成协议油价暴跌→通缩预期；光伏减银超预期+ETF资金踩踏式流出；再生银供应大幅增长；全球衰退风险升温。银价跌破17,000支撑后加速下行。AG2612下探14,000-17,000元/千克，国际银价跌至55-68美元/盎司。</p>
+        </div>
+
+        <h3>7.2 分阶段预判</h3>
+        <table class="data-table">
+            <tr><th>时间段</th><th>核心逻辑</th><th>方向判断</th><th>AG价格区间（元/千克）</th><th>国际银价（美元/盎司）</th></tr>
+            <tr><td>5月下旬-6月</td><td>沃什就任+鹰派预期+ETF流出+光伏减银</td><td>震荡偏弱</td><td>17000-19000</td><td>68-80</td></tr>
+            <tr><td>7月-8月</td><td>高利率延续+需求淡季+库存低位支撑</td><td>底部磨底</td><td>16500-18500</td><td>68-78</td></tr>
+            <tr><td>9月-11月</td><td>美联储政策转向预期+AI需求旺季+库存重建</td><td>震荡偏强</td><td>17500-20000</td><td>72-85</td></tr>
+        </table>
+
+        <h3>7.3 操作建议</h3>
+        <div class="advice-box">
+            <h2>&#128176; 具体操作建议</h2>
+            <ol>
+                <li><strong>短期（5月下旬-6月）：</strong>反弹至19,000上方可逢高短空，止损19,500上方，目标17,500-18,000；17,000以下不宜追空，极低库存+供需缺口支撑较强</li>
+                <li><strong>中期（7-8月）：</strong>若银价跌至16,500-17,000区间，可轻仓布局多单，博弈美联储政策转向预期+AI需求增长，止损16,000下方</li>
+                <li><strong>套利策略：</strong>关注做多金银比（当前59:1偏低，历史均值60-80:1），买入黄金同时卖出白银，博弈金银比修复</li>
+                <li><strong>期权策略：</strong>卖出AG2612-P-16500看跌期权收取权利金（判断16,500为强支撑），或买入AG2612-C-20000看涨期权博弈9月后反弹（7-8月布局）</li>
+                <li><strong>风险控制：</strong>白银波动率极高，单日涨跌5-10%是常态，仓位务必控制在总资金的20%以内，严格止损</li>
+                <li><strong>关键观测指标：</strong>美联储沃什政策表态；美国CPI数据；SLV白银ETF持仓变化；上期所白银库存；光伏装机量与减银技术进展</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p>&#9888; 风险提示：期货交易风险很大，本分析内容仅供参考，不构成任何投资建议。请咨询专业金融顾问后再做投资决定。</p>
+        <p>数据来源：瑞银（UBS）、汇丰（HSBC）、瑞达期货、国投期货、紫金天风期货、一德期货、世界白银协会、中国有色金属工业协会、上海黄金交易所、COMEX、LBMA、iShares Silver Trust等</p>
+        <p>分析日期：2026年5月22日 | 下次更新预计：2026年6月中旬</p>
+    </div>
+</div>
+</body>
+</html>
