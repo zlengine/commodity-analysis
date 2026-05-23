@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品期货长期收益来源——学术研究综述</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --primary-light: #34495E;
+            --accent: #E74C3C;
+            --accent-light: #FDEDEC;
+            --bg: #F5F6FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #DEE2E6;
+            --green: #2E7D32;
+            --green-light: #E8F5E9;
+            --blue: #1565C0;
+            --blue-light: #E3F2FD;
+            --orange: #E65100;
+            --orange-light: #FFF3E0;
+            --purple: #6A1B9A;
+            --purple-light: #F3E5F5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+            font-size: 18px;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 8px; }
+        header .subtitle { font-size: 16px; opacity: 0.85; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 18px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+        .back-link:hover { background: var(--primary-light); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px 28px;
+            margin-bottom: 25px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+        }
+        .section h3 {
+            color: var(--primary);
+            font-size: 19px;
+            margin: 20px 0 10px;
+        }
+        .section p { margin-bottom: 12px; }
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        .green-box {
+            background: var(--green-light);
+            border-left: 4px solid var(--green);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        .blue-box {
+            background: var(--blue-light);
+            border-left: 4px solid var(--blue);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        .orange-box {
+            background: var(--orange-light);
+            border-left: 4px solid var(--orange);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        .purple-box {
+            background: var(--purple-light);
+            border-left: 4px solid var(--purple);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 17px;
+        }
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            margin: 15px 0;
+        }
+        table.data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 14px;
+            text-align: center;
+            font-weight: bold;
+        }
+        table.data-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        table.data-table tr:nth-child(even) { background: #F8F9FA; }
+        table.data-table tr:hover { background: #E8F4FD; }
+        table.data-table td:first-child { text-align: left; font-weight: bold; }
+        .source-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 13px;
+            margin-left: 4px;
+        }
+        .tree-diagram {
+            background: #F8F9FA;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 25px;
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 15px;
+            line-height: 2.0;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .star { color: var(--accent); font-weight: bold; }
+        .num-circle {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .insight-box {
+            background: linear-gradient(135deg, #FFF9C4, #FFF8E1);
+            border: 2px solid #FFB300;
+            padding: 20px 22px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .insight-box h3 {
+            color: var(--orange);
+            margin-top: 0;
+            border-bottom: none;
+        }
+        .footnote {
+            font-size: 15px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            table.data-table { font-size: 14px; }
+            table.data-table th, table.data-table td { padding: 8px 6px; }
+            .tree-diagram { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>商品期货长期收益来源——学术研究综述</h1>
+        <div class="subtitle">基于GSCI等大宗商品指数的155年实证研究</div>
+    </header>
+
+    <div class="section">
+        <h2>一、核心论文谱系</h2>
+        <p>过去20年，学术界对大宗商品指数长期回报来源进行了系统研究，形成了以下里程碑式论文：</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>年份</th>
+                    <th>论文</th>
+                    <th>作者</th>
+                    <th>核心贡献</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2006</td>
+                    <td style="text-align:left">Facts and Fantasies about Commodity Futures</td>
+                    <td>Gorton &amp; Rouwenhorst</td>
+                    <td style="text-align:left">开创性论证商品期货具有"类股权"风险溢价</td>
+                </tr>
+                <tr>
+                    <td>2006</td>
+                    <td style="text-align:left">The Strategic and Tactical Value of Commodity Futures</td>
+                    <td>Erb &amp; Harvey</td>
+                    <td style="text-align:left">批判性拆解回报来源，提出再平衡收益</td>
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    <td style="text-align:left">The Fundamentals of Commodity Futures Returns</td>
+                    <td>Gorton, Hayashi &amp; Rouwenhorst</td>
+                    <td style="text-align:left">从仓储理论拆解：展期收益=便利收益-仓储成本-利率</td>
+                </tr>
+                <tr>
+                    <td>2015</td>
+                    <td style="text-align:left">Facts and Fantasies... Ten Years Later</td>
+                    <td>Bhardwaj, Gorton &amp; Rouwenhorst</td>
+                    <td style="text-align:left">十年后样本外验证</td>
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    <td style="text-align:left">Carry</td>
+                    <td>Koijen, Moskowitz, Pedersen &amp; Vrugt</td>
+                    <td style="text-align:left">统一carry框架，跨资产验证</td>
+                </tr>
+                <tr>
+                    <td>2026</td>
+                    <td style="text-align:left">An Index of Commodity Futures Returns Since 1871</td>
+                    <td>Janardanan, Qiao &amp; Rouwenhorst</td>
+                    <td style="text-align:left">155年最长回溯，排除幸存者偏差</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>二、学术界共识的四大回报来源</h2>
+
+        <div class="tree-diagram">
+商品期货指数总回报<br>
+├── <span class="star">1. 抵押品收益</span>（Collateral Return）<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 确定性最高，但依赖利率环境<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 历史贡献最大（Vanguard: 6.4%/年）<br>
+│<br>
+├── <span class="star">2. 展期收益 / Carry</span>（Roll Yield）<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;├── 便利收益（Convenience Yield）—— 正贡献<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;├── 仓储成本 —— 负贡献<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 利率成本 —— 负贡献<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 时变性强：Backwardation时正、Contango时负<br>
+│<br>
+├── <span class="star">3. 再平衡收益</span>（Diversification Return）<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 数学确定性（低相关性+再平衡=高抛低吸）<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── Erb &amp; Harvey认为这是"类股权回报"的真正来源<br>
+│&nbsp;&nbsp;&nbsp;&nbsp;└── 不依赖方向判断，最可靠的长期来源<br>
+│<br>
+└── <span class="star">4. 现货价格变动</span>（Spot Return）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 最不可靠，长期可能为负<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 特定时期（通胀、供给冲击）贡献巨大
+        </div>
+
+        <h3><span class="num-circle">1</span>抵押品收益（Collateral Return）</h3>
+        <p>这是<strong>最确定、最被低估</strong>的收益来源。商品期货采用保证金交易，剩余资金可投资短期国债。</p>
+
+        <div class="blue-box">
+            <strong>Vanguard 2008年对S&amp;P GSCI的拆解（1983—2008年）：</strong><br>
+            抵押品收益（短期国债利息）：<strong>+6.4%/年</strong>（占90%）<br>
+            展期收益（Roll Yield）：<strong>+3.3%/年</strong>（占46%）<br>
+            现货价格变动：<strong>-2.6%/年</strong>（拖累项）<br>
+            合计年化收益：<strong>7.1%/年</strong>
+        </div>
+
+        <p>在Gorton &amp; Rouwenhorst研究的1959—2004年期间，3个月国债利率平均5.6%，最高达16.3%。抵押品收益是<strong>历史上最大的单一回报来源</strong>。但在2008年后利率降至近零，这一来源几乎消失，这也是商品指数2006年后表现大幅下滑的核心原因之一。</p>
+
+        <h3><span class="num-circle">2</span>展期收益 / Carry（Roll Yield）</h3>
+        <p>这是<strong>最核心、争议最大</strong>的收益来源。</p>
+
+        <div class="orange-box">
+            <strong>Erb &amp; Harvey (2006) 的关键论点：</strong><br>
+            &#8226; 单个商品期货的平均超额收益<strong>接近零</strong>——不存在"天然"的商品风险溢价<br>
+            &#8226; 但组合的展期收益（期限结构特征）可以产生显著回报<br>
+            &#8226; <strong>期限结构是商品期货横截面收益差异的最强预测变量</strong>：处于Backwardation的品种历史回报远高于Contango品种
+        </div>
+
+        <div class="green-box">
+            <strong>Janardanan, Qiao &amp; Rouwenhorst (2026) 的155年拆解：</strong><br>
+            &#8226; 商品期货指数超额收益：<strong>5.5%/年</strong><br>
+            &#8226; 商品现货指数超额收益：<strong>3.2%/年</strong><br>
+            &#8226; 两者差距2.3个百分点来自展期收益<br>
+            &#8226; 但155年累积下来，<strong>展期收益整体为负</strong>（因为多数时间市场处于Contango）<br>
+            &#8226; 按仓储理论拆解：展期收益 = 便利收益 - 仓储成本 - 利率成本
+        </div>
+
+        <div class="purple-box">
+            <strong>Koijen et al. (2018) 的统一Carry框架：</strong><br>
+            &#8226; 将carry定义为"假设价格不变时的预期收益"<br>
+            &#8226; 商品carry = (现货价 - 期货价) / 期货价<br>
+            &#8226; <strong>carry是所有资产类别中回报的最强预测因子之一</strong><br>
+            &#8226; 多空carry策略在商品期货中的夏普比率约0.8
+        </div>
+
+        <h3><span class="num-circle">3</span>再平衡收益 / 分散化收益（Diversification Return）</h3>
+        <p>这是Erb &amp; Harvey (2006) <strong>最原创的贡献</strong>。</p>
+
+        <div class="highlight-box">
+            <strong>核心发现：</strong><br>
+            "单个商品期货的平均超额收益接近零，但等权重再平衡组合可以获得'类股权'回报。这个差异来自再平衡收益，而非风险溢价。"
+        </div>
+
+        <p><strong>机制解释：</strong></p>
+        <p>&#8226; 商品之间相关性很低（历史平均约0.1—0.2）</p>
+        <p>&#8226; 等权重定期再平衡 = 自动"高抛低吸"</p>
+        <p>&#8226; 几何平均 &gt; 算术平均的差额就是"分散化收益"</p>
+        <p>&#8226; 这是<strong>数学上确定</strong>的收益，不依赖任何经济理论</p>
+
+        <p>Erb的原话：</p>
+        <div class="blue-box">
+            "Cam and I never found any evidence of Gorton and Rouwenhorst's commodity risk premium. We did find that Gorton and Rouwenhorst's commodity risk premium could have been a payoff to a rebalancing return."
+        </div>
+
+        <h3><span class="num-circle">4</span>现货价格变动（Spot Return）</h3>
+        <p>所有论文均有涉及，但结论一致：</p>
+        <p>&#8226; Vanguard (2008)：1983—2008年GSCI现货回报<strong>-2.6%/年</strong>，是拖累项</p>
+        <p>&#8226; Janardanan et al. (2026)：155年现货超额收益3.2%/年，但远低于期货指数的5.5%</p>
+        <p>&#8226; <strong>现货价格本身不是可靠的长期回报来源</strong>——它高度依赖通胀环境和供需周期</p>
+        <p>&#8226; 但现货价格在特定时期（如1970s石油危机、2000s超级周期）可以贡献巨大回报</p>
+    </div>
+
+    <div class="section">
+        <h2>三、收益来源的时变特征——关键教训</h2>
+
+        <p>Gorton &amp; Rouwenhorst (2006) 研究的1959—2004年期间，商品市场<strong>持续处于Backwardation</strong>，展期收益为正，利率5.6%，两个顺风同时存在。论文发表后情况完全逆转：</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>时期</th>
+                    <th>市场结构</th>
+                    <th>利率环境</th>
+                    <th>GSCI表现</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1959—2004（研究期）</td>
+                    <td>持续Backwardation</td>
+                    <td>5.6%均值</td>
+                    <td>年化约7%</td>
+                </tr>
+                <tr>
+                    <td>2006—2020（发表后）</td>
+                    <td>持续Contango</td>
+                    <td>1.3%均值</td>
+                    <td>大幅跑输股票</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>Morningstar (2015) 的总结：</strong><br>
+            "商品期货回报的三个组成部分中，抵押品收益历史上最大，展期收益次之，现货价格实际上是拖累。但2006年后，利率归零和Contango结构同时出现，两个最大的顺风变成了逆风。"
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>四、除升贴水外的其他长期稳定收益来源</h2>
+        <p>升贴水（基差收益）之外，商品期货还存在以下长期稳定存在的收益来源：</p>
+
+        <h3>1. 展期收益（Roll Yield）</h3>
+        <p>当市场处于Backwardation结构时，做多近月合约到期前移仓到远月，每次移仓"买低卖高"，持续获利。商品期货长期处于Backwardation的品种（如原油在供需偏紧时），持有多头可以持续获得展期收益。这也是GSCI等大宗商品指数长期回报的重要来源。</p>
+
+        <h3>2. 期限结构收益（Term Structure Carry）</h3>
+        <p>比展期收益更精细的概念，不仅看近远月价差，还看整条期限结构曲线的<strong>斜率和曲率</strong>。斜率越陡峭carry空间越大；中间月份相对两端的偏离提供蝶式套利机会。</p>
+
+        <h3>3. 波动率收益（Volatility Premium）</h3>
+        <p>商品期权的隐含波动率长期高于实际波动率（波动率风险溢价），卖出期权可以持续收割这一溢价。商品期权市场长期存在3%—8%的波动率风险溢价，是机构非常重要的收益来源。</p>
+
+        <h3>4. 跨品种套利收益（Inter-Commodity Spread）</h3>
+        <p>商品之间存在长期稳定的产业链关系，偏离均值后回归是稳定的收益来源：</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>套利类型</th>
+                    <th>经典组合</th>
+                    <th>逻辑</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>上下游套利</td><td>大豆 vs 豆粕+豆油</td><td>压榨利润均值回归</td></tr>
+                <tr><td>替代品套利</td><td>玉米 vs 小麦</td><td>饲料替代价差回归</td></tr>
+                <tr><td>产业链套利</td><td>铁矿石+焦炭 vs 螺纹钢</td><td>钢厂利润均值回归</td></tr>
+                <tr><td>能源套利</td><td>原油 vs 汽油+燃料油</td><td>炼厂利润均值回归</td></tr>
+                <tr><td>贵金属套利</td><td>金 vs 银</td><td>金银比均值回归</td></tr>
+            </tbody>
+        </table>
+
+        <h3>5. 跨期套利收益（Calendar Spread）</h3>
+        <p>同一品种不同月份之间的套利，包括季节性价差（农产品播种期vs收获期）、交割驱动（临近交割月期货向现货收敛）、库存成本定价偏离后回归。</p>
+
+        <h3>6. 季节性收益（Seasonality）</h3>
+        <p>商品价格存在长期稳定的季节性规律：农产品播种期天气炒作偏强、收获期供给压力；能源夏季用油高峰、冬季取暖需求；贵金属印度婚庆季需求推升。季节性不是100%确定，但统计上长期有效。</p>
+
+        <h3>7. 通胀对冲收益（Inflation Hedge Premium）</h3>
+        <p>商品是实物资产，天然具有通胀对冲属性。当通胀超预期时商品价格往往上涨，长期持有商品多头相当于收取"通胀保险费"。</p>
+
+        <h3>8. 便利收益（Convenience Yield）</h3>
+        <p>持有实物商品（而非期货）的便利性价值。当供给紧张时，持有实物可以确保生产不间断，这种"安全感"有经济价值。便利收益越高，近月升水越明显，多头展期收益越大。</p>
+
+        <h3>9. 再平衡收益 / 分散化收益（Diversification Return）</h3>
+        <p>如前文Erb &amp; Harvey所述，等权重再平衡组合在低相关性资产上自动实现"高抛低吸"，产生数学上确定的额外收益。这是不依赖方向判断的最可靠长期来源。</p>
+
+        <h3>收益来源稳定性排序</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>收益来源</th>
+                    <th>稳定性</th>
+                    <th>可预测性</th>
+                    <th>容量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>展期收益（Backwardation）</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>大</td></tr>
+                <tr><td>2</td><td>波动率溢价</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>中</td></tr>
+                <tr><td>3</td><td>跨品种套利（产业链）</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>中</td></tr>
+                <tr><td>4</td><td>季节性规律</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;</td><td>大</td></tr>
+                <tr><td>5</td><td>再平衡收益</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>大</td></tr>
+                <tr><td>6</td><td>期限结构Carry</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>中</td></tr>
+                <tr><td>7</td><td>跨期套利</td><td>&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;</td><td>中</td></tr>
+                <tr><td>8</td><td>便利收益</td><td>&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;&#9733;</td><td>小</td></tr>
+                <tr><td>9</td><td>通胀对冲</td><td>&#9733;&#9733;&#9733;</td><td>&#9733;&#9733;</td><td>大</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>五、最新论文修正——Janardanan et al. (2026)</h2>
+
+        <p>这篇2026年1月发表的155年研究做出了重要修正：</p>
+
+        <h3>1. 排除幸存者偏差</h3>
+        <p>纳入230个合约，其中180+个已退市。退市的往往是表现差的品种。即使排除偏差，155年期货指数年化收益仍达<strong>8.9%</strong>。</p>
+
+        <h3>2. 展期收益的精细拆解</h3>
+        <p>&#8226; 155年整体看，展期收益是<strong>负的</strong>（Contango损耗累积）</p>
+        <p>&#8226; 但展期收益可以进一步拆解为：</p>
+        <p>&nbsp;&nbsp;&nbsp;- <strong>便利收益</strong>（正贡献）：供给紧张时持有实物的价值</p>
+        <p>&nbsp;&nbsp;&nbsp;- <strong>仓储成本</strong>（负贡献）：物理存储费用</p>
+        <p>&nbsp;&nbsp;&nbsp;- <strong>利率成本</strong>（负贡献）：资金占用机会成本</p>
+        <p>&#8226; 便利收益是展期收益中<strong>唯一正面的经济力量</strong></p>
+
+        <h3>3. 回报不均匀分配</h3>
+        <p>&#8226; 不同商品、不同时期的回报差异极大</p>
+        <p>&#8226; 少数品种（原油、铜）贡献了大部分回报</p>
+        <p>&#8226; 农产品长期回报接近零</p>
+    </div>
+
+    <div class="insight-box">
+        <h3>&#9733; 核心启示</h3>
+        <p><strong>不要指望现货价格上涨赚钱。</strong>Erb &amp; Harvey的论文最深刻的洞见是——商品期货的长期回报主要不是来自"商品涨价"，而是来自<strong>组合结构和期限结构</strong>。</p>
+        <p>基于学术研究，最稳定的长期收益来源排序：</p>
+        <p><span class="num-circle">1</span><strong>再平衡收益</strong>——数学确定性，只要商品间低相关性就存在，与方向无关</p>
+        <p><span class="num-circle">2</span><strong>Carry/展期收益</strong>——选择Backwardation品种做多，规避Contango品种</p>
+        <p><span class="num-circle">3</span><strong>抵押品收益</strong>——当前利率环境下约2—3%/年</p>
+        <p><span class="num-circle">4</span><strong>卖出波动率溢价</strong>——虽非上述论文重点，但与carry逻辑一致</p>
+        <p><span class="num-circle">5</span><strong>现货方向</strong>——最不可靠，但底部反转分析体系正是试图捕捉这一来源</p>
+        <p style="margin-top:12px;">这也是为什么"卖权策略"（收割波动率溢价）和"选择Backwardation品种"（收割展期收益）比纯方向性多头更稳健。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、155年实证数据摘要</h2>
+        <p>Janardanan, Qiao &amp; Rouwenhorst (2026) 的核心数据：</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>商品期货指数</th>
+                    <th>美股</th>
+                    <th>商品现货指数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>年化超额收益</td><td><strong>5.5%</strong></td><td>6.6%</td><td>3.2%</td></tr>
+                <tr><td>年化波动率</td><td>14.3%</td><td>16.2%</td><td>14.3%</td></tr>
+                <tr><td>夏普比率</td><td><strong>0.38</strong></td><td>0.41</td><td>0.22</td></tr>
+                <tr><td>无风险利率均值</td><td colspan="3">3.5%/年（155年平均）</td></tr>
+                <tr><td>期货vs现货超额收益差</td><td colspan="3">2.3%/年（来自展期收益）</td></tr>
+                <tr><td>期货总年化收益</td><td colspan="3"><strong>8.9%/年</strong>（超额5.5% + 无风险3.5%）</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:15px; color:var(--text-light); margin-top:10px;">数据来源：Janardanan, Qiao, Rouwenhorst (2026)，1871—2025全样本，等权重商品期货指数</p>
+    </div>
+
+    <div class="footnote">
+        <p>&#9888; 本文为学术研究综述，内容仅供参考，不构成任何投资建议。期货交易风险很大，请咨询专业金融顾问后再做投资决定。</p>
+        <p>主要参考论文：Gorton &amp; Rouwenhorst (2006), Erb &amp; Harvey (2006), Gorton, Hayashi &amp; Rouwenhorst (2013), Bhardwaj, Gorton &amp; Rouwenhorst (2015), Koijen et al. (2018), Janardanan, Qiao &amp; Rouwenhorst (2026)</p>
+        <p>辅助参考：Vanguard (2008) S&amp;P GSCI收益拆解, Morningstar (2015) Rethinking Commodities</p>
+    </div>
+</div>
+</body>
+</html>
