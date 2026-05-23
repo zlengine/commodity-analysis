@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C玉米基本面分析 - 2026年5月22日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #E65100, #FF8F00);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 8px 0;
+        }
+        .section p { margin-bottom: 10px; text-align: justify; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th, .data-table td {
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+        .data-table tr:nth-child(even) { background: #F5F5F5; }
+        .highlight-red { color: var(--red); font-weight: bold; }
+        .highlight-green { color: var(--green); font-weight: bold; }
+        .highlight-blue { color: var(--blue); font-weight: bold; }
+        .highlight-orange { color: var(--orange); font-weight: bold; }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .tag-bull { background: var(--green-bg); color: var(--green); }
+        .tag-bear { background: var(--red-bg); color: var(--red); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .risk-box {
+            background: var(--red-bg);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 10px;
+        }
+        .risk-box h3 { color: var(--red); }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-top: 15px;
+        }
+        .advice-box h2 { color: var(--green); border-bottom-color: var(--green); }
+        ul { margin: 8px 0 8px 20px; }
+        li { margin-bottom: 5px; }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+        <header>
+            <h1>C 玉米 基本面分析</h1>
+            <div class="subtitle">分析日期：2026年5月22日 | 大商所 | 2个月至半年展望</div>
+        </header>
+
+        <div class="summary-box">
+            <h2>&#9733; 核心结论（先看这里）</h2>
+            <table class="summary-table">
+                <tr><td>中期方向</td><td><strong>底部区间震荡，重心缓慢上移</strong></td></tr>
+                <tr><td>信心水平</td><td><strong>中等（"跌不动"与"涨不动"双向制约，中期偏多因素逐步积累）</strong></td></tr>
+                <tr><td>玉米现货区间</td><td><strong>2280—2420元/吨（2个月内），下半年2350—2500元/吨</strong></td></tr>
+                <tr><td>C主力合约区间</td><td><strong>2300—2400元/吨（2个月内），下半年2350—2500元/吨</strong></td></tr>
+                <tr><td>核心建议</td><td><strong>2300—2330逢低布局多单，2400以上注意止盈；关注C2609合约逢低做多机会；卖权策略可考虑2300看跌期权</strong></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>一、市场概况</h2>
+            <table class="data-table">
+                <tr><th>指标</th><th>数据</th><th>说明</th></tr>
+                <tr><td>C2607收盘价</td><td><strong>2331元/吨</strong></td><td>5月22日收盘，跌0.17%</td></tr>
+                <tr><td>C2609收盘价</td><td><strong>2350元/吨</strong></td><td>远月合约，升水近月约19元</td></tr>
+                <tr><td>全国现货均价</td><td><strong>约2371元/吨</strong></td><td>期货贴水现货约40元/吨</td></tr>
+                <tr><td>锦州港收购价</td><td>2330—2355元/吨</td><td>北港偏弱承压</td></tr>
+                <tr><td>蛇口港成交价</td><td>2380—2400元/吨</td><td>南港刚需补库，窄幅偏强</td></tr>
+                <tr><td>山东深加工到厂价</td><td>2360—2420元/吨</td><td>到货一般，企业挺价</td></tr>
+                <tr><td>CBOT玉米主力</td><td>463.75美分/蒲式耳</td><td>5月22日涨0.32%</td></tr>
+                <tr><td>持仓量</td><td>约118.58万手</td><td>资金流出2387万元</td></tr>
+                <tr><td>5月累计跌幅</td><td>约100元/吨</td><td>自月初高点持续回落</td></tr>
+            </table>
+            <p>5月以来玉米市场持续承压，主力合约自月初高点回落约100元/吨，呈现"增仓下跌"形态。当前市场处于"基层余粮见底惜售"与"政策替代压制需求"的双向博弈格局，2300—2330元/吨区域成为反复测试的关键支撑区间。</p>
+        </div>
+
+        <div class="section">
+            <h2>二、供需基本面分析</h2>
+
+            <h3>2.1 供应端：基层余粮见底，贸易商持粮待售</h3>
+            <table class="data-table">
+                <tr><th>供应指标</th><th>数据/状态</th><th>影响</th></tr>
+                <tr><td>东北基层余粮</td><td><span class="highlight-red">不足1成</span></td><td>卖压枯竭，底部支撑</td></tr>
+                <tr><td>东北售粮进度</td><td>约95%（4月中旬）</td><td>粮源转移至贸易商</td></tr>
+                <tr><td>华北售粮进度</td><td>约92%</td><td>腾库压力逐步释放</td></tr>
+                <tr><td>贸易商建库成本</td><td>2330—2360元/吨</td><td>低价惜售情绪强烈</td></tr>
+                <tr><td>1-3月玉米进口</td><td>77万吨（同比+198.3%）</td><td>进口谷物分流压力</td></tr>
+                <tr><td>3月单月进口</td><td>22.47万吨（同比+177.4%）</td><td>巴西、俄罗斯为主</td></tr>
+            </table>
+            <p><strong>核心逻辑：</strong>东北主产区基层余粮已降至不足一成，持粮主体全面转向贸易商。贸易商前期建库成本在2330—2360元/吨区间，资金仓储成本叠加，低价出粮意味着亏损，构成现货价格的第一道防线。当前正值春播窗口期，种植户忙于春耕无暇售粮，市场流通粮源阶段性收紧。</p>
+            <p><strong>华北腾库压力：</strong>新麦上市临近，华北贸易商前期为腾库出货增加供应，但随着腾库压力逐步释放，加上近期华北多阴雨天气影响购销，市场供应短期有所减弱。</p>
+
+            <h3>2.2 需求端：养殖与深加工双弱，饲用替代持续分流</h3>
+            <table class="data-table">
+                <tr><th>需求指标</th><th>数据/状态</th><th>影响</th></tr>
+                <tr><td>生猪均价</td><td>9.65元/公斤</td><td>深度亏损，饲料需求疲软</td></tr>
+                <tr><td>自繁自养亏损</td><td><span class="highlight-red">超300元/头</span></td><td>连续亏损超40周</td></tr>
+                <tr><td>能繁母猪存栏</td><td>3904万头（3月末）</td><td>连续9个月下降，仍超目标</td></tr>
+                <tr><td>新调控目标</td><td>3750万头</td><td>仍有154万头去化空间</td></tr>
+                <tr><td>淀粉加工利润（山东）</td><td><span class="highlight-red">-144元/吨</span></td><td>全面亏损</td></tr>
+                <tr><td>淀粉加工利润（吉林）</td><td><span class="highlight-red">-730元/吨</span></td><td>深度亏损</td></tr>
+                <tr><td>淀粉企业开机率</td><td>58.87%（环比-6.25pct）</td><td>大幅下降</td></tr>
+                <tr><td>酒精企业开机率</td><td>62.17%（环比-0.59pct）</td><td>小幅下降</td></tr>
+                <tr><td>深加工玉米消费量</td><td>137.36万吨/周（环比-4.66）</td><td>持续萎缩</td></tr>
+                <tr><td>饲料企业玉米库存天数</td><td>28.24天</td><td>合理水平，批量补库意愿有限</td></tr>
+                <tr><td>小麦替代比例</td><td>10%—20%（华北猪料）</td><td>新麦上市替代将进一步扩大</td></tr>
+            </table>
+            <p><strong>饲料需求：</strong>生猪养殖行业持续深度亏损，能繁母猪产能仍在去化过程中。5月14日农业农村部发布新版调控方案，将正常保有量下调至3750万头，但当前3904万头仍超目标154万头，产能去化需时间传导。饲料企业普遍采取"随用随采、低库存运转"策略，缺乏大规模主动补库意愿。</p>
+            <p><strong>深加工需求：</strong>玉米淀粉加工行业全面亏损，山东-144元/吨、河北-50元/吨、吉林深亏至-730元/吨。行业亏损导致开机率持续下降，部分企业阶段性停产检修，工业消费支撑不足。</p>
+            <p><strong>替代品分流：</strong>新麦即将集中上市，河南、湖北新麦开秤价2380—2450元/吨，小麦全国均价2550.83元/吨，麦玉价差约113元/吨，替代性价比优势依然存在。饲料企业已普遍采用"小麦+大麦+糙米"替代玉米配方，部分企业玉米添加比例已降至40%以下。</p>
+
+            <h3>2.3 库存：港口分化，下游偏低</h3>
+            <table class="data-table">
+                <tr><th>库存指标</th><th>数据</th><th>趋势</th></tr>
+                <tr><td>北方港口库存</td><td>约390万吨</td><td>持续累积，贸易发运不畅</td></tr>
+                <tr><td>南方港口库存</td><td>约50.6万吨</td><td>去库格局，刚需补库</td></tr>
+                <tr><td>深加工企业玉米库存</td><td>约450万吨</td><td>偏低，环比下降11.9万吨</td></tr>
+                <tr><td>淀粉企业库存</td><td>137.4万吨</td><td>小幅去化，同比-3.31%</td></tr>
+                <tr><td>南北港口价差</td><td>100—130元/吨</td><td>扣除运费后贸易利润极有限</td></tr>
+            </table>
+            <p>库存呈现"港口垒库+下游低库存"的结构性分化。贸易环节货源充裕但发运不畅，下游终端以刚需补库为主。这一结构意味着一旦需求端出现边际改善，向下游传导速度可能较快，但弱需求环境下低库存也难以上升为主动补库动力。</p>
+        </div>
+
+        <div class="section">
+            <h2>三、成本与利润分析</h2>
+            <h3>3.1 新季种植成本大幅攀升</h3>
+            <table class="data-table">
+                <tr><th>成本项</th><th>2025年亩均</th><th>2026年亩均</th><th>同比涨幅</th></tr>
+                <tr><td>地租</td><td>500—1000元</td><td>600—1200元</td><td>+10%—20%</td></tr>
+                <tr><td>化肥</td><td>180—200元</td><td>210—250元</td><td>+15%—25%</td></tr>
+                <tr><td>种子</td><td>60—70元</td><td>65—75元</td><td>+5%—10%</td></tr>
+                <tr><td>农药</td><td>40—50元</td><td>45—60元</td><td>+10%—20%</td></tr>
+                <tr><td>人工/机械</td><td>150—200元</td><td>170—220元</td><td>+10%—15%</td></tr>
+            </table>
+            <p><strong>关键数据：</strong></p>
+            <ul>
+                <li>东北地租同比上涨60—350元/亩，平均涨幅约200元/亩</li>
+                <li>黑龙江地租同比涨120—170元/亩；吉林涨100—200元/亩</li>
+                <li>东北租地种植总成本1630—2070元/亩，潮粮成本接近1元/斤</li>
+                <li>新季集港成本预估在<span class="highlight-orange">2300—2350元/吨</span>左右</li>
+                <li>地租占种植总成本30%—50%，是最大的刚性支出</li>
+            </ul>
+            <p><strong>核心判断：</strong>新季种植成本大幅抬升，为远月合约估值中枢提供强力支撑。若后期玉米价格低于2300元/吨，租地种植户将面临亏损，这构成了玉米价格的中长期底部锚定。</p>
+
+            <h3>3.2 深加工利润全面亏损</h3>
+            <table class="data-table">
+                <tr><th>区域</th><th>淀粉加工利润</th><th>状态</th><th>开机率变化</th></tr>
+                <tr><td>山东</td><td><span class="highlight-red">-144元/吨</span></td><td>亏损扩大</td><td>环比大幅下降</td></tr>
+                <tr><td>河北</td><td><span class="highlight-red">-50元/吨</span></td><td>亏损</td><td>小幅下降</td></tr>
+                <tr><td>吉林</td><td><span class="highlight-red">-730元/吨</span></td><td>深度亏损</td><td>持续下降</td></tr>
+            </table>
+            <p>深加工行业全面亏损导致开机率持续回落，淀粉企业开工率58.87%（环比-6.25pct），酒精企业62.17%（环比-0.59pct）。部分企业阶段性停产检修，工业消费支撑不足。但亏损也意味着深加工企业存在挺价意愿，6月后淀粉反弹概率较大。</p>
+        </div>
+
+        <div class="section">
+            <h2>四、政策与宏观环境</h2>
+            <h3>4.1 定向稻谷拍卖</h3>
+            <table class="data-table">
+                <tr><th>项目</th><th>内容</th></tr>
+                <tr><td>传闻投放量</td><td>初期传闻1690万吨，近期缩减至约800万吨</td></tr>
+                <tr><td>拍卖底价</td><td>1490元/吨</td></tr>
+                <tr><td>投放节奏</td><td>周度约50万吨，持续约4个月</td></tr>
+                <tr><td>集港成本测算</td><td>约2300—2307元/吨（含加工、出库、运输等）</td></tr>
+                <tr><td>当前状态</td><td><span class="highlight-orange">尚未正式落地，5月下旬可能启动</span></td></tr>
+            </table>
+            <p><strong>影响评估：</strong>定向稻谷拍卖是当前市场最大的政策不确定性。按周度50万吨计算，截止年度末期总计投放约1000万吨糙米，折合替代约850万吨玉米，利空实质影响有限。且拍卖底价1490元/吨折算集港成本约2300元/吨，反而为玉米价格提供了底部锚定。若投放规模低于预期，则利空出尽可能引发反弹。</p>
+
+            <h3>4.2 生猪产能调控新政</h3>
+            <p>5月14日农业农村部发布《生猪产能综合调控实施方案（2026年修订）》，核心调整：</p>
+            <ul>
+                <li>能繁母猪正常保有量从3900万头下调至<span class="highlight-orange">3750万头</span></li>
+                <li>收紧"绿黄红"三色预警区间：绿色上限从105%收紧至103%</li>
+                <li>仔猪首次纳入调控框架，大型养殖企业纳入重点监测</li>
+                <li>当前3904万头仍超目标154万头，产能去化需时间传导</li>
+            </ul>
+            <p><strong>对玉米影响：</strong>产能去化将逐步减少饲用需求，但传导时滞约10—12个月，短期对玉米需求影响有限。中长期看，产能去化完成后猪价回升将带动饲料需求恢复，利好玉米消费。</p>
+
+            <h3>4.3 中美贸易与进口政策</h3>
+            <p>中美双方已同意通过降低关税扩大农产品贸易，中国承诺2026—2028年每年从美国采购至少170亿美元农产品。进口端潜在压力增加，但玉米进口受配额管理（TRQ），预计2026/27年度进口量约600—800万吨，大幅增加可能性有限。</p>
+
+            <h3>4.4 农业农村部5月供需报告</h3>
+            <table class="data-table">
+                <tr><th>项目</th><th>2025/26年度估计</th><th>2026/27年度预测</th></tr>
+                <tr><td>种植面积</td><td>—</td><td>45133千公顷（+0.4%）</td></tr>
+                <tr><td>产量</td><td>—</td><td>3.06亿吨（+1.6%）</td></tr>
+                <tr><td>饲用消费</td><td>2.109亿吨（上调1740万吨）</td><td>稳中有降</td></tr>
+                <tr><td>工业消费</td><td>8100万吨（下调350万吨）</td><td>稳中略增</td></tr>
+                <tr><td>总消费</td><td>—</td><td>3.12亿吨（基本持平）</td></tr>
+                <tr><td>进口量</td><td>—</td><td>保持在配额之内</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>五、国际市场与全球供需</h2>
+            <h3>5.1 USDA 5月供需报告</h3>
+            <table class="data-table">
+                <tr><th>项目</th><th>2025/26年度</th><th>2026/27年度预测</th><th>变化</th></tr>
+                <tr><td>全球玉米产量</td><td>13.12亿吨</td><td>12.95亿吨</td><td>-0.44%</td></tr>
+                <tr><td>全球期末库存</td><td>2.96亿吨</td><td>—</td><td>—</td></tr>
+                <tr><td>全球库消比</td><td>—</td><td>21.11%</td><td>-1.52pct</td></tr>
+                <tr><td>巴西产量</td><td>1.35亿吨</td><td>1.32亿吨</td><td>-2.3%</td></tr>
+                <tr><td>阿根廷产量</td><td>5900万吨</td><td>5200万吨</td><td>-11.9%</td></tr>
+                <tr><td>中国产量</td><td>3.01亿吨</td><td>3.07亿吨</td><td>+1.91%</td></tr>
+                <tr><td>中国进口</td><td>—</td><td>600万吨</td><td>-25%</td></tr>
+                <tr><td>中国库消比</td><td>—</td><td>51.12%</td><td>-5pct</td></tr>
+            </table>
+            <p><strong>核心判断：</strong>全球玉米供需格局趋向收紧，2026/27年度库消比降至21.11%，较上年度下滑1.5个百分点。全球收获面积同比减少78万公顷，产量对单产依赖度上升。对国内远期进口成本形成上推压力。</p>
+
+            <h3>5.2 厄尔尼诺气候风险</h3>
+            <table class="data-table">
+                <tr><th>气候因素</th><th>内容</th></tr>
+                <tr><td>厄尔尼诺形成概率</td><td><span class="highlight-orange">82%（5—7月）</span></td></tr>
+                <tr><td>持续时间</td><td>很可能持续至年底</td></tr>
+                <tr><td>全球单产下降概率</td><td>超过50%</td></tr>
+                <tr><td>最大单产降幅</td><td>3.02%（2015/16超强厄尔尼诺）</td></tr>
+                <tr><td>中国影响</td><td>华北、黄淮可能干旱；长江中下游多雨</td></tr>
+            </table>
+            <p>厄尔尼诺是中长期最重要的潜在利多变量。历史数据显示，厄尔尼诺年份全球玉米单产同比下降概率超50%，而中国具备一定抗风险能力。若厄尔尼诺强度超预期，将引发天气炒作，推升远月合约价格。</p>
+        </div>
+
+        <div class="section">
+            <h2>六、技术面参考</h2>
+            <table class="data-table">
+                <tr><th>技术指标</th><th>数据/状态</th><th>判断</th></tr>
+                <tr><td>主力合约趋势</td><td>5月初高点回落约100元/吨</td><td>短期偏空</td></tr>
+                <tr><td>均线系统</td><td>空头排列</td><td>缺乏向上驱动</td></tr>
+                <tr><td>关键支撑位</td><td><span class="highlight-green">2300—2330元/吨</span></td><td>反复测试，支撑有效</td></tr>
+                <tr><td>上方压力位</td><td>2380—2400元/吨</td><td>短期突破难度大</td></tr>
+                <tr><td>期现结构</td><td>Contango（05贴水09，09升水01）</td><td>远月升水，市场看涨远期</td></tr>
+                <tr><td>基差</td><td>期货贴水现货约40元/吨</td><td>现货支撑较强</td></tr>
+                <tr><td>20日历史波动率</td><td>8.62%</td><td>波动率偏低</td></tr>
+                <tr><td>看涨期权隐含波动率</td><td>9.35%</td><td>—</td></tr>
+                <tr><td>看跌期权隐含波动率</td><td>9.34%</td><td>—</td></tr>
+                <tr><td>CS-C价差</td><td>335元/吨</td><td>历史偏低，有走扩可能</td></tr>
+            </table>
+            <p>技术面短期偏空，但2300—2330区域支撑经过反复测试有效。Contango结构显示市场对远期偏乐观。基差贴水幅度有限，现货成本支撑较强。波动率处于低位，一旦出现天气炒作等催化剂，波动率放大将带来趋势性行情。</p>
+        </div>
+
+        <div class="section">
+            <h2>七、机构观点汇总</h2>
+            <table class="data-table">
+                <tr><th>机构</th><th>观点</th><th>核心逻辑</th></tr>
+                <tr><td>广发期货</td><td><span class="tag tag-neutral">震荡</span></td><td>单边驱动不足，关注2330—2350支撑；中长期逢低做多</td></tr>
+                <tr><td>安粮期货</td><td><span class="tag tag-bear">短期谨慎</span> <span class="tag tag-bull">中期偏多</span></td><td>短期谨防冲高回落，中期配置价值犹存</td></tr>
+                <tr><td>中粮期货</td><td><span class="tag tag-bull">偏多</span></td><td>锚定切换至替代品定价，2330—2350支撑，中期偏多</td></tr>
+                <tr><td>国贸期货</td><td><span class="tag tag-bull">震荡偏强</span></td><td>底部抬升，关注新季种植，4—5月逢低做多</td></tr>
+                <tr><td>东吴期货</td><td><span class="tag tag-neutral">窄幅震荡</span></td><td>补库情绪谨慎，新麦替代+稻谷拍卖压制</td></tr>
+                <tr><td>正信期货</td><td><span class="tag tag-neutral">短期震荡</span></td><td>中长期上行压力大，关注天气风险</td></tr>
+                <tr><td>南华期货</td><td><span class="tag tag-bear">偏空</span></td><td>易跌难涨，需求偏弱，观望情绪浓厚</td></tr>
+                <tr><td>中信建投</td><td><span class="tag tag-bear">中性偏空</span></td><td>新麦替代传导，饲用替代逐步铺开</td></tr>
+                <tr><td>银河期货</td><td><span class="tag tag-bull">价差走扩</span></td><td>6月后淀粉反弹概率大，CS-C价差有扩大可能</td></tr>
+                <tr><td>格林大华</td><td><span class="tag tag-neutral">区间震荡</span></td><td>种植成本抬升，关注阶段低多机会</td></tr>
+                <tr><td>东海期货</td><td><span class="tag tag-neutral">区间震荡</span></td><td>贸易成本支撑，不宜过分悲观</td></tr>
+            </table>
+            <p><strong>机构共识：</strong>短期底部区间震荡为主（2300—2400），中长期偏多因素逐步积累（种植成本抬升+全球供需趋紧+厄尔尼诺风险），关注逢低做多机会。</p>
+        </div>
+
+        <div class="section">
+            <h2>八、风险提示</h2>
+            <div class="risk-box">
+                <h3>&#9888; 主要风险因素</h3>
+                <ul>
+                    <li><strong>定向稻谷拍卖超预期：</strong>若投放规模超过800万吨或底价低于1490元/吨，将对玉米价格形成额外压制</li>
+                    <li><strong>新麦丰产替代冲击：</strong>若新麦大量上市且价格持续低于玉米，饲用替代比例可能超预期扩大</li>
+                    <li><strong>生猪产能去化加速：</strong>若猪价持续低迷导致产能快速去化，饲用需求可能超预期萎缩</li>
+                    <li><strong>进口谷物大量到港：</strong>中美贸易协议下进口量可能超预期，高粱、大麦等替代品到港增加</li>
+                    <li><strong>厄尔尼诺不及预期：</strong>若气候影响温和，天气炒作落空将压制远月升水</li>
+                    <li><strong>宏观经济下行：</strong>经济放缓可能压缩深加工和饲料需求</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="advice-box">
+            <h2>九、综合研判与操作建议</h2>
+
+            <h3>9.1 情景分析</h3>
+            <table class="data-table">
+                <tr><th>情景</th><th>概率</th><th>价格区间</th><th>触发条件</th></tr>
+                <tr><td><span class="tag tag-bull">乐观</span></td><td>30%</td><td>2450—2550元/吨</td><td>厄尔尼诺强度超预期+稻谷拍卖落空+猪价回升</td></tr>
+                <tr><td><span class="tag tag-neutral">基准</span></td><td>50%</td><td>2300—2450元/吨</td><td>稻谷拍卖温和落地+新麦替代有限+天气正常</td></tr>
+                <tr><td><span class="tag tag-bear">悲观</span></td><td>20%</td><td>2200—2350元/吨</td><td>稻谷拍卖超量+新麦大幅替代+需求持续萎缩</td></tr>
+            </table>
+
+            <h3>9.2 分阶段展望</h3>
+            <p><strong>2个月内（5月下旬—7月）：</strong>底部区间震荡为主</p>
+            <ul>
+                <li>利空：定向稻谷拍卖落地、新麦集中上市替代、深加工亏损持续</li>
+                <li>利多：基层余粮枯竭、贸易商成本支撑、春播窗口期供应收紧</li>
+                <li>预计C主力合约运行区间：<span class="highlight-blue">2300—2400元/吨</span></li>
+            </ul>
+            <p><strong>3—6个月（8月—11月）：</strong>重心缓慢上移</p>
+            <ul>
+                <li>利空：新季玉米上市压力、生猪产能去化传导</li>
+                <li>利多：新季种植成本大幅抬升（集港成本2300—2350）、全球供需趋紧、厄尔尼诺天气炒作、进口谷物到港缩量、猪价可能触底回升</li>
+                <li>预计C主力合约运行区间：<span class="highlight-green">2350—2500元/吨</span></li>
+            </ul>
+
+            <h3>9.3 操作建议</h3>
+            <table class="data-table">
+                <tr><th>策略类型</th><th>具体建议</th><th>风险控制</th></tr>
+                <tr><td>单边多头</td><td>C2609合约2300—2330逢低布局多单</td><td>止损2280，目标2400—2450</td></tr>
+                <tr><td>远月多单</td><td>C2601合约逢低建仓，博弈新季成本支撑</td><td>止损2300，目标2450—2500</td></tr>
+                <tr><td>卖权策略</td><td>卖出C2609-P-2300看跌期权</td><td>收取权利金，下方安全边际充足</td></tr>
+                <tr><td>价差策略</td><td>逢低做扩CS-C价差（买淀粉卖玉米）</td><td>6月后淀粉反弹概率大</td></tr>
+                <tr><td>月间套利</td><td>关注9-1正套（买09卖01）</td><td>Contango结构下远月升水</td></tr>
+            </table>
+
+            <h3>9.4 关键时间节点</h3>
+            <ul>
+                <li><strong>5月下旬—6月初：</strong>定向稻谷拍卖正式公告及落地节奏</li>
+                <li><strong>6月：</strong>新麦集中上市量价表现，决定替代比例</li>
+                <li><strong>6—8月：</strong>厄尔尼诺发展态势，美国/中国玉米主产区天气</li>
+                <li><strong>9—10月：</strong>新季玉米开秤价（预计同比上涨，种植成本支撑）</li>
+                <li><strong>Q4：</strong>生猪产能去化传导至出栏量下降，猪价可能触底回升</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>免责声明：本分析仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。</p>
+            <p>分析日期：2026年5月22日 | 数据来源：USDA、农业农村部、钢联、卓创、各期货公司研报</p>
+        </footer>
+    </div>
+</body>
+</html>
