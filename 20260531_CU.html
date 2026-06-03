@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU沪铜基本面分析 - 2026年5月31日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+            --orange-bg: #FFF3E0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #BF360C, #D84315);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 6px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 8px;
+        }
+        .section p, .section li {
+            font-size: 17px;
+            line-height: 1.9;
+        }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 5px; }
+        .highlight-red { color: var(--red); font-weight: bold; }
+        .highlight-green { color: var(--green); font-weight: bold; }
+        .highlight-blue { color: var(--blue); font-weight: bold; }
+        .highlight-orange { color: var(--orange); font-weight: bold; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .data-table tr:nth-child(even) { background: #F5F5F5; }
+        .elder-summary {
+            background: var(--green-bg);
+            border-left: 5px solid var(--green);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        .elder-summary .elder-title {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 3px;
+        }
+        .tag-red { background: var(--red-bg); color: var(--red); }
+        .tag-green { background: var(--green-bg); color: var(--green); }
+        .tag-blue { background: var(--blue-bg); color: var(--blue); }
+        .tag-orange { background: var(--orange-bg); color: var(--orange); }
+        .risk-box {
+            background: var(--red-bg);
+            border: 1px solid #EF9A9A;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 10px;
+        }
+        .risk-box h3 { color: var(--red); }
+        .advice-box {
+            background: var(--blue-bg);
+            border: 2px solid var(--blue);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-top: 15px;
+        }
+        .advice-box h2 { color: var(--blue); border-bottom-color: var(--blue); }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <a href="index.html" class="back-link">&lt;&lt; 返回主页</a>
+
+    <header>
+        <h1>CU 沪铜 基本面分析</h1>
+        <div class="subtitle">分析日期：2026年5月31日 | 上期所 | 铜期货</div>
+    </header>
+
+    <!-- 核心结论 -->
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>结构性短缺支撑，高位震荡偏强</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中等偏高（矿端紧缺确定性强，但宏观扰动和淡季需求压制上行节奏）</strong></td></tr>
+            <tr><td>CU主力合约区间</td><td><strong>2个月内：98000—108000元/吨；下半年：95000—110000元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>回调逢低做多为主，关注98000-100000元/吨支撑区；跨市正套（买沪铜卖伦铜）可继续持有；期权可考虑卖出虚值看跌期权收取权利金</strong></td></tr>
+        </table>
+    </div>
+
+    <!-- 供需基本面分析 -->
+    <div class="section">
+        <h2>一、供需基本面分析</h2>
+
+        <h3>1. 供应端：矿端紧缺史无前例，冶炼端亏损减产</h3>
+        <p><span class="highlight-red">铜精矿加工费（TC）跌至历史极端低位</span>，是当前铜市最核心的供应矛盾：</p>
+        <ul>
+            <li>2026年Antofagasta与中国冶炼厂年中谈判敲定粗炼费TC为<span class="highlight-red">0美元/干吨</span>，虽高于预期但绝对值再创新低</li>
+            <li>现货散单TC报<span class="highlight-red">-44.81美元/吨</span>（负值意味着冶炼厂倒贴钱买矿），部分招标成交低至-90至-120美元/吨</li>
+            <li>全球两大铜矿持续减产：印尼Grasberg矿（2025年9月泥石流事故）和刚果金Kamoa-Kakula矿（2025年地震），<span class="highlight-red">复产时间推迟至2028年初</span></li>
+            <li>智利3月铜产量同比下滑9.04%，全球最大产铜国供应持续偏低</li>
+            <li>嘉能可Mount Isa铜冶炼厂因极端市场环境被迫暂停生产</li>
+        </ul>
+        <p><strong>精炼铜产量</strong>：2026年1-5月国内精炼铜产量维持高位（月均约110万吨），但5月起冶炼厂检修增加，6月排产环比降0.72万吨。CSPT小组宣布2026年成员企业降低矿铜产能负荷10%以上。</p>
+
+        <table class="data-table">
+            <tr><th>指标</th><th>当前值</th><th>趋势</th></tr>
+            <tr><td>铜精矿现货TC</td><td>-44.81美元/吨</td><td><span class="tag tag-red">历史极低</span></td></tr>
+            <tr><td>2026年长单TC</td><td>0美元/吨</td><td><span class="tag tag-red">首次归零</span></td></tr>
+            <tr><td>5月国内电解铜产量</td><td>约111.6万吨</td><td>同比+13.6%</td></tr>
+            <tr><td>1-5月累计产量</td><td>约605万吨</td><td>同比+8%</td></tr>
+        </table>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            现在挖铜矿的人少了，买矿石炼铜的厂子反而要倒贴钱才能买到矿。就像面粉比面包还贵，炼铜厂越炼越亏。两大世界级铜矿出了事故，好几年都恢复不了，铜矿供应紧张是板上钉钉的事。
+        </div>
+
+        <h3>2. 需求端：结构性转型，电网+AI撑住基本盘</h3>
+        <p>铜的需求正在经历<span class="highlight-blue">K型分化</span>：</p>
+        <ul>
+            <li><span class="highlight-green">电网投资</span>：中国"十五五"期间4万亿元电网投资计划加速落地，特高压线路每条消耗铜约1.2万吨，2026-2030年规划建设24条线路；电网与电力基础设施需求同比增长10%</li>
+            <li><span class="highlight-green">AI数据中心</span>：英伟达GB200服务器单台耗铜1.36吨，全面采用铜缆替代光模块，未来3年AI基建投资或达3万亿美元</li>
+            <li><span class="highlight-green">新能源车</span>：单车用铜80-120公斤，2026年中国新能源车产量预计1600万辆，带动铜需求超128万吨</li>
+            <li><span class="highlight-orange">传统需求走弱</span>：家电排产缩水、房地产拖累、汽车增速不及预期；高铜价抑制下游采购，精铜杆开工率降至74%</li>
+            <li>5月步入传统消费淡季，终端需求预计减弱</li>
+        </ul>
+
+        <table class="data-table">
+            <tr><th>需求领域</th><th>增速/状态</th><th>评价</th></tr>
+            <tr><td>电网/电力基建</td><td>同比+10%</td><td><span class="tag tag-green">强支撑</span></td></tr>
+            <tr><td>AI数据中心</td><td>爆发式增长</td><td><span class="tag tag-green">新引擎</span></td></tr>
+            <tr><td>新能源车</td><td>产量同比+35%</td><td><span class="tag tag-green">持续高增</span></td></tr>
+            <tr><td>家电/空调</td><td>排产同比-2.6%</td><td><span class="tag tag-red">拖累</span></td></tr>
+            <tr><td>房地产</td><td>投资同比下滑</td><td><span class="tag tag-red">拖累</span></td></tr>
+        </table>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            用铜的地方正在换挡：修电网、建AI机房、造电动车这些新行当用铜越来越多，但造空调、盖房子这些老行当用铜在减少。就像村里年轻人出去打工赚钱了，但老家的田没人种了。总的来说，新行当补得上老行当的缺口，铜还是有人要的。
+        </div>
+
+        <h3>3. 库存：全球结构性错配，沪伦低库存 vs COMEX高库存</h3>
+        <p>全球铜库存呈现<span class="highlight-red">前所未有的区域分化</span>：</p>
+        <ul>
+            <li>上期所库存：约8.2万吨，处于近4个月低位</li>
+            <li>LME库存：约9.1-14.5万吨，持续去化，可用库存不足全球单日消费量</li>
+            <li>COMEX库存：约60-64万吨，创22年历史新高，持续攀升</li>
+            <li>国内社会库存（不含保税区）：约13-25万吨，5月去库放缓</li>
+            <li>上海保税区库存：约5-7万吨，小幅波动</li>
+        </ul>
+        <p><strong>核心逻辑</strong>：美国232调查关税预期驱动全球铜资源向美国"虹吸"，非美市场（尤其LME和中国）库存持续紧张，形成区域性短缺。截至2026年4月，COMEX铜库存较年初增长超700%。</p>
+
+        <table class="data-table">
+            <tr><th>库存地点</th><th>库存量</th><th>变化趋势</th></tr>
+            <tr><td>上期所</td><td>~8.2万吨</td><td><span class="tag tag-green">持续去化</span></td></tr>
+            <tr><td>LME</td><td>~9.1万吨</td><td><span class="tag tag-green">持续去化</span></td></tr>
+            <tr><td>COMEX</td><td>~64万吨</td><td><span class="tag tag-red">历史新高</span></td></tr>
+            <tr><td>国内社会库存</td><td>~13-25万吨</td><td>去库放缓</td></tr>
+        </table>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            全球的铜都在往美国跑，因为美国可能要加关税，大家赶在加税前把铜运过去囤着。结果就是，美国仓库铜堆成山，中国和伦敦的仓库铜却快见底了。就像村里只有一家粮店在收粮食，别的店都断货了。
+        </div>
+    </div>
+
+    <!-- 成本与利润分析 -->
+    <div class="section">
+        <h2>二、成本与利润分析</h2>
+
+        <h3>1. 铜矿成本曲线</h3>
+        <p>全球铜矿90%分位现金成本约在$6,500-7,000/吨，当前铜价远高于此水平，矿山利润丰厚。但问题在于<span class="highlight-red">新增产能严重不足</span>：</p>
+        <ul>
+            <li>全球矿山品位持续下滑：从1991年的0.8%降至2025年不足0.45%，开采成本翻倍</li>
+            <li>2026年全球铜矿供应增量仅约12万吨（+0.52%），远低于需求增速</li>
+            <li>新项目稀缺：大型铜矿从勘探到投产需10-15年，当前资本开支不足</li>
+        </ul>
+
+        <h3>2. 冶炼利润</h3>
+        <p>冶炼端利润极度压缩，甚至深度亏损：</p>
+        <ul>
+            <li>TC为负值，冶炼厂每处理一吨铜精矿就亏损，依赖副产品（硫酸、黄金）收益弥补</li>
+            <li>中国5月起禁止硫酸出口，国内硫酸价格承压，副产品收益减少</li>
+            <li>部分冶炼厂被迫减产或提前检修，5月检修较4月增加</li>
+        </ul>
+
+        <h3>3. 废铜替代</h3>
+        <ul>
+            <li>受反向开票政策影响，含税废铜供应不足，再生加工企业生产受限</li>
+            <li>精废价差扩大至1965元/吨，废铜经济性提升，但供应放量受限</li>
+            <li>中国国内废铜产量前几个月同比下降12%</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            铜矿虽然赚钱，但新矿开不出来，老矿越挖越贫。炼铜厂更惨，买矿石的钱比卖铜的钱还多，全靠卖点副产品补贴。废铜本可以救急，但政策管得紧，量也上不来。就像种地的人少了，粮价虽然高，但种粮的成本也涨了，还找不到新地来种。
+        </div>
+    </div>
+
+    <!-- 政策与宏观环境 -->
+    <div class="section">
+        <h2>三、政策与宏观环境</h2>
+
+        <h3>1. 美国关税政策——最大的不确定性</h3>
+        <ul>
+            <li>美国232调查6月30日最终期限临近，市场对精炼铜加征关税预期升温</li>
+            <li>2025年7月曾对铜管、铜棒等半成品征收50%关税，精炼铜被排除</li>
+            <li>若此次精炼铜"中招"，COMEX与LME价差可能再度拉大至极端水平</li>
+            <li>高盛基准情景：2026年内不加关税，但"关税随时可能来"的预期本身就驱动持续备货</li>
+        </ul>
+
+        <h3>2. 美联储货币政策</h3>
+        <ul>
+            <li>联邦基金利率维持在3.50%-3.75%，市场对2026年进一步宽松预期降温</li>
+            <li>6月沃什上台后首次议息会议成为焦点，若采用先缩表后降息策略，流动性冲击可能再现</li>
+            <li>美元指数走弱至97附近，对铜价形成支撑</li>
+        </ul>
+
+        <h3>3. 中国政策</h3>
+        <ul>
+            <li>央行继续实施适度宽松的货币政策，加大逆周期和跨周期调节力度</li>
+            <li>4-5月税务部门展开"开票经济"整治，短期经济数据或阶段性承压</li>
+            <li>5月起禁止硫酸出口，影响冶炼厂副产品收益</li>
+            <li>电网投资、新能源建设等政策持续支撑铜需求</li>
+        </ul>
+
+        <h3>4. 地缘政治</h3>
+        <ul>
+            <li>中东局势阶段性缓和，霍尔木兹海峡通航逐步恢复，但不确定性犹存</li>
+            <li>若海峡长期关闭，刚果金湿法铜生产可能受硫磺进口不足影响（约15%全球产量面临风险）</li>
+            <li>矿产资源国政策收紧已进入铜的定价逻辑</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            最大的变数是美国要不要对进口铜加税。加的话，铜价可能再冲一波；不加的话，之前囤的铜就会放出来，价格会跌一跌。另外，中东打仗的事虽然缓和了，但还没完全消停。国内政策总体对铜是友好的，修电网、建新能源都离不开铜。
+        </div>
+    </div>
+
+    <!-- 国际市场联动 -->
+    <div class="section">
+        <h2>四、国际市场联动</h2>
+
+        <h3>1. COMEX-LME价差</h3>
+        <ul>
+            <li>6月初COMEX与LME铜价差一度扩大至近700美元/吨</li>
+            <li>2025年7月极端价差曾达近3000美元/吨，当前仍远低于极端水平</li>
+            <li>价差驱动贸易流重构：全球铜资源从LME/中国流向美国</li>
+            <li>7月上旬预计约3.5万吨货源抵达LME亚洲仓库，挤仓压力可能缓解</li>
+        </ul>
+
+        <h3>2. 进出口</h3>
+        <ul>
+            <li>国内电解铜现货进口亏损扩大，进口减少、出口增多</li>
+            <li>2025年5月精炼铜净进口量25.9万吨，同比减少5.2%</li>
+            <li>1-5月累计净进口132万吨，同比减少10.2%</li>
+            <li>洋山铜溢价下滑，进口意愿低迷</li>
+        </ul>
+
+        <h3>3. 机构价格预测汇总</h3>
+        <table class="data-table">
+            <tr><th>机构</th><th>2026年底目标价</th><th>2027年预测</th><th>核心逻辑</th></tr>
+            <tr><td>瑞银(UBS)</td><td>14,500美元/吨</td><td>15,500美元/吨(6月)</td><td>52万吨缺口，三重供应危机</td></tr>
+            <tr><td>高盛(Goldman)</td><td>13,735美元/吨</td><td>13,800美元/吨均价</td><td>美国虹吸+矿端减产</td></tr>
+            <tr><td>摩根大通</td><td>—</td><td>—</td><td>33万吨缺口预测</td></tr>
+            <tr><td>东吴期货</td><td>150,000-200,000元/吨</td><td>—</td><td>紧供应+强需求，主升浪</td></tr>
+            <tr><td>五矿期货</td><td>97,000-108,000元/吨(3月)</td><td>—</td><td>宏观多空交织，产业有支撑</td></tr>
+        </table>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            国外大行都看好铜价，觉得铜还会涨，因为矿不够用是实打实的。但美国市场和中国市场像两个世界，美国的铜多得堆不下，中国和伦敦的铜却不够用。这种"旱的旱死、涝的涝死"的局面，短期内还会持续。
+        </div>
+    </div>
+
+    <!-- 技术面参考 -->
+    <div class="section">
+        <h2>五、技术面参考</h2>
+
+        <h3>1. 价格走势</h3>
+        <ul>
+            <li>沪铜主力合约5月6日收盘102,660元/吨，5月中旬一度触及历史高点附近</li>
+            <li>LME铜5月13日最高触及14,196.5美元/吨，创历史新高</li>
+            <li>当前价格在高位区间震荡，100,000元/吨构成重要心理关口</li>
+        </ul>
+
+        <h3>2. 关键价位</h3>
+        <table class="data-table">
+            <tr><th>方向</th><th>价位（元/吨）</th><th>意义</th></tr>
+            <tr><td>强支撑</td><td>95,000-98,000</td><td>矿端成本+长线多头入场区</td></tr>
+            <tr><td>支撑</td><td>100,000</td><td>重要心理关口</td></tr>
+            <tr><td>当前价</td><td>~102,000-106,000</td><td>高位震荡区间</td></tr>
+            <tr><td>阻力</td><td>108,000-110,000</td><td>前高压力区</td></tr>
+            <tr><td>强阻力</td><td>110,000+</td><td>历史新高区域</td></tr>
+        </table>
+
+        <h3>3. 现货升贴水</h3>
+        <ul>
+            <li>上海地区现货升水110元/吨，维持偏高位置</li>
+            <li>LME Cash/3M升水240.1美元/吨，挤仓压力仍存</li>
+            <li>价格与升水同时走高，通常预示货源偏紧</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            铜价现在在很高的位置晃悠，10万块钱一吨是个大关口，跌到这里会有很多人愿意买。如果涨到11万以上，那就是创历史新高了。现在买铜的人比卖铜的人多，现货市场还是偏紧的。
+        </div>
+    </div>
+
+    <!-- 机构观点汇总 -->
+    <div class="section">
+        <h2>六、机构观点汇总</h2>
+
+        <table class="data-table">
+            <tr><th>机构</th><th>观点</th><th>操作建议</th></tr>
+            <tr><td>华泰期货</td><td>沪伦低库存使铜价持续面临挤仓风险，谨慎偏多</td><td>逢低买入套保，区间78,600-79,200</td></tr>
+            <tr><td>五矿期货</td><td>宏观乐观情绪有所弱化，阶段性震荡调整压力加大</td><td>反弹尝试短空，区间77,000-82,000</td></tr>
+            <tr><td>银河期货</td><td>宏观扰动增加，铜价高位盘整</td><td>低多思路，区间100,000-108,000</td></tr>
+            <tr><td>安粮期货</td><td>战略空头阶段，8万上方只考虑做空</td><td>8万上方布空</td></tr>
+            <tr><td>东吴期货</td><td>紧供应+强需求，上行驱动不减</td><td>多单持有，逢回调买入</td></tr>
+            <tr><td>瑞银(UBS)</td><td>52万吨缺口，任何回调都是加仓良机</td><td>保持多头，回撤加仓</td></tr>
+            <tr><td>高盛</td><td>美国虹吸效应加剧非美短缺</td><td>2026年底目标13,735美元/吨</td></tr>
+        </table>
+
+        <p><strong>多空分歧</strong>：机构对铜价方向存在明显分歧。国际投行（瑞银、高盛、摩根大通）一致看多，认为结构性短缺将推动铜价持续走高；国内部分机构（安粮、五矿）则认为铜价已处于战略高位，短期面临调整压力。核心分歧在于：<span class="highlight-blue">当前高价是否已充分反映矿端紧缺</span>。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            外国大行都说铜还要涨，因为矿真的不够。但国内有些分析师觉得铜价已经涨过头了，该歇歇了。两派人各有各的道理，就像有人觉得房价还要涨，有人觉得该跌了。关键是看你自己信哪一边。
+        </div>
+    </div>
+
+    <!-- 风险提示 -->
+    <div class="section">
+        <h2>七、风险提示</h2>
+        <div class="risk-box">
+            <h3>下行风险</h3>
+            <ul>
+                <li><span class="highlight-red">美国明确不加铜关税</span>：COMEX库存释放回流非美市场，LME/中国供应压力缓解，铜价可能跌至95,000元/吨附近</li>
+                <li><span class="highlight-red">美联储先缩表后降息</span>：流动性冲击可能导致铜价短期急跌</li>
+                <li><span class="highlight-red">全球衰退风险</span>：中东局势恶化导致能源价格飙升，拖累全球GDP增速0.4个百分点</li>
+                <li><span class="highlight-red">AI泡沫破裂</span>：数据中心建设放缓，削减铜需求增量预期</li>
+                <li><span class="highlight-red">废铜供应超预期放量</span>：反向开票政策松动，再生铜替代增强</li>
+            </ul>
+        </div>
+        <div style="background: var(--green-bg); border-radius: 8px; padding: 15px 20px; margin-top: 10px;">
+            <h3 style="color: var(--green);">上行风险</h3>
+            <ul>
+                <li><span class="highlight-green">美国对精炼铜加征关税</span>：非美市场短缺加剧，LME铜价可能突破14,000美元/吨</li>
+                <li><span class="highlight-green">Grasberg/Kamoa复产进一步推迟</span>：供应缺口扩大</li>
+                <li><span class="highlight-green">中国电网投资超预期</span>：需求端强拉动</li>
+                <li><span class="highlight-green">霍尔木兹海峡长期封锁</span>：刚果金湿法铜减产，硫酸紧缺加剧</li>
+            </ul>
+        </div>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            最怕的是美国说不加税了，之前囤的铜全放出来，价格就会跌。最盼的是美国真加税了，或者大铜矿又出事，那铜价还能再涨。总之，铜价往上还是往下，很大程度看美国那边的政策怎么走。
+        </div>
+    </div>
+
+    <!-- 综合研判与操作建议 -->
+    <div class="advice-box">
+        <h2>八、综合研判与操作建议</h2>
+
+        <h3>1. 核心研判</h3>
+        <p>沪铜当前处于<span class="highlight-orange">"矿端紧缺确定性强 + 宏观扰动增加 + 淡季需求走弱"</span>的复杂格局中：</p>
+        <ul>
+            <li><strong>长期（1年以上）</strong>：结构性短缺格局未变，铜价中枢上移趋势确定。瑞银预测2026年缺口52万吨，高盛预测非美市场缺口64万吨。电网、AI、新能源三大需求引擎将持续拉动铜消费。铜价长期目标看向110,000-150,000元/吨。</li>
+            <li><strong>中期（2-6个月）</strong>：进入传统消费淡季，下游采购意愿减弱，高铜价抑制需求。但矿端紧缺和低库存提供强支撑，下跌空间有限。6月30日美国232调查结果和美联储议息会议是关键时间节点。预计铜价在95,000-108,000元/吨区间高位震荡。</li>
+            <li><strong>短期（1个月内）</strong>：中东局势缓和、淡季需求走弱、LME交仓增加可能带来阶段性调整压力，但100,000元/吨关口支撑较强。</li>
+        </ul>
+
+        <h3>2. 操作建议</h3>
+        <table class="data-table">
+            <tr><th>策略类型</th><th>具体操作</th><th>适用场景</th></tr>
+            <tr><td>单边</td><td>回调至98,000-100,000元/吨区间逢低做多</td><td>看好长期结构性短缺</td></tr>
+            <tr><td>套利</td><td>跨市正套（买沪铜卖伦铜）继续持有</td><td>国内低库存+进口亏损</td></tr>
+            <tr><td>期权</td><td>卖出CU主力98,000元/吨看跌期权，收取权利金</td><td>看跌空间有限，赚取时间价值</td></tr>
+            <tr><td>对冲</td><td>持有期货多单+卖出虚值看涨期权（备兑）</td><td>高位震荡行情增强收益</td></tr>
+        </table>
+
+        <h3>3. 关键时间节点</h3>
+        <ul>
+            <li><strong>6月30日</strong>：美国232调查最终结果公布——决定关税走向</li>
+            <li><strong>7月</strong>：美联储议息会议——沃什上台后首次决策</li>
+            <li><strong>9月</strong>：传统消费旺季来临——需求端验证</li>
+            <li><strong>Q4 2026</strong>：安粮期货提示的"超级波动窗口"——宏观与产业共振</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            铜价长期看涨是确定的，因为矿真的不够用。但短期涨太多了，需要歇一歇。最稳当的做法是等铜价跌到10万附近再买，别追高。如果不想冒太大风险，可以卖个看跌期权收点"租金"，就像把房子租出去收房租一样。6月底美国那边出结果，是个大日子，要盯紧了。
+        </div>
+    </div>
+
+    <footer>
+        <p>免责声明：本分析仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。</p>
+        <p>数据来源：五矿期货、华泰期货、银河期货、安粮期货、东吴期货、瑞银、高盛、ICSG、SMM、上海金属网</p>
+        <p>分析日期：2026年5月31日</p>
+    </footer>
+
+</div>
+</body>
+</html>
