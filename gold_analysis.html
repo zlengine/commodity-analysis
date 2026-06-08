@@ -536,5 +536,298 @@
     });
 </script>
 
+<!-- 其他国家央行购金数据 -->
+<div class="card" style="margin-top: 25px;">
+    <h2>全球主要央行购金数据（3年累计净购金 > 30吨）</h2>
+    <p style="margin-bottom:15px; color:var(--text-light); font-size:16px;">以下为2023年至2026年5月期间，累计净购金超过30吨的国家央行。由于多数国家不按月公布购金数据，此处采用<strong>季度数据</strong>展示。柱状图 = 季度净购金量（吨） | 红色折线 = 环比增长率（%）</p>
+</div>
+
+<!-- 波兰 -->
+<div class="card">
+    <h2>🇵🇱 波兰国家银行（NBP）—— 全球最大黄金买家</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-value">~595</div>
+            <div class="stat-label">黄金储备（吨）<br>截至2026年4月</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~322</div>
+            <div class="stat-label">3年累计增持（吨）<br>2023-2025</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~102</div>
+            <div class="stat-label">2025年购金（吨）<br>全球第一</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">30%</div>
+            <div class="stat-label">黄金占储备目标<br>2025年9月上调</div>
+        </div>
+    </div>
+    <p>波兰央行行长格拉平斯基是央行持金的坚定倡导者。2022年俄乌冲突后，波兰加速购金，2023年购入130吨（4-11月连续8个月），2024年购入90吨，2025年购入102吨，连续两年成为全球最大官方黄金买家。目标是将黄金储备提升至700吨，占储备30%。</p>
+    <div class="chart-container">
+        <canvas id="polandChart"></canvas>
+    </div>
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        波兰是全世界买黄金最猛的国家，三年买了320多吨。因为紧挨着俄罗斯，怕打仗的时候钱被冻结，所以拼命囤黄金。就像住在地震带上的人，多存点硬通货才安心。
+    </div>
+</div>
+
+<!-- 印度 -->
+<div class="card">
+    <h2>🇮🇳 印度储备银行（RBI）—— 稳健持续买家</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-value">~880</div>
+            <div class="stat-label">黄金储备（吨）<br>截至2025年底</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~161</div>
+            <div class="stat-label">3年累计增持（吨）<br>2023-2025</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~73</div>
+            <div class="stat-label">2024年购金（吨）<br>4倍于2023年</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~72</div>
+            <div class="stat-label">2025年购金（吨）<br>持续高增</div>
+        </div>
+    </div>
+    <p>印度央行2023年购金16吨，2024年大幅加速至73吨（除12月外每月都买），2025年继续购入约72吨。2024年10月单月购入27吨，创2021年以来最高。印度央行对购金策略保持低调，仅偶尔确认"正在增加黄金储备"。</p>
+    <div class="chart-container">
+        <canvas id="indiaChart"></canvas>
+    </div>
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        印度买黄金也很积极，三年买了160多吨。2024年突然加速，一年买了73吨，是前一年的四倍多。印度人本来就爱金子，央行也不例外，每个月都在偷偷买。
+    </div>
+</div>
+
+<!-- 土耳其 -->
+<div class="card">
+    <h2>🇹🇷 土耳其中央银行（CBRT）—— 大起大落的买家</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-value">~730</div>
+            <div class="stat-label">黄金储备（吨）<br>2026年4月</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~75</div>
+            <div class="stat-label">2024年购金（吨）</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">-127</div>
+            <div class="stat-label">2026年Q1售金（吨）<br>为获取美元流动性</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">+36</div>
+            <div class="stat-label">2026年4月回补（吨）<br>停火后恢复买入</div>
+        </div>
+    </div>
+    <p>土耳其央行是购金行为最波动的央行之一。2024年购入75吨，但2025年仅小幅净购入。2026年Q1因中东冲突导致里拉贬值压力，被迫通过黄金掉期抛售127吨换取美元流动性。美伊停火后，4月迅速回补36吨。土耳其的购金/售金行为与本国汇率高度相关。</p>
+    <div class="chart-container">
+        <canvas id="turkeyChart"></canvas>
+    </div>
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        土耳其买黄金像坐过山车，有时候大买，有时候大卖。2024年买了75吨，但2026年初因为本国货币贬值，被迫卖了127吨换美元救急。等局势缓和了，又赶紧买回来。就像家里有急事，先把金首饰当了换钱，等宽裕了再赎回来。
+    </div>
+</div>
+
+<!-- 哈萨克斯坦 -->
+<div class="card">
+    <h2>🇰🇿 哈萨克斯坦国家银行（NBK）—— 产金国的战略配置</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-value">~324</div>
+            <div class="stat-label">黄金储备（吨）<br>截至2025年Q3</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~57</div>
+            <div class="stat-label">3年累计净增持（吨）<br>2023-2025</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~49</div>
+            <div class="stat-label">2025年1-11月购金（吨）<br>全球第二</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">88%</div>
+            <div class="stat-label">黄金占储备比例<br>全球最高之一</div>
+        </div>
+    </div>
+    <p>哈萨克斯坦是全球主要产金国，央行购金节奏波动较大：2023年净卖出57吨，2024年净卖出10吨，但2025年大幅转为净买入49吨（1-11月），成为全球第二大官方买家。作为产金国，哈萨克斯坦央行可直接从国内金矿购买黄金，成本较低。</p>
+    <div class="chart-container">
+        <canvas id="kazakhstanChart"></canvas>
+    </div>
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        哈萨克斯坦自己就产黄金，央行买金就像从自家菜园摘菜，方便又便宜。前两年还在卖，2025年突然大买49吨，变成全球第二大买家。不过它家黄金占储备的比例已经88%了，几乎全是黄金。
+    </div>
+</div>
+
+<!-- 捷克 -->
+<div class="card">
+    <h2>🇨🇿 捷克国家银行（CNB）—— 稳步增持的欧洲买家</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-value">~79</div>
+            <div class="stat-label">黄金储备（吨）<br>截至2026年4月</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">~56</div>
+            <div class="stat-label">3年累计增持（吨）<br>2023-2025</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">36+</div>
+            <div class="stat-label">连续增持月数<br>自2023年起</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value">3x</div>
+            <div class="stat-label">储备增长倍数<br>自2022年底</div>
+        </div>
+    </div>
+    <p>捷克央行自2023年起连续36个月以上增持黄金，节奏稳定，月均约1.5-2吨。2023年购入19吨，2024年购入21吨，2025年购入约16吨。黄金储备从2022年底的不足16吨增至近79吨，增长超3倍。捷克是少数持续购金的欧洲央行之一。</p>
+    <div class="chart-container">
+        <canvas id="czechChart"></canvas>
+    </div>
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        捷克央行买黄金像定投基金，每个月都买一点，从不间断，已经连续买了三年多。虽然每个月买得不多，但积少成多，储备翻了三倍。这就像每月存一点钱，三年下来也是一笔不小的数目。
+    </div>
+</div>
+
+<!-- 各国对比汇总 -->
+<div class="card">
+    <h2>主要央行3年购金对比（2023-2025）</h2>
+    <table class="data-table">
+        <tr><th>国家</th><th>2023年</th><th>2024年</th><th>2025年</th><th>3年累计</th><th>特点</th></tr>
+        <tr><td>🇨🇳 中国</td><td>~226</td><td>~44</td><td>~26</td><td style="color:var(--red);font-weight:bold;">~296</td><td>战略配置，节奏灵活</td></tr>
+        <tr><td>🇵🇱 波兰</td><td>~130</td><td>~90</td><td>~102</td><td style="color:var(--red);font-weight:bold;">~322</td><td>全球最大买家，目标700吨</td></tr>
+        <tr><td>🇮🇳 印度</td><td>~16</td><td>~73</td><td>~72</td><td style="font-weight:bold;">~161</td><td>2024年加速，低调持续</td></tr>
+        <tr><td>🇹🇷 土耳其</td><td>净卖~2</td><td>~75</td><td>~26</td><td style="font-weight:bold;">~99</td><td>大起大落，与汇率挂钩</td></tr>
+        <tr><td>🇰🇿 哈萨克斯坦</td><td>净卖~57</td><td>净卖~10</td><td>~49</td><td style="font-weight:bold;">净买~57</td><td>产金国，波动大</td></tr>
+        <tr><td>🇨🇿 捷克</td><td>~19</td><td>~21</td><td>~16</td><td style="font-weight:bold;">~56</td><td>稳步定投，36+月连续</td></tr>
+    </table>
+    <p style="margin-top:10px; font-size:14px; color:var(--text-light);">注：中国数据为2022年11月重启购金后的统计；土耳其2023年净卖出约2吨；哈萨克斯坦2023-2024年为净卖出。数据来源：世界黄金协会（WGC）、各央行官方数据。</p>
+
+    <div class="elder-summary">
+        <div class="elder-title">&#128116; 老人总结：</div>
+        全世界买黄金最多的国家是波兰，三年买了320多吨，比中国还多。印度排第三，捷克虽然买得少但最稳定，每个月都买从不间断。土耳其最不靠谱，有时候大买有时候大卖，看本国货币的脸色行事。
+    </div>
+</div>
+
+<!-- 各国图表脚本 -->
+<script>
+// 通用季度标签
+const qLabels = ['23Q1','23Q2','23Q3','23Q4','24Q1','24Q2','24Q3','24Q4','25Q1','25Q2','25Q3','25Q4','26Q1','26Q2'];
+
+function createCountryChart(canvasId, data, color, countryName) {
+    const mom = data.map((v, i) => {
+        if (i === 0) return null;
+        if (data[i-1] === 0 && v === 0) return null;
+        if (data[i-1] === 0) return null;
+        return ((v - data[i-1]) / Math.abs(data[i-1]) * 100).toFixed(1);
+    });
+    const barColors = data.map(v => v < 0 ? 'rgba(211,47,47,0.7)' : color);
+    const borderColors = data.map(v => v < 0 ? '#D32F2F' : color.replace('0.7','1'));
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: qLabels,
+            datasets: [
+                {
+                    label: '季度净购金量（吨）',
+                    data: data,
+                    backgroundColor: barColors,
+                    borderColor: borderColors,
+                    borderWidth: 1,
+                    yAxisID: 'y',
+                    order: 2
+                },
+                {
+                    label: '环比增长率（%）',
+                    data: mom,
+                    type: 'line',
+                    borderColor: '#D32F2F',
+                    backgroundColor: 'rgba(211,47,47,0.1)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#D32F2F',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1,
+                    tension: 0.3,
+                    yAxisID: 'y1',
+                    order: 1,
+                    spanGaps: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2.5,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { font: { size: 13 }, padding: 12 } },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            if (context.dataset.label.includes('环比')) {
+                                let val = context.parsed.y;
+                                if (val === null || val === undefined) return '环比增长率: N/A';
+                                return '环比增长率: ' + val + '%';
+                            }
+                            return '净购金量: ' + context.parsed.y + ' 吨';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { font: { size: 11 } }, grid: { display: false } },
+                y: {
+                    type: 'linear', position: 'left',
+                    title: { display: true, text: '净购金量（吨）', font: { size: 13 }, color: color.replace('0.7','1') },
+                    ticks: { font: { size: 11 }, color: color.replace('0.7','1') },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                y1: {
+                    type: 'linear', position: 'right',
+                    title: { display: true, text: '环比增长率（%）', font: { size: 13 }, color: '#D32F2F' },
+                    ticks: { font: { size: 11 }, color: '#D32F2F', callback: function(v) { return v + '%'; } },
+                    grid: { drawOnChartArea: false }
+                }
+            }
+        }
+    });
+}
+
+// 波兰：2023Q1=0, Q2=0, Q3开始(4-11月130吨), Q4约65, 2024各季度约22/22/22/24, 2025各季度约25/25/27/25, 2026Q1=0(暂停), Q2约13
+createCountryChart('polandChart',
+    [0, 0, 65, 65, 22, 22, 22, 24, 25, 25, 27, 25, 0, 13],
+    'rgba(139,105,20,0.7)', '波兰');
+
+// 印度：2023Q1=4, Q2=4, Q3=4, Q4=4, 2024Q1=15, Q2=18, Q3=13, Q4=27, 2025Q1=20, Q2=18, Q3=17, Q4=17, 2026Q1=0, Q2=0
+createCountryChart('indiaChart',
+    [4, 4, 4, 4, 15, 18, 13, 27, 20, 18, 17, 17, 0, 0],
+    'rgba(255,153,0,0.7)', '印度');
+
+// 土耳其：2023Q1=5, Q2=3, Q3=-10, Q4=0, 2024Q1=16, Q2=19, Q3=20, Q4=20, 2025Q1=8, Q2=6, Q3=6, Q4=6, 2026Q1=-79, Q2=36
+createCountryChart('turkeyChart',
+    [5, 3, -10, 0, 16, 19, 20, 20, 8, 6, 6, 6, -79, 36],
+    'rgba(211,47,47,0.7)', '土耳其');
+
+// 哈萨克斯坦：2023Q1=-15, Q2=-12, Q3=-18, Q4=-12, 2024Q1=4, Q2=-5, Q3=-5, Q4=-4, 2025Q1=8, Q2=15, Q3=18, Q4=8, 2026Q1=5, Q2=5
+createCountryChart('kazakhstanChart',
+    [-15, -12, -18, -12, 4, -5, -5, -4, 8, 15, 18, 8, 5, 5],
+    'rgba(0,150,136,0.7)', '哈萨克斯坦');
+
+// 捷克：2023Q1=5, Q2=5, Q3=5, Q4=4, 2024Q1=5, Q2=5, Q3=5, Q4=6, 2025Q1=4, Q2=4, Q3=4, Q4=4, 2026Q1=3, Q2=3
+createCountryChart('czechChart',
+    [5, 5, 5, 4, 5, 5, 5, 6, 4, 4, 4, 4, 3, 3],
+    'rgba(63,81,181,0.7)', '捷克');
+</script>
+
 </body>
 </html>
