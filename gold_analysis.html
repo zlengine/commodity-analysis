@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金分析 - 中国央行购金数据</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #B8860B;
+            --primary-dark: #8B6914;
+            --primary-light: #DAA520;
+            --bg: #FDF8EF;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E0D5C1;
+            --gold-light: #FFF8DC;
+            --gold-accent: #FFD700;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #8B6914, #B8860B, #DAA520);
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(184,134,11,0.3);
+        }
+        header h1 { font-size: 30px; margin-bottom: 8px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        header .subtitle { font-size: 16px; opacity: 0.9; }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+        .nav-links a:hover { background: var(--primary-dark); }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card h2 {
+            color: var(--primary-dark);
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold-accent);
+            padding-bottom: 8px;
+        }
+        .card h3 {
+            color: var(--primary);
+            font-size: 19px;
+            margin: 15px 0 10px;
+        }
+        .card p, .card li {
+            font-size: 17px;
+            line-height: 1.9;
+        }
+        .card ul { padding-left: 20px; }
+        .card li { margin-bottom: 5px; }
+        .highlight-red { color: var(--red); font-weight: bold; }
+        .highlight-green { color: var(--green); font-weight: bold; }
+        .highlight-gold { color: var(--primary-dark); font-weight: bold; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            background: var(--gold-light);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .chart-container canvas {
+            width: 100% !important;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .stat-box {
+            background: var(--gold-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .stat-box .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        .stat-box .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            margin: 12px 0;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 8px 10px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .data-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .data-table tr:nth-child(even) { background: #FDF8EF; }
+        .data-table tr:hover { background: #FFF0C0; }
+        .phase-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .phase-fast { background: #E8F5E9; color: #2E7D32; }
+        .phase-slow { background: #FFF3E0; color: #E65100; }
+        .phase-pause { background: #FFEBEE; color: #D32F2F; }
+        .phase-accel { background: #E3F2FD; color: #1565C0; }
+        .elder-summary {
+            background: #E8F5E9;
+            border-left: 5px solid var(--green);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        .elder-summary .elder-title {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .year-section {
+            margin-top: 15px;
+        }
+        .year-section h3 {
+            color: var(--primary-dark);
+            font-size: 18px;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 4px solid var(--gold-accent);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 24px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .chart-container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="nav-links">
+        <a href="index.html">商品分析首页</a>
+        <a href="bottom_index.html">底部反转分析</a>
+    </div>
+
+    <header>
+        <h1>黄金专题分析</h1>
+        <div class="subtitle">中国央行购金数据追踪 | 全球黄金市场分析</div>
+    </header>
+
+    <!-- 核心数据概览 -->
+    <div class="card">
+        <h2>中国央行购金核心数据</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">2,331.5</div>
+                <div class="stat-label">黄金储备（吨）<br>截至2026年5月</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">19</div>
+                <div class="stat-label">连续增持月数<br>2024.11至今</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">~10</div>
+                <div class="stat-label">5月增持（吨）<br>创16个月新高</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">~364</div>
+                <div class="stat-label">2022年11月以来<br>累计增持（吨）</div>
+            </div>
+        </div>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            中国央行已经连续19个月买黄金了，5月份买了大约10吨，是最近16个月来买得最多的一次。从2022年11月到现在，总共买了大约364吨黄金。就像一个人每个月都往存钱罐里存金豆子，越存越多，从来没停过。
+        </div>
+    </div>
+
+    <!-- 购金趋势图表 -->
+    <div class="card">
+        <h2>中国央行月度购金数据（2022年11月 - 2026年5月）</h2>
+        <p style="margin-bottom:15px; color:var(--text-light); font-size:16px;">柱状图 = 月度增持量（吨） | 红色折线 = 环比增长率（%）</p>
+        <div class="chart-container">
+            <canvas id="goldChart"></canvas>
+        </div>
+        <p style="margin-top:10px; font-size:14px; color:var(--text-light);">数据来源：中国人民银行、世界黄金协会（WGC）、SAFE。2024年5-10月为央行暂停购金期。</p>
+    </div>
+
+    <!-- 分阶段解读 -->
+    <div class="card">
+        <h2>购金节奏三阶段解读</h2>
+
+        <h3><span class="phase-tag phase-fast">第一阶段</span> 快速购金期（2022.11 - 2024.4）</h3>
+        <p>央行在2022年11月重启购金后，以较快的节奏持续增持，月均购金约<span class="highlight-gold">16.5吨</span>。2023年8月达到单月峰值28.93吨。此阶段累计购金约<span class="highlight-gold">316吨</span>，黄金占外汇储备比例从3.5%提升至约5%。</p>
+
+        <h3><span class="phase-tag phase-pause">第二阶段</span> 暂停观察期（2024.5 - 2024.10）</h3>
+        <p>金价快速上涨至历史高位后，央行连续6个月<span class="highlight-red">暂停购金</span>。市场解读为：金价过高时央行选择观望，等待更好的入场时机。这一暂停也印证了央行购金并非"不计成本"，而是有策略、有节奏的配置行为。</p>
+
+        <h3><span class="phase-tag phase-slow">第三阶段</span> 恢复增持期（2024.11 - 2026.2）</h3>
+        <p>2024年11月央行重启购金，但节奏明显放缓，月均仅约<span class="highlight-gold">2.4吨</span>。增持量从5吨逐步降至1吨以下，呈现"前快后慢"特征。金价回调后央行恢复买入，但态度谨慎。</p>
+
+        <h3><span class="phase-tag phase-accel">第四阶段</span> 再次加速期（2026.3 - 至今）</h3>
+        <p>2026年3月起，央行购金节奏明显加快：3月约5吨，4月超8吨，5月约10吨，创16个月新高。金价从5600美元/盎司回调至4500美元附近后，央行加大买入力度，<span class="highlight-green">"逢低加仓"特征明显</span>。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            央行买黄金就像精明的老太太赶集：便宜的时候多买点，贵了就等等。2023年买得多，2024年金价涨太高就停了半年，2024年底金价跌了又开始买，但买得少。到了2026年3月，金价跌了不少，央行又开始大买了。一句话：金价跌，央行多买；金价涨，央行少买或不买。
+        </div>
+    </div>
+
+    <!-- 月度数据明细表 -->
+    <div class="card">
+        <h2>月度购金数据明细</h2>
+
+        <div class="year-section">
+            <h3>2026年</h3>
+            <table class="data-table">
+                <tr><th>月份</th><th>增持（万盎司）</th><th>增持（吨）</th><th>环比变化</th><th>阶段</th></tr>
+                <tr><td>5月</td><td>32</td><td>~9.95</td><td>+23.1%</td><td><span class="phase-tag phase-accel">加速</span></td></tr>
+                <tr><td>4月</td><td>26</td><td>~8.08</td><td>+62.7%</td><td><span class="phase-tag phase-accel">加速</span></td></tr>
+                <tr><td>3月</td><td>16</td><td>~4.98</td><td>+435.5%</td><td><span class="phase-tag phase-accel">加速</span></td></tr>
+                <tr><td>2月</td><td>3</td><td>~0.93</td><td>-25.0%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>1月</td><td>4</td><td>~1.24</td><td>+37.8%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+            </table>
+        </div>
+
+        <div class="year-section">
+            <h3>2025年</h3>
+            <table class="data-table">
+                <tr><th>月份</th><th>增持（万盎司）</th><th>增持（吨）</th><th>环比变化</th><th>阶段</th></tr>
+                <tr><td>12月</td><td>3</td><td>~0.93</td><td>+3.3%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>11月</td><td>3</td><td>~0.90</td><td>0%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>10月</td><td>3</td><td>~0.90</td><td>-27.4%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>9月</td><td>4</td><td>~1.24</td><td>-34.7%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>8月</td><td>6</td><td>~1.90</td><td>0%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>7月</td><td>6</td><td>~1.90</td><td>-11.6%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>6月</td><td>7</td><td>~2.15</td><td>+13.2%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>5月</td><td>6</td><td>~1.90</td><td>-12.4%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>4月</td><td>7</td><td>~2.17</td><td>-22.5%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>3月</td><td>9</td><td>~2.80</td><td>-43.8%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>2月</td><td>16</td><td>~4.97</td><td>0%</td><td><span class="phase-tag phase-fast">恢复</span></td></tr>
+                <tr><td>1月</td><td>16</td><td>~4.97</td><td>-51.6%</td><td><span class="phase-tag phase-fast">恢复</span></td></tr>
+            </table>
+        </div>
+
+        <div class="year-section">
+            <h3>2024年</h3>
+            <table class="data-table">
+                <tr><th>月份</th><th>增持（万盎司）</th><th>增持（吨）</th><th>环比变化</th><th>阶段</th></tr>
+                <tr><td>12月</td><td>33</td><td>~10.26</td><td>重启后峰值</td><td><span class="phase-tag phase-fast">恢复</span></td></tr>
+                <tr><td>11月</td><td>16</td><td>~4.97</td><td>重启购金</td><td><span class="phase-tag phase-fast">恢复</span></td></tr>
+                <tr><td>10月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>9月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>8月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>7月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>6月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>5月</td><td>0</td><td>0</td><td>暂停</td><td><span class="phase-tag phase-pause">暂停</span></td></tr>
+                <tr><td>4月</td><td>6</td><td>~1.87</td><td>-62.4%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>3月</td><td>16</td><td>~4.97</td><td>-59.0%</td><td><span class="phase-tag phase-slow">放缓</span></td></tr>
+                <tr><td>2月</td><td>39</td><td>~12.13</td><td>+21.9%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>1月</td><td>32</td><td>~9.95</td><td>+10.3%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+            </table>
+        </div>
+
+        <div class="year-section">
+            <h3>2023年</h3>
+            <table class="data-table">
+                <tr><th>月份</th><th>增持（万盎司）</th><th>增持（吨）</th><th>环比变化</th><th>阶段</th></tr>
+                <tr><td>12月</td><td>29</td><td>~9.02</td><td>-23.7%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>11月</td><td>38</td><td>~11.82</td><td>-48.7%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>10月</td><td>74</td><td>~23.02</td><td>-11.9%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>9月</td><td>84</td><td>~26.13</td><td>-9.7%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>8月</td><td>93</td><td>~28.93</td><td>+25.7%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>7月</td><td>74</td><td>~23.02</td><td>+8.8%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>6月</td><td>68</td><td>~21.15</td><td>+25.4%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>5月</td><td>51</td><td>~16.86</td><td>+108.7%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>4月</td><td>26</td><td>~8.08</td><td>-55.2%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>3月</td><td>58</td><td>~18.04</td><td>-27.5%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>2月</td><td>80</td><td>~24.88</td><td>+66.6%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+                <tr><td>1月</td><td>48</td><td>~14.93</td><td>-50.5%</td><td><span class="phase-tag phase-fast">快速</span></td></tr>
+            </table>
+        </div>
+
+        <div class="year-section">
+            <h3>2022年</h3>
+            <table class="data-table">
+                <tr><th>月份</th><th>增持（万盎司）</th><th>增持（吨）</th><th>环比变化</th><th>阶段</th></tr>
+                <tr><td>12月</td><td>97</td><td>~30.17</td><td>-5.8%</td><td><span class="phase-tag phase-fast">启动</span></td></tr>
+                <tr><td>11月</td><td>103</td><td>~32.03</td><td>重启购金</td><td><span class="phase-tag phase-fast">启动</span></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 全球央行购金背景 -->
+    <div class="card">
+        <h2>全球央行购金大背景</h2>
+        <p>中国央行的持续购金是全球"去美元化"趋势的缩影：</p>
+        <ul>
+            <li><strong>2022-2025年</strong>：全球央行累计净购金约<span class="highlight-gold">987.8吨</span>，黄金储备重回20世纪70年代水平</li>
+            <li><strong>2026年Q1</strong>：全球央行净购金<span class="highlight-gold">244吨</span>，高于过去五年均值</li>
+            <li><strong>中国占比</strong>：2022-2025年累计增持358吨，约占全球央行净增持量的<span class="highlight-gold">39%</span></li>
+            <li><strong>配置空间</strong>：中国黄金占外汇储备仅约8.8%，远低于全球央行27%的平均水平，<span class="highlight-green">增持空间巨大</span></li>
+        </ul>
+        <p>瑞银预计2026年全球央行购金量约800-850吨，黄金年均价5000美元/盎司，年底目标5600美元/盎司。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            不光是中国，全世界的央行都在买黄金。过去四年，各国央行买了将近1000吨黄金。中国买得最多，占了快四成。但中国黄金在全部家当里只占不到9%，而世界平均水平是27%，说明中国还有很大的空间继续买。就像一个人存款里黄金占比还很低，以后还会继续往里加。
+        </div>
+    </div>
+
+    <!-- 黄金价格走势 -->
+    <div class="card">
+        <h2>黄金价格与央行购金的关系</h2>
+        <p>央行购金节奏与金价呈现明显的<span class="highlight-gold">"反向操作"</span>特征：</p>
+        <ul>
+            <li><strong>金价低位时</strong>：央行加大购金力度（如2023年月均18.8吨，2026年3-5月加速至5-10吨）</li>
+            <li><strong>金价高位时</strong>：央行放缓或暂停购金（如2024年5-10月暂停6个月）</li>
+            <li><strong>2026年金价走势</strong>：年内最高约5600美元/盎司，6月初回落至4365美元/盎司，年内涨幅几乎归零</li>
+        </ul>
+        <p>国信期货首席分析师顾冯达指出：央行在金价回调后加大购金力度，说明黄金被视为长期战略资产而非短期交易工具。全球央行黄金储备的结构性提升趋势不会因短期金价波动而逆转。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            央行买黄金有个规律：金价便宜的时候多买，贵了就少买甚至不买。2024年金价涨太高，央行干脆停了半年；2026年金价跌回来了，央行又开始大买。这就像买白菜，便宜的时候多囤点，贵了就少吃点。央行买黄金不是为了赚差价，而是为了长期保值。
+        </div>
+    </div>
+
+    <footer>
+        <p>数据来源：中国人民银行、世界黄金协会（WGC）、国家外汇管理局（SAFE）、瑞银研报</p>
+        <p>免责声明：本分析仅供参考，不构成投资建议。</p>
+        <p>最后更新：2026年6月3日</p>
+    </footer>
+
+</div>
+
+<script>
+    // 中国央行月度购金数据（吨）
+    const labels = [
+        '22/11','22/12',
+        '23/01','23/02','23/03','23/04','23/05','23/06','23/07','23/08','23/09','23/10','23/11','23/12',
+        '24/01','24/02','24/03','24/04','24/05','24/06','24/07','24/08','24/09','24/10','24/11','24/12',
+        '25/01','25/02','25/03','25/04','25/05','25/06','25/07','25/08','25/09','25/10','25/11','25/12',
+        '26/01','26/02','26/03','26/04','26/05'
+    ];
+
+    const purchases = [
+        32.03, 30.17,
+        14.93, 24.88, 18.04, 8.08, 16.86, 21.15, 23.02, 28.93, 26.13, 23.02, 11.82, 9.02,
+        9.95, 12.13, 4.97, 1.87, 0, 0, 0, 0, 0, 0, 4.97, 10.26,
+        4.97, 4.97, 2.80, 2.17, 1.90, 2.15, 1.90, 1.90, 1.24, 0.90, 0.90, 0.90,
+        1.24, 0.93, 4.98, 8.08, 9.95
+    ];
+
+    // 计算环比增长率（%）
+    const momGrowth = purchases.map((val, i) => {
+        if (i === 0) return null;
+        if (purchases[i-1] === 0 && val === 0) return null;
+        if (purchases[i-1] === 0) return null; // 从0到正数，环比无意义
+        return ((val - purchases[i-1]) / purchases[i-1] * 100).toFixed(1);
+    });
+
+    // 柱状图颜色：暂停期为灰色，其他为金色
+    const barColors = purchases.map(v => v === 0 ? '#BDBDBD' : 'rgba(184, 134, 11, 0.8)');
+    const barBorderColors = purchases.map(v => v === 0 ? '#9E9E9E' : 'rgba(139, 105, 20, 1)');
+
+    const ctx = document.getElementById('goldChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: '月度增持量（吨）',
+                    data: purchases,
+                    backgroundColor: barColors,
+                    borderColor: barBorderColors,
+                    borderWidth: 1,
+                    yAxisID: 'y',
+                    order: 2
+                },
+                {
+                    label: '环比增长率（%）',
+                    data: momGrowth,
+                    type: 'line',
+                    borderColor: '#D32F2F',
+                    backgroundColor: 'rgba(211, 47, 47, 0.1)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#D32F2F',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1,
+                    tension: 0.3,
+                    yAxisID: 'y1',
+                    order: 1,
+                    spanGaps: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2.2,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 14 },
+                        padding: 15
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            if (context.dataset.label.includes('环比')) {
+                                let val = context.parsed.y;
+                                if (val === null || val === undefined) return '环比增长率: N/A';
+                                return '环比增长率: ' + val + '%';
+                            }
+                            return '增持量: ' + context.parsed.y + ' 吨';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        font: { size: 11 },
+                        maxRotation: 45,
+                        minRotation: 45
+                    },
+                    grid: { display: false }
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: '增持量（吨）',
+                        font: { size: 14 },
+                        color: 'rgba(139, 105, 20, 1)'
+                    },
+                    beginAtZero: true,
+                    ticks: {
+                        font: { size: 12 },
+                        color: 'rgba(139, 105, 20, 1)'
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    title: {
+                        display: true,
+                        text: '环比增长率（%）',
+                        font: { size: 14 },
+                        color: '#D32F2F'
+                    },
+                    ticks: {
+                        font: { size: 12 },
+                        color: '#D32F2F',
+                        callback: function(value) { return value + '%'; }
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
