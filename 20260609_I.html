@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I铁矿石基本面分析 - 2026年6月9日</title>
+    <style>
+        :root {
+            --primary: #1565C0;
+            --primary-light: #42A5F5;
+            --bg: #F0F4F8;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #BBDEFB;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #0D47A1, #1E88E5);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F0F4F8; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        .elder-summary {
+            background: #E8F5E9;
+            border-left: 5px solid #2E7D32;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .elder-title {
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>I铁矿石期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年6月9日 | 预测区间：2026年6月—2026年12月</div>
+    </header>
+
+    <!-- 核心结论 -->
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>短期偏弱震荡，中期震荡下行</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中偏高</strong>（供应放量+累库拐点+需求见顶三重压制，海运费松动但仍有支撑）</td></tr>
+            <tr><td>I2609合约价格区间</td><td><strong>730—790元/吨</strong>（短期2个月）</td></tr>
+            <tr><td>I2701合约价格区间</td><td><strong>700—780元/吨</strong>（中期半年）</td></tr>
+            <tr><td>普氏62%指数区间</td><td><strong>95—108美元/吨</strong>（短期）</td></tr>
+            <tr><td>核心建议</td><td><strong>短期反弹至780附近试空，730以下不追空；中期逢高布局空单，关注海运费变化和西芒杜放量节奏</strong></td></tr>
+        </table>
+    </div>
+
+    <!-- 一、市场概览 -->
+    <div class="section">
+        <h2>一、市场概览与当前价格</h2>
+        <table class="data-table">
+            <tr><th>项目</th><th>数值</th><th>备注</th></tr>
+            <tr><td>I2609收盘价</td><td><strong>766元/吨</strong></td><td>周跌幅2.23%</td></tr>
+            <tr><td>普氏62%指数</td><td><strong>101.1美元/吨</strong></td><td>环比下跌3.99%</td></tr>
+            <tr><td>青岛港PB粉</td><td><strong>739元/吨</strong></td><td>环比下跌2.12%</td></tr>
+            <tr><td>唐山66%酸粉</td><td><strong>975元/吨</strong></td><td>环比持平</td></tr>
+            <tr><td>超特粉（唐山）</td><td><strong>600元/吨</strong></td><td>环比回落</td></tr>
+            <tr><td>09合约基差</td><td>约15元/吨</td><td>历史同期偏低</td></tr>
+            <tr><td>9-1月差</td><td>约18元/吨</td><td>小幅走缩</td></tr>
+        </table>
+        <div class="highlight-box">
+            5月铁矿石价格冲高回落，月初受海运费推涨最高触及826.5元/吨，随后在供应放量、需求走弱、双焦强势挤压下持续回落，6月初跌破770元/吨，市场进入淡季承压格局。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            铁矿石价格从5月最高的826块跌到了766块，跌了差不多7%。就像菜市场的菜，货多了、买的人少了，价格自然就下来了。现在矿价已经不算贵了，但还没到最便宜的时候。
+        </div>
+    </div>
+
+    <!-- 二、供需基本面分析 -->
+    <div class="section">
+        <h2>二、供需基本面分析 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 供应端：发运放量，供应压力加大</h3>
+        <table class="data-table">
+            <tr><th>项目</th><th>最新数据</th><th>变化趋势</th></tr>
+            <tr><td>全球发运量（最新周）</td><td>3374万吨</td><td style="color:var(--red);">环比-428万吨，但6月预计放量</td></tr>
+            <tr><td>澳洲巴西发运量</td><td>2826.2万吨</td><td style="color:var(--red);">BHP/FMG财年冲量</td></tr>
+            <tr><td>45港到港量</td><td>2565.9万吨</td><td style="color:var(--red);">环比+144万吨</td></tr>
+            <tr><td>6月预计周均到港</td><td>~2600万吨</td><td style="color:var(--red);">环比+124万吨/周</td></tr>
+            <tr><td>西芒杜5月出口</td><td>~220万吨</td><td style="color:var(--red);">产能快速爬坡</td></tr>
+            <tr><td>西芒杜2026全年预计</td><td>~2000万吨</td><td style="color:var(--red);">Q3或达800万吨</td></tr>
+            <tr><td>国内铁精粉1-4月</td><td>8807.7万吨</td><td style="color:var(--green);">同比-2.8%</td></tr>
+            <tr><td>4月铁矿石进口</td><td>10385.4万吨</td><td>高位水平</td></tr>
+        </table>
+        <p><strong>关键变化：</strong></p>
+        <ul>
+            <li><strong>四大矿山财年冲量：</strong>6月BHP和FMG进入澳财年末（6月30日），发运冲量确定性高，力拓和Vale也有半年度冲量预期</li>
+            <li><strong>西芒杜放量加速：</strong>5月单周发运峰值达97.4万吨，累计发运约600万吨，产能爬坡明显加速，Q3出口或达800万吨规模</li>
+            <li><strong>非主流矿高位增产：</strong>高价刺激下印度、南非等非主流矿供应维持高位</li>
+            <li><strong>国内矿产量偏低：</strong>受天气与环保安全检查影响，国内铁精粉产量同比下降2.8%</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            矿石供应就像水龙头开大了——澳洲的大矿场年底冲业绩拼命发货，非洲新开的西芒杜矿也越挖越多，加上从巴西运来的货也到了。货多了，价格就不容易涨，就像集市上卖菜的多了，菜价就得降。
+        </div>
+
+        <h3>2. 需求端：铁水见顶回落，淡季压力加大</h3>
+        <table class="data-table">
+            <tr><th>项目</th><th>最新数据</th><th>变化趋势</th></tr>
+            <tr><td>日均铁水产量</td><td>240.72万吨</td><td style="color:var(--red);">环比-0.28万吨</td></tr>
+            <tr><td>高炉开工率</td><td>83.94%</td><td style="color:var(--red);">环比-0.2%</td></tr>
+            <tr><td>高炉产能利用率</td><td>90.24%</td><td style="color:var(--red);">环比-0.11%</td></tr>
+            <tr><td>钢厂盈利率</td><td>59.31%</td><td style="color:var(--red);">环比-3.03个百分点</td></tr>
+            <tr><td>钢厂进口矿库存</td><td>8835.38万吨</td><td>环比+14.83万吨</td></tr>
+            <tr><td>1-4月生铁产量增速</td><td>同比-3.1%</td><td>需求同比偏弱</td></tr>
+            <tr><td>江苏螺纹即期毛利</td><td>~141元/吨</td><td style="color:var(--red);">月环比走缩4元/吨</td></tr>
+        </table>
+        <p><strong>关键变化：</strong></p>
+        <ul>
+            <li><strong>铁水见顶信号：</strong>连续四期环比增加后首次下降，新增2座高炉复产但5座检修，铁水继续上行空间有限</li>
+            <li><strong>钢厂利润压缩：</strong>焦炭第五轮调价落地，双焦强势挤压钢厂利润，盈利率回落3个百分点至59.31%</li>
+            <li><strong>淡季效应显现：</strong>6-8月为钢材消费传统淡季，高温多雨影响工地施工，成材需求走弱将传导至原料端</li>
+            <li><strong>钢厂补库意愿低迷：</strong>按需采购为主，无主动补库动力</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            钢厂现在就像干活的工人，天热了活儿少了，赚的钱还被焦炭涨价吃掉了一部分。钢厂不想多买矿石，能省就省。就像家里天热不想做饭，买菜也少了，菜市场的菜就更不好卖了。
+        </div>
+
+        <h3>3. 库存：由降转增，累库拐点确认</h3>
+        <table class="data-table">
+            <tr><th>项目</th><th>最新数据</th><th>变化趋势</th></tr>
+            <tr><td>45港库存</td><td>16481.11万吨</td><td style="color:var(--red);">环比+85万吨，转累库</td></tr>
+            <tr><td>47港库存</td><td>17195.07万吨</td><td style="color:var(--red);">环比+78.67万吨</td></tr>
+            <tr><td>日均疏港量</td><td>321.6万吨</td><td style="color:var(--red);">环比-0.65万吨</td></tr>
+            <tr><td>钢厂进口矿库存</td><td>8835.38万吨</td><td>环比+14.83万吨</td></tr>
+            <tr><td>6月底45港库存预估</td><td>~1.68亿吨</td><td style="color:var(--red);">环比+400万吨</td></tr>
+            <tr><td>同比增幅</td><td>+2860万吨</td><td>远高于去年同期</td></tr>
+        </table>
+        <div class="highlight-box">
+            港口库存连续两期累库，累库拐点早于往年6月中下旬。6月供应增量显著大于需求，预计6月底45港库存达1.68亿吨，同比增加约2860万吨，库存压力持续加大。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            仓库里的矿石又开始变多了，而且比往年更早开始堆货。就像仓库里存货越来越多，卖不出去，老板就得降价处理。现在矿石仓库已经堆了1.65亿吨，比去年多了近3000万吨。
+        </div>
+    </div>
+
+    <!-- 三、成本与利润分析 -->
+    <div class="section">
+        <h2>三、成本与利润分析 <span class="tag tag-neutral">中性偏空</span></h2>
+
+        <h3>1. 海运费：高位松动，成本支撑减弱</h3>
+        <table class="data-table">
+            <tr><th>航线</th><th>当前运价</th><th>变化</th></tr>
+            <tr><td>C3航线（巴西-青岛）</td><td>~36.2美元/吨</td><td>同比+90%，但近期松动</td></tr>
+            <tr><td>C5航线（西澳-青岛）</td><td>~16.87美元/吨</td><td>多年高位，但开始回落</td></tr>
+            <tr><td>Capesize 5TC日租金</td><td>~46,346美元/天</td><td>同比+170%</td></tr>
+        </table>
+        <p><strong>关键判断：</strong></p>
+            <ul>
+            <li>海运费是今年铁矿价格的核心支撑因素，C3和C5航线运价同比涨幅达90%-97%</li>
+            <li>近期C3线运费显著松动，美伊谈判进展导致油价预期回落，运费支撑开始减弱</li>
+            <li>但运力供给偏紧格局未根本改变（环保新规降速、巴拿马运河限制），运费回落节奏可能偏慢</li>
+            <li>若美伊谈判破裂、霍尔木兹海峡封锁，运费可能再度飙升</li>
+        </ul>
+
+        <h3>2. 钢厂利润：被双焦挤压</h3>
+        <table class="data-table">
+            <tr><th>项目</th><th>数值</th><th>变化</th></tr>
+            <tr><td>江苏螺纹即期毛利</td><td>~141元/吨</td><td>月环比走缩</td></tr>
+            <tr><td>钢厂盈利率</td><td>59.31%</td><td>环比-3.03个百分点</td></tr>
+            <tr><td>焦炭调价</td><td>第五轮落地</td><td>成本持续上升</td></tr>
+        </table>
+        <p>双焦（焦煤、焦炭）近期强势上涨，与铁矿形成跷跷板效应。钢厂利润被焦炭侵蚀，对铁矿的采购意愿和议价能力下降，铁矿在产业链利润分配中处于不利位置。</p>
+
+        <h3>3. 到岸成本估算</h3>
+        <table class="data-table">
+            <tr><th>矿山</th><th>FOB成本</th><th>海运费</th><th>到岸成本估算</th></tr>
+            <tr><td>澳洲主流矿（PB粉）</td><td>~25-30美元/吨</td><td>~17美元/吨</td><td>~42-47美元/吨</td></tr>
+            <tr><td>巴西矿（卡粉）</td><td>~15-20美元/吨</td><td>~36美元/吨</td><td>~51-56美元/吨</td></tr>
+            <tr><td>西芒杜矿</td><td>~25-30美元/吨</td><td>~35-40美元/吨</td><td>~60-70美元/吨</td></tr>
+        </table>
+        <div class="highlight-box">
+            当前普氏62%指数约101美元/吨，远高于主流矿山到岸成本，矿价仍有下行空间。但海运费高位使到岸成本抬升，限制了矿价下跌幅度。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            运矿石的船费今年涨了很多，从巴西运一吨矿石到中国光船费就要36美元，从澳洲也要17美元。这就像运费贵了，菜价里运费占了大头。不过最近运费开始松了，就像油价降了运费也跟着降，矿石的成本支撑就弱了。钢厂赚的钱被焦炭涨价吃掉了，买矿石的劲头就不大了。
+        </div>
+    </div>
+
+    <!-- 四、政策与宏观环境 -->
+    <div class="section">
+        <h2>四、政策与宏观环境 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 国内政策</h3>
+        <ul>
+            <li><strong>粗钢平控预期：</strong>2026年政府工作报告提出有序压减钢铁产能，全年粗钢平控预期强烈，1-4月粗钢产量同比下降，直接锁死铁矿石需求上限</li>
+            <li><strong>大宗商品储备调节：</strong>国务院强调做好大宗商品储备调节，加快建设大宗商品资源配置枢纽</li>
+            <li><strong>房地产持续拖累：</strong>1-2月房地产新开工面积同比下降23.1%，施工面积同比下降11.7%，建筑用钢需求疲软</li>
+        </ul>
+
+        <h3>2. 国际宏观</h3>
+        <ul>
+            <li><strong>美联储政策偏鹰：</strong>新任美联储主席沃什政策偏鹰，年内降息预期削弱，美元走强压制大宗商品定价</li>
+            <li><strong>美伊谈判拉锯：</strong>美伊谈判分歧仍存，若达成协议油价回落则海运费支撑减弱；若破裂则运费可能飙升</li>
+            <li><strong>贸易保护抬头：</strong>欧盟7月1日实施新钢铁关税政策，韩国对中国热轧卷板征收反倾销税28%-33%，钢材出口空间收窄</li>
+            <li><strong>美国关税影响：</strong>加剧市场悲观氛围，对全球贸易和商品需求形成压制</li>
+        </ul>
+
+        <h3>3. 西芒杜战略影响</h3>
+        <ul>
+            <li>西芒杜铁矿中资权益超50%，是中国打破澳巴垄断的战略性突破</li>
+            <li>满产后年供应1.2亿吨，占中国进口量近10%，将推动全球铁矿定价权向买方倾斜</li>
+            <li>短期增量有限（2026年约2000万吨），但市场预期已提前定价</li>
+            <li>高品矿溢价受压：西芒杜65%品位矿直接分流卡粉、PB粉需求</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            国家政策不让钢厂多产钢了，房子也盖得少了，用钢量就少了。国外也不太平，美国加息让美元变强，东西就不值钱了。好消息是咱们中国在非洲开的那个大矿（西芒杜）开始出矿了，以后不用那么依赖澳洲和巴西的矿，议价权会慢慢到咱们手里。就像以前只有两家卖菜的，现在多了第三家，菜价就不好涨了。
+        </div>
+    </div>
+
+    <!-- 五、技术面参考 -->
+    <div class="section">
+        <h2>五、技术面参考 <span class="tag tag-bearish">偏空</span></h2>
+
+        <h3>1. 关键价位</h3>
+        <table class="data-table">
+            <tr><th>类型</th><th>价位</th><th>说明</th></tr>
+            <tr><td>强压力位</td><td>830元/吨</td><td>5月高点，多次受阻回落</td></tr>
+            <tr><td>压力位</td><td>780-790元/吨</td><td>短期反弹压力区</td></tr>
+            <tr><td>当前价</td><td>766元/吨</td><td>I2609合约</td></tr>
+            <tr><td>支撑位</td><td>730-750元/吨</td><td>前期低点+MA60附近</td></tr>
+            <tr><td>强支撑位</td><td>700元/吨</td><td>期权看跌最大持仓位</td></tr>
+        </table>
+
+        <h3>2. 技术指标</h3>
+        <ul>
+            <li><strong>均线系统：</strong>日K线运行于多均线下方，均线指标转向空头排列</li>
+            <li><strong>MACD：</strong>DIFF与DEA向下运行，绿柱放大，空头趋势明确</li>
+            <li><strong>基差：</strong>09合约基差持续走缩，处于历史同期偏低水平，盘面相对现货偏强</li>
+            <li><strong>持仓：</strong>前20名净空增加至11835张，资金面偏空</li>
+        </ul>
+
+        <h3>3. 期权市场信号</h3>
+        <ul>
+            <li>期权市场预期2026年6-8月价格主要在700-920元/吨区间运行</li>
+            <li>看跌期权最大持仓行权价700元/吨，看涨期权最大持仓行权价920元/吨</li>
+            <li>隐含波动率处于历史中低位（约16.7%），期权成本偏低</li>
+            <li>持仓量PCR为1.33，处于多空临界值之上，情绪中性偏乐观但正在转变</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            从图上看，矿价正往下走，就像下山一样，上面有830块和780块两道坎挡着，不容易涨上去。下面730块和700块是支撑，跌到那里可能会停一停。做期权的人觉得最可能的价格范围是700到920块之间。
+        </div>
+    </div>
+
+    <!-- 六、机构观点汇总 -->
+    <div class="section">
+        <h2>六、机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>方向</th><th>核心观点</th><th>策略建议</th></tr>
+            <tr><td>广发期货</td><td style="color:var(--red);">偏空</td><td>供给边际走强、铁水增速放缓、海运费回落、成材利润再分配</td><td>反弹至780试空，区间730-790</td></tr>
+            <tr><td>新湖期货</td><td style="color:var(--red);">偏空</td><td>基本面趋弱，运价决定下行空间，炉料跷跷板效应压制铁矿</td><td>逢高沽空，关注海运费</td></tr>
+            <tr><td>长江期货</td><td style="color:var(--red);">偏空</td><td>供需格局宽松，发运到港双高，港口面临累库</td><td>矿价震荡偏弱</td></tr>
+            <tr><td>华宝期货</td><td style="color:var(--blue);">中性</td><td>碳元素挤压利润，铁矿偏空配置，中期供需宽松</td><td>区间770-805，或卖出虚值看涨期权</td></tr>
+            <tr><td>宝城期货</td><td style="color:var(--red);">偏空</td><td>现实压力未退，需求趋弱供应高位，双焦强势挤压</td><td>矿价承压偏弱运行</td></tr>
+            <tr><td>中联钢</td><td style="color:var(--blue);">中性</td><td>利空已兑现，深跌空间有限，低位宽幅震荡</td><td>震荡整理，等待新驱动</td></tr>
+            <tr><td>瑞达期货</td><td style="color:var(--red);">偏空</td><td>港口可售资源宽松，钢厂按需采购</td><td>I2609反弹抛空</td></tr>
+            <tr><td>五矿经研院</td><td style="color:var(--blue);">中性</td><td>短期740-830区间震荡，期权预期6-8月700-920</td><td>区间操作</td></tr>
+        </table>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            大部分研究机构都觉得铁矿石要跌或者横着走，没有一家觉得会大涨。就像大部分医生都说这个病人还得养一阵子，不会马上好起来。最关键的要看运费会不会降，运费降了矿价就跟着跌。
+        </div>
+    </div>
+
+    <!-- 七、风险提示 -->
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <ul>
+            <li><strong>海运费再度飙升：</strong>若美伊谈判破裂、霍尔木兹海峡封锁，油价和运费可能暴涨，对矿价形成强支撑</li>
+            <li><strong>铁水超预期维持高位：</strong>若钢厂利润未明显恶化，铁水持续在241万吨以上，刚需支撑超预期</li>
+            <li><strong>宏观政策刺激：</strong>若国内出台大规模基建刺激政策，钢材需求回暖将带动铁矿反弹</li>
+            <li><strong>矿山供应中断：</strong>澳洲飓风、巴西暴雨等极端天气可能中断发运，造成短期供应紧张</li>
+            <li><strong>西芒杜进度不及预期：</strong>几内亚政局不稳或基础设施故障可能导致发运量低于预期</li>
+            <li><strong>双焦价格大幅回落：</strong>若焦煤焦炭价格回调，钢厂利润改善可能提振铁矿需求</li>
+        </ul>
+    </div>
+
+    <!-- 八、综合研判与操作建议 -->
+    <div class="advice-box">
+        <h2>&#9733; 综合研判与操作建议</h2>
+
+        <h3>情景分析</h3>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">悲观情景（概率35%）：加速下行</div>
+            <p>海运费快速回落+铁水大幅下降+港口持续累库。I2609跌至700-730元/吨，普氏指数跌至90-95美元/吨。</p>
+            <p><strong>触发条件：</strong>美伊达成协议油价暴跌、钢厂大面积亏损减产、西芒杜发运超预期放量</p>
+        </div>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">基准情景（概率50%）：偏弱震荡</div>
+            <p>供应高位+需求缓慢走弱+海运费缓慢回落。I2609在730-790元/吨区间偏弱震荡，普氏指数95-108美元/吨。</p>
+            <p><strong>触发条件：</strong>6月发运冲量兑现、铁水缓慢回落至235-240万吨、港口持续累库</p>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">乐观情景（概率15%）：超跌反弹</div>
+            <p>宏观刺激+海运费再度走高+供应中断。I2609反弹至800-830元/吨，普氏指数回升至108-115美元/吨。</p>
+            <p><strong>触发条件：</strong>国内出台大规模基建刺激、美伊冲突升级运费暴涨、澳洲飓风中断发运</p>
+        </div>
+
+        <h3>操作建议</h3>
+        <table class="data-table">
+            <tr><th>时间维度</th><th>方向</th><th>具体策略</th></tr>
+            <tr>
+                <td><strong>短期（2个月）</strong></td>
+                <td style="color:var(--red);">偏空</td>
+                <td>
+                    1. 反弹至780附近试空，止损795，目标740-750<br>
+                    2. 730以下不追空，关注支撑位反弹机会<br>
+                    3. 卖出虚值看涨期权（行权价830以上）收取权利金
+                </td>
+            </tr>
+            <tr>
+                <td><strong>中期（半年）</strong></td>
+                <td style="color:var(--red);">偏空</td>
+                <td>
+                    1. 逢高布局远月空单，I2701在770以上逐步建仓<br>
+                    2. 关注9-1反套（空近月多远月），因近月受海运费支撑更强<br>
+                    3. 密切跟踪西芒杜月度发运数据，若单月突破150万吨则加空<br>
+                    4. 关注Q3旺季（9-10月）是否有一波补库反弹，可做波段
+                </td>
+            </tr>
+        </table>
+
+        <h3>关键监测指标</h3>
+        <ol>
+            <li><strong>海运费走势：</strong>C3/C5航线运价是矿价底部支撑的关键变量</li>
+            <li><strong>铁水产量：</strong>若跌破235万吨则需求加速走弱，矿价下行空间打开</li>
+            <li><strong>港口库存：</strong>45港库存若突破1.7亿吨则累库压力显著加大</li>
+            <li><strong>西芒杜发运：</strong>单月发运是否突破150万吨，决定利空兑现节奏</li>
+            <li><strong>钢厂盈利率：</strong>若跌破50%则可能引发大规模减产</li>
+            <li><strong>美伊谈判进展：</strong>直接影响油价和海运费预期</li>
+        </ol>
+    </div>
+
+    <div class="footnote">
+        <p>数据来源：Mysteel、钢联、普氏、广发期货、新湖期货、长江期货、华宝期货、宝城期货、瑞达期货、五矿经研院、FIS、中联钢等</p>
+        <p>免责声明：本分析仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。</p>
+        <p>分析日期：2026年6月9日</p>
+    </div>
+</div>
+</body>
+</html>
