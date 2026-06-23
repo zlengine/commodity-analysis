@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RU橡胶基本面分析 - 2026年6月10日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #1B5E20, #388E3C);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        .elder-summary {
+            background: #E8F5E9;
+            border-left: 5px solid #2E7D32;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .elder-title {
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>RU天然橡胶期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年6月10日 | 预测区间：2026年6月—2026年12月</div>
+    </header>
+
+    <!-- 核心结论 -->
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中期方向</td><td><strong>短期季节性调整，中期震荡偏强</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中偏高（原料成本支撑+全球供需缺口+厄尔尼诺预期三重托底）</strong></td></tr>
+            <tr><td>RU2609合约价格区间</td><td><strong>16800—18000元/吨</strong>（短期2个月）</td></tr>
+            <tr><td>RU2701合约价格区间</td><td><strong>17500—19500元/吨</strong>（中期半年）</td></tr>
+            <tr><td>NR主力参考</td><td><strong>14200—15800元/吨</strong></td></tr>
+            <tr><td>核心建议</td><td><strong>17000以下逢低布局RU2701多单，18000以上不追高；三季度季节性调整后逢低多配</strong></td></tr>
+        </table>
+    </div>
+
+    <!-- 一、市场概览 -->
+    <div class="section">
+        <h2>一、市场概览与当前价格</h2>
+        <p>2026年上半年天然橡胶走出亮眼上涨行情，RU主力从年初15605元/吨上涨至6月17日17890元/吨，涨幅14.64%。当前处于泰国增产季放量期，供应端季节性压力显现，叠加美联储加息预期升温、需求淡季，胶价自高位回落调整。但原料价格处于历史高位、全球供需缺口延续、厄尔尼诺预期发酵，为中长期价格提供强支撑。</p>
+        <table class="data-table">
+            <tr><th>项目</th><th>数值</th><th>备注</th></tr>
+            <tr><td>RU主力收盘价</td><td><strong>约17500元/吨</strong></td><td>6月中旬回落，较年内高点18440回调</td></tr>
+            <tr><td>NR主力收盘价</td><td><strong>约15150元/吨</strong></td><td>20号胶，上市新高后回调</td></tr>
+            <tr><td>上海全乳胶现货</td><td><strong>17580元/吨</strong></td><td>环比下跌2.82%</td></tr>
+            <tr><td>青岛混合胶现货</td><td><strong>17130元/吨</strong></td><td>环比下跌3.06%</td></tr>
+            <tr><td>海南浓乳</td><td><strong>12000元/吨</strong></td><td>环比下跌2.91%</td></tr>
+            <tr><td>泰国胶水</td><td><strong>87泰铢/公斤</strong></td><td>近五年同期高位，环比涨3.41%</td></tr>
+            <tr><td>泰国杯胶</td><td><strong>74.99泰铢/公斤</strong></td><td>环比涨2.19%</td></tr>
+            <tr><td>泰国烟片CIF</td><td><strong>3002美元/吨</strong></td><td>环比涨1.62%</td></tr>
+            <tr><td>泰国标胶CIF</td><td><strong>2320美元/吨</strong></td><td>环比跌3.41%</td></tr>
+            <tr><td>RU-NR价差</td><td>约2350元/吨</td><td>深浅价差偏大</td></tr>
+        </table>
+        <div class="highlight-box">
+            <strong>核心矛盾：</strong>"短期供应放量+需求淡季"vs"中长期供需缺口+厄尔尼诺减产预期"。当前处于泰国增产季放量期，6-8月季节性供应压力最大；但原料价格创近十年新高、加工厂亏损、全球连续四年供需缺口、厄尔尼诺秋季增强预期，构成中长期强支撑。市场正等待三季度上量期验证减产叙事。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            橡胶价格今年涨了不少，现在因为泰国开始大量割胶、天又热需求淡，价格暂时回调了。但是割胶的原料价格创了十年最贵，加工厂在亏本。而且全球橡胶连续四年不够用，厄尔尼诺可能让明年更缺。就像今年雨水多菜长得慢，虽然现在菜多了点，但明年可能更不够吃。
+        </div>
+    </div>
+
+    <!-- 二、供需基本面分析 -->
+    <div class="section">
+        <h2>二、供需基本面分析 <span class="tag tag-bullish">中长期偏多</span></h2>
+
+        <h3>1. 全球供应：结构性减产趋势+季节性放量 <span class="tag tag-neutral">近空远多</span></h3>
+        <table class="data-table">
+            <tr><th>供应指标</th><th>数据</th><th>评价</th></tr>
+            <tr><td>2025年全球产量（ANRPC）</td><td>1485万吨</td><td>同比+1.4%</td></tr>
+            <tr><td>2026年全球产量预测</td><td>1520万吨</td><td>同比+2.4%（部分机构预测零增长）</td></tr>
+            <tr><td>2026年全球供需缺口（IRSG）</td><td>40万吨</td><td style="color:var(--red);">连续第四年缺口，预计持续至2032年</td></tr>
+            <tr><td>泰国割胶率</td><td>约94%</td><td>接近饱和，高价刺激弹性有限</td></tr>
+            <tr><td>泰国4月产量</td><td>低产期，基数小</td><td>尚不能说明减产/增产</td></tr>
+            <tr><td>国内1-5月进口</td><td>334.3万吨</td><td style="color:var(--green);">同比-3.8%，进口收缩</td></tr>
+        </table>
+        <p><strong>泰国：</strong>6月进入增产季，降雨减少原料产出增加，但胶农惜售、加工厂抢购支撑原料价格维持高位。旺产期胶树仍占主导，不具备断崖减产基础，但东北部增量部分弥补南部减量。割胶率94%接近饱和，高价刺激下的增产弹性有限。</p>
+        <p><strong>印尼：</strong>主产区干旱加剧，产量持续下滑。马来西亚西部出现较大降雨，越南阶段性降雨中增产。</p>
+        <p><strong>中国：</strong>云南天气正常，海南日胶水产出约5500吨，新胶持续上量。1-5月进口同比下滑3.8%，后续存在季节性减量预期。</p>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            全球橡胶连续四年不够用了，今年还缺40万吨，而且这个缺口可能持续到2032年。泰国现在开始大量割胶了，但能割的树都割得差不多了（94%），再多割也多不了多少。就像果园里的果子，能摘的都摘了，再多花钱也摘不出更多来。中国进口的橡胶还少了4%，说明外面卖的也少了。
+        </div>
+
+        <h3>2. 库存：去库格局延续，但去库速度放缓 <span class="tag tag-neutral">中性</span></h3>
+        <table class="data-table">
+            <tr><th>库存指标</th><th>数据</th><th>评价</th></tr>
+            <tr><td>天然橡胶社会库存</td><td>124.5万吨</td><td>周环比-2.5万吨，去库延续</td></tr>
+            <tr><td>青岛保税区干胶库存</td><td>持续去化</td><td>但绝对体量仍大</td></tr>
+            <tr><td>国内干胶第三方库存</td><td>去库中</td><td>贸易盘占比较高</td></tr>
+            <tr><td>RU期货仓单</td><td>微增</td><td>青岛地区总库存止跌略增</td></tr>
+            <tr><td>轮胎厂原料库存</td><td>偏低</td><td>按需采购，无大量囤货</td></tr>
+        </table>
+        <div class="highlight-box">
+            <strong>库存去化放缓信号：</strong>虽然社会库存仍在去化，但青岛地区总库存已止跌略增，去库速度同比减弱。考虑到进口胶绝对体量大且贸易盘占比较高，库存对价格的支撑作用边际减弱。但轮胎厂原料库存偏低，一旦价格回落存在补库需求。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            仓库里的橡胶还在慢慢减少，但减少的速度变慢了，青岛的库存甚至开始稍微增加。不过做轮胎的厂子里存的橡胶不多，都是用多少买多少。就像家里米缸快见底了，但每次只买一小袋，等米便宜了才会多买点存着。
+        </div>
+
+        <h3>3. 需求：淡季承压，但韧性犹存 <span class="tag tag-neutral">中性偏弱</span></h3>
+        <table class="data-table">
+            <tr><th>需求指标</th><th>数据</th><th>评价</th></tr>
+            <tr><td>轮胎开工率</td><td>同比向好</td><td>但端午假期环比回落</td></tr>
+            <tr><td>重卡销量</td><td>同比增长</td><td>配套需求稳定释放</td></tr>
+            <tr><td>新能源汽车渗透率</td><td>持续提升</td><td>带动配套胎需求</td></tr>
+            <tr><td>欧盟对华轮胎反倾销</td><td>税率下调</td><td style="color:var(--green);">利好出口</td></tr>
+            <tr><td>合成胶替代</td><td>地缘缓和后合成胶走弱</td><td style="color:var(--red);">低价合成胶替代优势突出</td></tr>
+            <tr><td>终端需求</td><td>淡季，轮胎库存消化偏慢</td><td>整体偏弱</td></tr>
+        </table>
+        <p>需求端呈现"内需有托底、外需有压力"格局。重卡销量增长和新能源汽车渗透率提升为内需提供稳定基础，欧盟反倾销税率下调利好出口。但6月传统需求淡季，叠加合成胶价格走弱带来的替代效应，天然橡胶需求边际偏弱。国内收储政策预期为需求端提供潜在利多。</p>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            做轮胎的厂子开工比去年好，大卡车和新能车卖得多了，轮胎用得也多。但是现在是夏天淡季，轮胎卖得慢。而且人造橡胶（用石油做的那种）便宜了，有些厂子就用人造的代替天然的。好消息是欧洲对我们轮胎收的税少了，出口能好点。
+        </div>
+    </div>
+
+    <!-- 三、成本与利润分析 -->
+    <div class="section">
+        <h2>三、成本与利润分析 <span class="tag tag-bullish">强支撑</span></h2>
+
+        <table class="data-table">
+            <tr><th>指标</th><th>当前状态</th><th>影响</th></tr>
+            <tr><td>泰国胶水原料价</td><td>87泰铢/公斤（近五年高位）</td><td>成本刚性支撑强</td></tr>
+            <tr><td>泰国杯胶原料价</td><td>74.99泰铢/公斤</td><td>同比大幅上涨</td></tr>
+            <tr><td>胶水-杯胶价差</td><td>约13泰铢/公斤</td><td>回落至季节性正常区间</td></tr>
+            <tr><td>泰国加工厂利润</td><td>亏损状态</td><td style="color:var(--red);">成本倒挂，挺价意愿强</td></tr>
+            <tr><td>天然橡胶加工利润</td><td>-1687元/吨</td><td style="color:var(--red);">深度亏损</td></tr>
+            <tr><td>泰标胶利润</td><td>-179美元/吨</td><td style="color:var(--red);">出口亏损</td></tr>
+            <tr><td>泰国制造成本</td><td>190-200美分/公斤</td><td>非洲最低成本190美分/公斤</td></tr>
+            <tr><td>海南加工利润</td><td>有改善</td><td>国内利润好于泰国</td></tr>
+        </table>
+        <div class="highlight-box">
+            <strong>成本支撑是当前最强利多：</strong>泰国原料价格创近十年同期新高，加工厂深度亏损（-1687元/吨），泰标胶出口亏损179美元/吨。原料价格高企不是因减产导致，而是加工厂为锁定利润超卖→积极采购→抬高原料价格→利润减少→继续超卖的恶性循环。加工厂库存偏低、长约订单增加（部分同比+40%），原料价格中枢将进一步抬升。预计胶水下限60-65泰铢/公斤，杯胶下限55-60泰铢/公斤。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            现在买橡胶原料贵得离谱，是十年来最贵的。加工厂买原料做成橡胶卖出去，每吨要亏1687块，就像花10块钱买面粉做成馒头只卖8块钱。为什么原料这么贵？因为加工厂之前卖太多了，现在得赶紧买原料交货，你抢我抢就把价格抬上去了。只要原料还这么贵，橡胶成品就跌不下去。
+        </div>
+    </div>
+
+    <!-- 四、政策与宏观环境 -->
+    <div class="section">
+        <h2>四、政策与宏观环境 <span class="tag tag-neutral">多空交织</span></h2>
+
+        <h3>1. 厄尔尼诺：秋季增强预期，核心多头催化剂 <span class="tag tag-bullish">偏多</span></h3>
+        <ul>
+            <li><strong>NOAA正式宣布：</strong>6月11日正式宣布厄尔尼诺成立，预测秋季增强至中等或强烈级别</li>
+            <li><strong>ECMWF预测：</strong>海温异常"几乎没有可能低于2度"，11月或达3度（极强级别）</li>
+            <li><strong>影响逻辑：</strong>5-7月胶树抽芽需降水，干旱影响远期产量；8-10月干旱反增可割天数</li>
+            <li><strong>历史参考：</strong>2015下半年、2023下半年厄尔尼诺并未导致当期减产，需旺产期数据验证</li>
+            <li><strong>资金面：</strong>厄尔尼诺是农产品板块最受关注的气候交易主线，证伪前始终具备资金驱动基础</li>
+        </ul>
+
+        <h3>2. 宏观环境：高利率压制，但政策托底 <span class="tag tag-bearish">偏空</span></h3>
+        <ul>
+            <li><strong>美联储加息预期：</strong>升温，全球流动性收紧预期增强，大宗商品整体承压</li>
+            <li><strong>国内政策：</strong>提振需求是年度宏观主体，流动性充足，收储政策预期存在</li>
+            <li><strong>地缘冲突：</strong>缓和后合成胶走弱，替代效应抑制天胶需求；但若二次激化将推升油价和合成胶价格</li>
+            <li><strong>商品轮动：</strong>贵金属→有色→化工→农产品的轮动预期未消失，橡胶作为后周期品种有望受益</li>
+        </ul>
+
+        <h3>3. 产业政策 <span class="tag tag-bullish">偏多</span></h3>
+        <ul>
+            <li><strong>欧盟反倾销税率下调：</strong>利好中国轮胎出口</li>
+            <li><strong>国内收储预期：</strong>市场存在收储政策传闻，若落地将直接支撑胶价</li>
+            <li><strong>零关税清单：</strong>天然橡胶暂未纳入非洲建交国零关税清单，进口冲击有限</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            三个大事要记住：第一，厄尔尼诺正式来了，秋天可能变得更厉害，老天爷不让橡胶树好好长，明年橡胶可能更少；第二，美国还在加息，钱紧了买东西的人就少了，对橡胶不利；第三，国家可能要收储橡胶，就像国家存粮食一样，存了价格就跌不下去。好消息比坏消息多。
+        </div>
+    </div>
+
+    <!-- 五、国际市场分析 -->
+    <div class="section">
+        <h2>五、国际市场分析</h2>
+        <table class="data-table">
+            <tr><th>主产国</th><th>产量趋势</th><th>当前状况</th></tr>
+            <tr><td>泰国</td><td>持稳/窄幅波动</td><td>旺产期胶树占主导，割胶率94%，东北部增量弥补南部减量</td></tr>
+            <tr><td>印尼</td><td>下滑</td><td>主产区干旱加剧，产量持续下降</td></tr>
+            <tr><td>马来西亚</td><td>下滑</td><td>西部降雨，长期转种棕榈趋势</td></tr>
+            <tr><td>越南</td><td>增产</td><td>阶段性降雨，整体增产趋势</td></tr>
+            <tr><td>中国</td><td>增产</td><td>云南正常，海南日产出5500吨，新胶上量</td></tr>
+            <tr><td>非洲（科特迪瓦等）</td><td>快速增长</td><td>全球最低成本190美分/公斤，但产量占比仍小</td></tr>
+        </table>
+        <div class="highlight-box">
+            <strong>全球供需缺口是中长期核心逻辑：</strong>IRSG和ANRPC估计2026年全球橡胶供应缺口40万吨，为连续第四年缺口，预计短缺持续至2032年。泰国长期面临胶农转种棕榈的结构性减产趋势（STA今年已种植1400莱棕榈树vs 45000莱橡胶园）。东南亚主产国占全球产量超六成，结构性减产趋势难改，为胶价底部提供长期支撑。
+        </div>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            全世界种橡胶的地方，泰国还能稳住，印尼和马来在减产，种橡胶的人改种棕榈树了（棕榈油更赚钱）。非洲虽然橡胶种得多还便宜，但量还小，顶不上东南亚减的。全球连续四年橡胶不够用，这个缺口可能还要持续六年。就像种菜的地越来越少，吃菜的人越来越多，菜价迟早要涨。
+        </div>
+    </div>
+
+    <!-- 六、技术面参考 -->
+    <div class="section">
+        <h2>六、技术面参考</h2>
+        <table class="data-table">
+            <tr><th>技术指标</th><th>位置/状态</th></tr>
+            <tr><td>RU主力短期支撑</td><td>16700—17000元/吨</td></tr>
+            <tr><td>RU主力短期压力</td><td>18000—18500元/吨</td></tr>
+            <tr><td>RU主力年内高点</td><td>18440元/吨</td></tr>
+            <tr><td>RU主力年内低点</td><td>15525元/吨</td></tr>
+            <tr><td>NR主力短期支撑</td><td>14200—14400元/吨</td></tr>
+            <tr><td>NR主力短期压力</td><td>15500—15800元/吨</td></tr>
+            <tr><td>RU-NR价差</td><td>约2350元/吨（偏大，关注反套机会）</td></tr>
+            <tr><td>BR-RU价差</td><td>触及两年极值，做缩安全边际有限</td></tr>
+            <tr><td>资金面</td><td>美联储加息预期升温，资金减仓离场</td></tr>
+        </table>
+        <p>技术面偏震荡。RU主力在16700-17000有强支撑，18000-18500构成短期压力。上半年涨幅14.64%后进入调整，6-8月季节性供应放量期调整压力较大。但原料成本支撑和厄尔尼诺预期限制下方空间。NR创上市新高后回调，RU-NR价差偏大，关注RU2701换月后金融属性溢价显现带来的反套机会。</p>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            从走势图看，橡胶今年从15500涨到了18440，现在回调到17500附近。下面16700-17000是强支撑，跌到这里就很难再跌了；上面18000-18500是压力位，涨到这里就涨不动了。现在是在中间晃悠，等秋天厄尔尼诺厉害了，可能再往上冲。
+        </div>
+    </div>
+
+    <!-- 七、机构观点汇总 -->
+    <div class="section">
+        <h2>七、机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>短期观点</th><th>策略/区间</th></tr>
+            <tr><td>华龙期货</td><td>强现实强预期，中枢上移</td><td>短期17000-18000震荡，中长期突破20000，逢低多</td></tr>
+            <tr><td>华安期货</td><td>供增需弱，天胶承压</td><td>6月先扬后抑或震荡走弱，长周期底部有支撑</td></tr>
+            <tr><td>中信期货</td><td>分化未了，验证在即</td><td>6-8月季节性调整后逢低多配，关注RU-NR反套</td></tr>
+            <tr><td>方正中期</td><td>地缘情绪消退，重回震荡</td><td>RU支撑16700-17000，压力18000-18500，看多为主</td></tr>
+            <tr><td>国联期货</td><td>多空并存，逢低布局多头</td><td>单边逢低多，RU-NR价差收敛套利止盈</td></tr>
+            <tr><td>新浪半年报</td><td>抗跌易，大涨难</td><td>中性偏强，需减产证据+交割品短缺+超季节去库兑现</td></tr>
+        </table>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            各家看法差不多：短期因为割胶旺季和需求淡季，橡胶价格会震荡甚至小跌；但中长期大家都看涨，因为全球橡胶不够用、原料贵、厄尔尼诺要来。大部分建议是等价格跌下来再买，别追高。就像等菜便宜了再囤点，等冬天菜少了就能卖好价钱。
+        </div>
+    </div>
+
+    <!-- 八、风险提示 -->
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <ul>
+            <li><strong>厄尔尼诺减产不及预期：</strong>历史表明厄尔尼诺不必然导致当期减产（2015、2023下半年均未减产），若旺产期上量顺畅，减产溢价将面临修正</li>
+            <li><strong>高价刺激增产：</strong>原料高价刺激割胶积极性，割胶率已达94%，若旺产期产量释放超预期，供应压力加大</li>
+            <li><strong>需求不及预期：</strong>全球经济放缓、半钢胎需求走弱、合成胶替代加剧，可能拖累天胶消费</li>
+            <li><strong>宏观风险：</strong>美联储持续加息、地缘冲突缓和致油价和合成胶大跌，系统性风险压制商品估值</li>
+            <li><strong>交割品风险：</strong>11月仓单注销后若发现交割品偏多、四季度旺产季未减产，可能引发情绪踩踏</li>
+            <li><strong>进口增加：</strong>国内现货库存同比偏高，若进口季节性增量超预期，供应压力显现</li>
+        </ul>
+    </div>
+
+    <!-- 九、情景分析与操作建议 -->
+    <div class="section">
+        <h2>九、情景分析与操作建议</h2>
+
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">基准情景（概率50%）：季节性调整后震荡上行</div>
+            <p>6-8月泰国增产季放量，胶价调整至16700-17500区间；9月后旺产期验证减产叙事，厄尔尼诺秋季增强，去库加速。RU2609在16800-18000区间震荡，RU2701在17500-19000区间震荡上行。</p>
+        </div>
+
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">乐观情景（概率30%）：厄尔尼诺驱动趋势上涨</div>
+            <p>强厄尔尼诺秋季成型，泰国印尼大幅减产，交割品短缺+超季节性去库兑现，国内收储落地。RU2701突破19500，目标20000+，极端干旱下可能达到22000-25000。</p>
+        </div>
+
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">悲观情景（概率20%）：减产证伪+需求走弱</div>
+            <p>旺产期上量顺畅，厄尔尼诺未导致减产；合成胶大跌替代加剧，需求淡季超预期疲弱；美联储激进加息。RU2609跌破16700向15500-16000寻底。</p>
+        </div>
+    </div>
+
+    <div class="advice-box">
+        <h2>&#9733; 综合研判与操作建议</h2>
+        <p><strong>短期（6-8月）：</strong>天然橡胶处于增产季放量+需求淡季的调整期，RU主力在16700-18000区间震荡概率大。16700-17000为强支撑区（原料成本+加工亏损），可轻仓试多，止损16200以下；18000以上不追高，可短线试空。</p>
+        <p><strong>中期（8-12月）：</strong>三季度季节性调整后，随着厄尔尼诺秋季增强、旺产期减产验证、去库加速，RU2701有望震荡走强至18500-19500区间。建议在17000-17500区间逢低布局RU2701多单，目标19000-19500，止损16200以下。</p>
+        <p><strong>套利策略：</strong>①RU-NR反套：RU2701换月后金融属性溢价显现，RU-NR价差有望走阔；②BR-RU价差：已触及两年极值，继续做扩安全边际有限，可关注做缩机会。</p>
+        <p><strong>现货企业：</strong>轮胎厂可在16700-17000区间逐步建立原料库存；贸易商按需补库，避免高位追涨；胶农惜售合理，但需关注旺产期原料季节性回落风险。</p>
+        <div class="elder-summary">
+            <div class="elder-title">&#128116; 老人总结：</div>
+            一句话：短期橡胶会震荡，等秋天再买更划算。现在16700-17000是便宜价，可以少买点试试水；涨到18000以上就别追了。看远一点，明年1月的橡胶更值得买，因为到秋天厄尔尼诺厉害了、橡胶少了，价格就该涨到19000以上。就像夏天买棉衣便宜，等冬天再买就贵了。
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p>&#9888; 风险提示：期货交易风险很大，本分析仅供参考，不构成任何投资建议。请咨询专业金融顾问后再做投资决定。</p>
+        <p>数据来源：ANRPC、IRSG、NOAA、ECMWF、华龙期货、华安期货、中信期货、方正中期、国联期货、国家天然橡胶产业技术体系、上期所等</p>
+        <p>分析日期：2026年6月10日</p>
+    </div>
+</div>
+</body>
+</html>
