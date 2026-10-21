@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH烧碱基本面分析 - 2026年10月21日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #0D47A1, #1976D2);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        .elder-summary {
+            background: #E8F5E9;
+            border-left: 5px solid #2E7D32;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .elder-title {
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>SH烧碱期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年10月21日 | 预测区间：2026年11月—2027年1月（未来3个月）</div>
+    </header>
+
+    <!-- 核心结论 -->
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>未来3个月方向</td><td><strong>底部震荡偏弱，供大于求格局延续，反弹多为脉冲式</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>中偏高（库存同比+36%＋四季度新产能投放＋需求增速仅1.34%三重压制；成本支撑与年内低开工封住深跌空间）</strong></td></tr>
+            <tr><td>SH2701合约价格区间</td><td><strong>1550—1800元/吨</strong>（未来3个月，核心运行区间1600—1750）</td></tr>
+            <tr><td>现货参考</td><td><strong>32%离子膜液碱山东主流540—650元/吨</strong>（折百约1690—2030元/吨）</td></tr>
+            <tr><td>核心建议</td><td><strong>反弹至1720以上逢高沽空，1600以下逐步止盈，1550以下不追空（成本减产区）</strong></td></tr>
+        </table>
+    </div>
+
+    <!-- 一、市场概览 -->
+    <div class="section">
+        <h2>一、市场概览与当前价格</h2>
+        <p>2026年烧碱延续供大于求的弱势格局：新产能持续投放而需求增长乏力，32%液碱现货价格已跌至近三年最低区域。10月中下旬以来，随着秋季检修带来的低开工未能有效去化库存，市场对四季度供应恢复的担忧升温，盘面减仓反弹后再度转为增仓下跌。截至10月21日，SH2701收于1659元/吨，单日下跌2.30%，处于承压下行通道。</p>
+        <table class="data-table">
+            <tr><th>项目</th><th>数值</th><th>备注</th></tr>
+            <tr><td>SH2701主力合约收盘价</td><td><strong>1659元/吨</strong></td><td>10月21日，单日-39元（-2.30%），增仓下跌</td></tr>
+            <tr><td>32%离子膜液碱主流均价</td><td><strong>610元/吨</strong></td><td>环比-1元，处近三年最低区域</td></tr>
+            <tr><td>山东鲁西南32%碱</td><td>580—620元/吨</td><td>加权均值601元，环比-6元</td></tr>
+            <tr><td>山东鲁西32%碱</td><td>600—620元/吨</td><td>加权均值604元，环比+2元</td></tr>
+            <tr><td>现货折百价</td><td>约1900元/吨</td><td>期货较现货深贴水约250元/吨</td></tr>
+            <tr><td>行业开工率</td><td><strong>74.8%</strong></td><td>环比-4.0%，年内低位</td></tr>
+            <tr><td>液碱厂库库存</td><td><strong>54.86万吨</strong></td><td>环比-2.46%，<strong>同比+36.03%</strong></td></tr>
+        </table>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            现在的烧碱就像菜市场里供过于求的大白菜——今年新开了好多摊位（新工厂），买菜的人却没怎么增加，价格跌到了近三年最低。工厂已经把机器开到最慢了，仓库里还是堆得满满的，价格一时半会涨不起来。
+        </div>
+    </div>
+
+    <!-- 二、供需基本面分析 -->
+    <div class="section">
+        <h2>二、供需基本面分析</h2>
+
+        <h3>1. 供应端：开工年内新低，但产能投放周期未结束<span class="tag tag-bearish">利空</span></h3>
+        <p><strong>当前低开工是"主动检修"而非"被动减产"。</strong>上周两套装置停车检修、部分装置负荷调整，行业开工率降至74.8%的年内低位。但氯碱综合利润尚可（"以氯补碱"），供应端并不具备主动收缩的动力，秋检结束后装置将陆续重启，供应边际恢复。</p>
+        <p><strong>新产能仍在兑现。</strong>据银河期货统计，2026年内烧碱新产能已投产177万吨，四季度预计仍有约50万吨投放。存量低开工叠加新增投放，供应预期持续偏弱，行业再平衡有赖于产能出清。</p>
+        <table class="data-table">
+            <tr><th>供应指标</th><th>数值</th><th>说明</th></tr>
+            <tr><td>行业开工率</td><td>74.8%</td><td>环比-4.0%，年内低位</td></tr>
+            <tr><td>年内已投产新产能</td><td>177万吨</td><td>银河期货统计</td></tr>
+            <tr><td>四季度预计新投放</td><td>约50万吨</td><td>秋检结束后集中兑现</td></tr>
+            <tr><td>氯碱综合盈利状态</td><td>尚可</td><td>"以氯补碱"，暂无主动减产动力</td></tr>
+        </table>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            工厂现在开工率是全年最低，但这是"轮流检修"不是"永久关门"。今年已经新增了177万吨产能，年底前还有50万吨要投产。就像菜市场不断有新摊位开张，老摊位也不会真的撤走，菜只会越摆越多。
+        </div>
+
+        <h3>2. 需求端：氧化铝拖累主导，出口红利消退<span class="tag tag-bearish">利空</span></h3>
+        <p><strong>需求增速与供应增量明显错配。</strong>2026年前三季度烧碱需求2884万吨，同比仅增长1.34%。</p>
+        <p><strong>最大下游氧化铝（约占需求35%）预期悲观：</strong>氧化铝开工率83.05%（环比-0.56%），自身陷入过剩（全球2026年预计过剩约150万吨、10月现货加权均价约2650元/吨仍在下探），企业利润低迷压制原料采购；同时国产铝土矿产量下滑、缺口靠进口矿补充，而进口矿的氧化铝单耗显著低于国产矿，进一步削弱单位产能的用碱量。广西氧化铝新产能投产虽带来部分刚需增量，但难以扭转总体的需求疲态。</p>
+        <p><strong>非铝需求弹性不足：</strong>粘胶短纤开工率88.84%持稳，印染开工率54.22%（+0.68%），造纸、印染平稳但缺乏增量，消费动能不足。</p>
+        <p><strong>出口前高后低：</strong>8月液碱出口36.15万吨（同比+69.3%），1—8月累计同比增长7.7%，主要得益于海外供给缺口与国内企业主动开拓海外市场。但随着海外供给恢复，出口红利将逐步消退；机构预计若地缘僵局延续，四季度出口环比大致持稳。</p>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            烧碱最大的买家是炼铝用的氧化铝厂，占了三分之一的生意。可氧化铝厂自己也不赚钱，买的碱少了，还改用进口矿石（炼一吨铝用的碱更省）。出口这阵子帮了点忙，但外国自己的工厂慢慢恢复了，这碗饭越来越难吃。
+        </div>
+
+        <h3>3. 库存：高位去化艰难，核心压制<span class="tag tag-bearish">利空</span></h3>
+        <p>全国20万吨及以上样本企业液碱厂库54.86万吨（湿吨），环比仅下降2.46%，<strong>同比大增36.03%</strong>。开工率大幅回落4个百分点的情况下库存去化依然缓慢，呈"低开工对应高库存"的供需双弱格局。中信期货四季度策略的核心判断即"库存难以有效去化"——若秋检结束开工回升，库存存在再度累积的风险。</p>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            最要命的是仓库——货比去年多了三成多。机器已经开得这么慢了，仓库还是满满的。等检修结束机器重新开足，仓库恐怕还要更满。货卖不动，价格就涨不起来。
+        </div>
+    </div>
+
+    <!-- 三、成本与利润分析 -->
+    <div class="section">
+        <h2>三、成本与利润分析</h2>
+        <h3>1. "一鱼两吃"的氯碱联产与"以氯补碱"</h3>
+        <p>氯碱装置每生产1吨烧碱约副产0.886吨液氯，行业通常用"双吨价差"（1吨烧碱+0.886吨液氯）衡量综合盈利。10月中旬32%液碱市场价631元/吨为三年低位，双吨价差降至约2275元/吨的历史低位。但液氯价格坚挺（山东主流成交300—500元/吨），"以氯补碱"之下氯碱综合盈利尚可，供应端暂时没有主动收缩的动力。</p>
+        <table class="data-table">
+            <tr><th>成本/利润指标</th><th>数值</th><th>备注</th></tr>
+            <tr><td>山东氯碱综合利润</td><td><strong>-32.6元/吨</strong></td><td>盈亏平衡线附近</td></tr>
+            <tr><td>西北一体化装置利润</td><td>+289.55元/吨</td><td>坑口电价优势，仍有利润</td></tr>
+            <tr><td>山东液氯主流成交价</td><td>300—500元/吨</td><td>坚挺，"以氯补碱"</td></tr>
+            <tr><td>双吨价差（碱+0.886氯）</td><td>约2275元/吨</td><td>历史低位</td></tr>
+            <tr><td>32%液碱市场价（10月15日）</td><td>631元/吨</td><td>三年低位</td></tr>
+            <tr><td>PVC电石法/乙烯法利润</td><td>-500~-700 / -700~-900元/吨</td><td>全行业亏损，液氯下游脆弱</td></tr>
+        </table>
+
+        <h3>2. 成本支撑在哪里？</h3>
+        <p>风险点在于液氯的下游——PVC全行业亏损（1—9月电石法每吨亏500—700元、乙烯法亏700—900元），液氯需求的持续性存疑。一旦液氯转弱，"碱氯双弱"将迫使氯碱厂减产，而这恰恰是碱价的强支撑。综合评估，山东盈亏平衡对应SH盘面约<strong>1550—1600元/吨</strong>区域，深度跌破将引发高成本装置减产，形成"减产底"。</p>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            烧碱厂是"一鱼两吃"——产一吨碱，附带产出约0.9吨液氯。现在碱卖不上价，全靠液氯撑着。可是用液氯做塑料的工厂全在亏钱，一旦液氯也卖不动，碱厂就要真亏本、只能减产——那时候价格反而跌不动了。这就是1550—1600这道"地板"的来历。
+        </div>
+    </div>
+
+    <!-- 四、政策与宏观环境 -->
+    <div class="section">
+        <h2>四、政策与宏观环境</h2>
+        <ul>
+            <li><strong>能耗双控与产能政策</strong>：烧碱属高耗能行业，新增产能审批受约束，但存量已批在建项目仍在集中兑现（四季度约50万吨），政策无法快速扭转供应过剩</li>
+            <li><strong>电价与能源成本</strong>：电力是烧碱第一大成本，电价市场化背景下北方采暖季能源成本边际抬升，对成本端略有支撑</li>
+            <li><strong>安全环保监管</strong>：液氯为危化品，储运监管趋严、贸易半径受限，区域价差波动加大；秋冬季环保督察或阶段性影响局部开工</li>
+            <li><strong>出口环境</strong>：今年出口增量主要来自海外地缘冲突造成的供给缺口，若地缘缓和，出口红利将进一步消退</li>
+            <li><strong>宏观环境</strong>：国内稳增长政策向化工品需求的传导偏慢，全球制造业景气偏弱压制化工品整体估值</li>
+            <li><strong>中长期出路</strong>：行业再平衡依赖产能出清（部分高成本、缺乏一体化优势的东部装置退出），政策端暂无强刺激信号</li>
+        </ul>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            国家对高耗电的工厂管得越来越严，新厂不容易批了，但已经批了的年底照样开。冬天电费贵一点，能稍微托托成本。真正的出路是等一部分工厂撑不住关门，货少了价格才能好——这得慢慢熬。
+        </div>
+    </div>
+
+    <!-- 五、技术面参考 -->
+    <div class="section">
+        <h2>五、技术面参考</h2>
+        <table class="data-table">
+            <tr><th>技术指标</th><th>位置</th><th>含义</th></tr>
+            <tr><td>SH2701收盘价</td><td>1659元/吨</td><td>单日-2.30%，增仓下跌，空头主动</td></tr>
+            <tr><td>关键支撑位</td><td>1600 / 1550—1580元/吨</td><td>整数关口+前期平台 / 成本减产区</td></tr>
+            <tr><td>关键压力位</td><td>1700 / 1750—1800元/吨</td><td>整数关口 / 均线密集+前期平台</td></tr>
+            <tr><td>期现结构</td><td>期货贴水现货折百约250元/吨</td><td>深贴水，弱预期已充分定价</td></tr>
+            <tr><td>仓量变化</td><td>减仓反弹→增仓下跌</td><td>空头掌握主动</td></tr>
+        </table>
+        <p><strong>技术形态：</strong>盘面减仓反弹后再度转为增仓下跌，空头趋势未破坏。但需注意期货较现货深贴水约250元/吨——若现货企稳，期货存在修复贴水的反弹动能。机构共识是反弹定性为<strong>脉冲式</strong>，趋势反转需等待库存拐点确认。</p>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            价格一路阴跌，每次小反弹都是"抽一下就没了"。下面1600、1550是两道地板，上面1700、1750是天花板。空头还在加码，但价格已经贴着成本线，再往下砸也砸不出多深了。
+        </div>
+    </div>
+
+    <!-- 六、机构观点汇总 -->
+    <div class="section">
+        <h2>六、机构观点汇总</h2>
+        <table class="data-table">
+            <tr><th>机构</th><th>观点</th><th>价格区间/倾向</th></tr>
+            <tr><td>中信期货</td><td>四季度库存难以有效去化，需求弹性偏弱、供应压力抬升</td><td>维持空头配置</td></tr>
+            <tr><td>长江期货</td><td>检修与成本利润构成下方支撑，供应边际恢复、中高位库存、需求清淡压制上方</td><td>主力1700—1850元/吨区间</td></tr>
+            <tr><td>瑞达期货</td><td>短期检修装置偏多、低开工持续；中长期检修重启+新产能投放，远端供应压力偏高</td><td>偏空</td></tr>
+            <tr><td>西南期货</td><td>四季度传统供应旺季而需求量变化不大，供需宽松延续</td><td>底部窄幅震荡</td></tr>
+            <tr><td>中辉期货</td><td>液氯坚挺带动山东利润修复，高库存格局下盘面继续往下压缩估值</td><td>偏空</td></tr>
+            <tr><td>银河期货</td><td>供需双弱，新产能仍在扩张（年内177万吨+四季度约50万吨）</td><td>偏空</td></tr>
+            <tr><td>市场主流深度观点</td><td>投产周期尚未结束、难言趋势反转，反弹多为脉冲式，再平衡依赖产能出清</td><td>中长期承压</td></tr>
+        </table>
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            机构几乎一个调子——货太多、卖不动、价格起不来。多数建议"反弹就做空"，没人看大涨。大家都在等工厂真正减产或关门的那一天。
+        </div>
+    </div>
+
+    <!-- 七、风险提示 -->
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <p><strong>对空头策略的风险（价格反弹风险）：</strong></p>
+        <ul>
+            <li>秋检规模超预期或冬季环保限产加码，开工进一步下探</li>
+            <li>氧化铝新产能加速爬产叠加冬储备货，需求脉冲式回暖</li>
+            <li>地缘冲突升级推动出口订单超预期增长</li>
+            <li>能源、电价大涨推升成本曲线</li>
+            <li>宏观强刺激政策出台带动化工品整体反弹</li>
+        </ul>
+        <p><strong>对企稳判断的风险（价格进一步下行风险）：</strong></p>
+        <ul>
+            <li>四季度约50万吨新产能集中投放并快速爬产</li>
+            <li>秋检结束后开工率快速回升至80%以上</li>
+            <li>库存突破60万吨继续累积</li>
+            <li>液氯持续坚挺使氯碱厂维持高开工，"以氯补碱"反而压制碱价</li>
+            <li>氧化铝减产扩大，进一步压缩最大下游需求</li>
+        </ul>
+    </div>
+
+    <!-- 八、综合研判与操作建议 -->
+    <div class="advice-box">
+        <h2>&#10004; 综合研判与操作建议</h2>
+
+        <h3>未来3个月（2026年11月—2027年1月）情景推演</h3>
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">基准情景（概率50%）：1600—1750元/吨底部震荡偏弱</div>
+            <p>秋检低开工与高库存拉锯，供应边际恢复、需求平淡，价格在成本线之上反复磨底，反弹均为脉冲式。</p>
+        </div>
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">乐观情景（概率25%）：反弹至1750—1850元/吨</div>
+            <p>大规模检修/限产超预期、氧化铝新产能放量+冬储备货、出口超预期，叠加期货深贴水修复，出现阶段性反弹。</p>
+        </div>
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">悲观情景（概率25%）：下探1450—1600元/吨成本底</div>
+            <p>四季度新产能集中兑现、秋检结束后开工快速回升、库存再累积，山东综合利润深度转负触发减产后方能止跌。</p>
+        </div>
+
+        <h3>操作建议</h3>
+        <ol>
+            <li><strong>趋势策略</strong>：反弹至1720—1800区间逢高沽空SH2701，止损1850上方，第一目标1650、第二目标1580</li>
+            <li><strong>止盈纪律</strong>：1550—1600成本支撑区不追空，空单逐步止盈；跌破1550后波动放大，宜减仓而非加仓</li>
+            <li><strong>产业套保</strong>：液碱下游用户可在1550—1650区间分批买入套保，锁定冬春原料成本</li>
+            <li><strong>期权策略</strong>：可考虑卖出深虚值看涨期权（行权价1850—1900）收取权利金；激进者小仓位卖出1600以下虚值看跌期权博弈成本底</li>
+            <li><strong>移仓注意</strong>：12月后主力逐步移仓远月，关注远月升贴水结构给出的机会</li>
+            <li><strong>风险控制</strong>：单笔仓位不超过30%，严格执行止损</li>
+        </ol>
+
+        <h3>关键观察指标</h3>
+        <ul>
+            <li>液碱厂库库存（基准54.86万吨：持续高于55万吨=压力；降至45万吨以下=改善）</li>
+            <li>行业开工率（基准74.8%：回升至80%以上=供应压力兑现）</li>
+            <li>四季度约50万吨新产能的投产与爬产进度</li>
+            <li>液氯价格（基准300—500元/吨：若转负=氯碱减产临近=碱价成本支撑强化）</li>
+            <li>山东氯碱综合利润（基准-32.6元/吨：深度转负=减产信号）</li>
+            <li>氧化铝开工率与利润（基准83.05%：进一步减产=需求恶化）</li>
+            <li>月度出口量（基准36万吨上下：环比大幅下滑=利空）</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            未来三个月，烧碱大概率还是在"地下室"里晃悠：想大涨没门（货太多），想大跌也难（再跌工厂就减产）。聪明的做法是：价格弹起来一点就做空赚点小钱，跌到1550附近就收手别贪。等哪天仓库真的空了、有工厂关门了，那才是真正涨价的时候。
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p><strong>免责声明</strong>：本分析基于公开信息整理，仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。数据来源：生意社、迈博汇金、新浪财经、东方财富、中信期货、长江期货、瑞达期货、西南期货、中辉期货、银河期货等公开研报与报道。</p>
+        <p><strong>分析日期</strong>：2026年10月21日 | <strong>预测周期</strong>：2026年11月—2027年1月（未来3个月）</p>
+    </div>
+</div>
+</body>
+</html>
