@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU沪铜基本面分析 - 2026年11月6日</title>
+    <style>
+        :root {
+            --primary: #37474F;
+            --primary-light: #607D8B;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #CFD8DC;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --blue: #1565C0;
+            --orange: #E65100;
+            --yellow-bg: #FFF9C4;
+            --red-bg: #FFEBEE;
+            --green-bg: #E8F5E9;
+            --blue-bg: #E3F2FD;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #1A237E, #283593);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header .subtitle { font-size: 18px; opacity: 0.9; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .summary-box {
+            background: var(--yellow-bg);
+            border: 2px solid #F9A825;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+        .summary-box h2 { color: var(--orange); font-size: 22px; margin-bottom: 12px; }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .summary-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F9A825;
+            font-size: 17px;
+        }
+        .summary-table td:first-child { font-weight: bold; width: 35%; color: var(--primary); }
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: var(--primary);
+            font-size: 22px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .section h3 {
+            color: var(--primary-light);
+            font-size: 19px;
+            margin: 15px 0 10px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .tag-bearish { background: var(--red-bg); color: var(--red); }
+        .tag-bullish { background: var(--green-bg); color: var(--green); }
+        .tag-neutral { background: var(--blue-bg); color: var(--blue); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        .data-table th {
+            background: var(--primary);
+            color: #FFF;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:nth-child(even) { background: #F5F7FA; }
+        .highlight-box {
+            background: #FFF3E0;
+            border-left: 4px solid var(--orange);
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+        }
+        .risk-box {
+            background: var(--red-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .risk-box h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .risk-box ul { padding-left: 20px; }
+        .risk-box li { margin-bottom: 8px; }
+        .scenario-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .scenario-base { border-left: 4px solid var(--blue); }
+        .scenario-bull { border-left: 4px solid var(--green); }
+        .scenario-bear { border-left: 4px solid var(--red); }
+        .scenario-title { font-weight: bold; font-size: 18px; margin-bottom: 6px; }
+        .advice-box {
+            background: var(--green-bg);
+            border: 2px solid var(--green);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .advice-box h2 { color: var(--green); font-size: 22px; margin-bottom: 12px; }
+        .elder-summary {
+            background: #E8F5E9;
+            border-left: 5px solid #2E7D32;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .elder-title {
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        ul, ol { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .footnote {
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-top: 25px;
+        }
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .container { padding: 10px; }
+            header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .data-table { font-size: 14px; }
+            .data-table th, .data-table td { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">&#8592; 返回首页</a>
+
+    <header>
+        <h1>CU沪铜期货基本面分析</h1>
+        <div class="subtitle">分析日期：2026年11月6日 | 供给·需求·库存三维框架</div>
+    </header>
+
+    <!-- 核心结论 -->
+    <div class="summary-box">
+        <h2>&#9733; 核心结论（先看这里）</h2>
+        <table class="summary-table">
+            <tr><td>中长期方向</td><td><strong>供需紧平衡支撑下，震荡偏强</strong></td></tr>
+            <tr><td>信心水平</td><td><strong>高（全球铜矿产量增速0.5% vs 精炼铜需求增速1.9%，供需缺口持续；低库存+AI算力新需求+国际投行集体唱多）</strong></td></tr>
+            <tr><td>CU2612（近月）</td><td><strong>105000—115000元/吨</strong></td></tr>
+            <tr><td>CU2703（3个月后）</td><td><strong>108000—120000元/吨</strong></td></tr>
+            <tr><td>LME伦铜参考</td><td><strong>13500—15500美元/吨</strong>（当前14325）</td></tr>
+            <tr><td>核心矛盾</td><td>铜矿端增长乏力 vs 需求端AI+电网拉动，紧平衡格局延续</td></tr>
+        </table>
+    </div>
+
+    <!-- 一、供给层面分析 -->
+    <div class="section">
+        <h2>一、供给层面分析<span class="tag tag-bearish">偏紧</span></h2>
+        <h3>1. 全球铜矿：增长近乎停滞，智利拖累显著</h3>
+        <p>2026年全球铜矿产量预计仅增长<strong>0.5%</strong>至2330万吨，增速明显低于需求侧的1.9%。前十大产铜国集体"哑火"：</p>
+        <table class="data-table">
+            <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+            <tr><td>全球铜矿2026年产量</td><td>2330万吨</td><td>同比+0.5%，Cochilco预测</td></tr>
+            <tr><td>智利2026年产量</td><td>约527万吨</td><td>同比-2.6%，暴雪+品位下降+设备检修</td></tr>
+            <tr><td>智利1—7月累计</td><td>-6.9%</td><td>同比降幅显著</td></tr>
+            <tr><td>智利二季度</td><td>127万吨</td><td>同比-7.7%，创2007年以来新低</td></tr>
+            <tr><td>全球15家头部矿企上半年合计</td><td>567万吨</td><td>同比下降</td></tr>
+            <tr><td>唯一正增长头部矿企</td><td>洛阳钼业、紫金矿业</td><td>海外扩张+国内项目</td></tr>
+        </table>
+        <p><strong>智利困局是矿端紧平衡的核心</strong>——缺水（阿塔卡马沙漠极端干旱）、矿石品位下降、设备老化+集中检修、年初暴雪强降雨、硫酸进口受限（湿法炼铜需硫酸，智利预计20万吨产量受影响），多重因素叠加导致全球最大产铜国（占比22%）产量持续下滑。2027年智利有望恢复+4%增长至550万吨，但远水解不了近渴。</p>
+
+        <h3>2. 精炼铜：硫磺/硫酸制约冶炼端</h3>
+        <p>全球约<strong>11%</strong>的精炼铜供应受到硫磺和硫酸紧缺影响，主要集中在智利和刚果金（刚果金12万吨、智利20万吨）。国内硫酸限制出口后，国内实际供应增加、价格可能回落，对国内火法炼铜企业有利（国内冶炼以火法为主，副产硫酸反而有收益）。</p>
+        <p>国内电解铜产量：2026年1—10月国内精炼铜产量约890万吨，同比+2.1%；进口电解铜约145万吨，合计供应约1035万吨。</p>
+
+        <h3>3. 核心供给矛盾</h3>
+        <p>矿端增长乏力（+0.5%），冶炼端受制于硫酸和能源，但国内火法炼铜利润尚可。全球15家头部矿企上半年合计产量同比下降——这是近十年来罕见的"矿端集体增长停滞"，直接导致全球精炼铜过剩量从2025年的46.9万吨收窄至2026年的约25万吨，供需平衡大幅收紧。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            全球铜的"饭碗"就在智利这个国家，可它最近一直不顺——天旱、矿石质量变差、机器坏了又修、还缺硫酸（炼铜的一种原料），导致挖出的铜越来越少。今年全球铜矿总共才多挖了0.5%，而要用铜的地方需要铜增加1.9%，供不应求越来越明显。
+        </div>
+    </div>
+
+    <!-- 二、需求层面分析 -->
+    <div class="section">
+        <h2>二、需求层面分析<span class="tag tag-bullish">结构性旺盛</span></h2>
+        <p>2026年国内铜终端需求结构性分化明显：<strong>电力（电网+新能源+AI算力）是最大亮点</strong>，新能源车延续增长，地产家电持续拖累。</p>
+
+        <h3>1. 电力板块（最大下游，占比约45%）：AI+电网双轮驱动<span class="tag tag-bullish">核心驱动</span></h3>
+        <p>电网投资持续高增：1—9月全国电网完成投资约4500亿元，同比增长6.8%。特高压、配网改造、风光大基地送出工程密集开工。全年电力板块用铜需求预计增<strong>5%—9%</strong>。</p>
+        <p><strong>AI算力成为全新增长极</strong>：摩根士丹利测算，2026年全球数据中心铜消费量预计增至74万吨（占总需求约2.1%），2027年将达100万吨——每兆瓦数据中心机房用铜量约3—5吨，是传统写字楼的10—20倍。国内"东数西算"二期+海外AI厂商加速布局，算力基建的用铜增量正在加速兑现。</p>
+        <p>风光储能：1—9月光伏新增装机约120GW，同比+18%；储能新增约50GWh，同比+40%。风光大基地的配套输变电和储能系统对铜缆、铜排需求拉动显著。</p>
+
+        <h3>2. 新能源车与充电桩：增速放缓但绝对值仍大<span class="tag tag-neutral">稳中趋缓</span></h3>
+        <table class="data-table">
+            <tr><th>指标</th><th>2024年</th><th>2025年</th><th>2026年预计</th><th>增速</th></tr>
+            <tr><td>国内新能源车铜需求</td><td>100万吨</td><td>131万吨</td><td><strong>151万吨</strong></td><td>+15%</td></tr>
+            <tr><td>全球汽车行业用铜量</td><td>-</td><td>-</td><td>330.8万吨</td><td>新增14.8万吨，增速放缓</td></tr>
+        </table>
+        <p>纯电动车单车用铜量80—100公斤，是燃油车的3—4倍。但补贴退坡后渗透率突破50%，行业自然增速逐步回落；传统燃油车用铜持续收缩、叠加贸易壁垒和车企库存压力，全球汽车用铜整体增速明显放缓。</p>
+
+        <h3>3. 传统需求：地产、家电持续拖累<span class="tag tag-bearish">拖累项</span></h3>
+        <p><strong>地产投资-16.2%</strong>（1—5月），住宅投资-15.6%，竣工面积大幅下滑，建筑用铜（电线、管材）需求持续萎缩。空调、冰箱等家电内需疲软、出口承压，对铜需求贡献减弱。</p>
+
+        <h3>4. 出口与海外需求</h3>
+        <p>美国铜关税悬而未决（特朗普政府拟对进口铜加征25%关税），一方面可能压制美国进口需求、另一方面加速了美国国内库存的去化（企业提前备货已阶段性完成）。欧洲稳增长政策落地较慢，制造业复苏偏弱。整体来看，海外需求对铜价的拉动弱于国内结构性增量。</p>
+
+        <h3>5. 核心需求矛盾</h3>
+        <p>传统地产+家电拖累 vs AI算力+电网+新能源车拉动，<strong>需求端"东墙拆西墙"</strong>——传统需求下滑被新兴需求抵消并有超出，但缺乏地产那样的"大水漫灌"式增量。机构共识是：结构性增量足以支撑紧平衡，但要出现爆发式增长尚需等待地产真正企稳。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            以前铜主要用来盖房子、装空调，现在房子卖不动了，但新兴行业补上了这个窟窿——搞AI服务器、建特高压输电线、装电动车充电桩，样样都要大量用铜。以前一台空调用的铜，现在一辆电动车要用到3—4辆车的量，这部分增长很快，而且还没到顶。
+        </div>
+    </div>
+
+    <!-- 三、库存层面分析 -->
+    <div class="section">
+        <h2>三、库存层面分析<span class="tag tag-bullish">历史低位</span></h2>
+        <p>全球三大交易所铜库存均处于历史低位区间，是支撑铜价的核心要素。</p>
+
+        <table class="data-table">
+            <tr><th>库存指标</th><th>最新数值</th><th>时间</th><th>同比/变化</th><th>历史位置</th></tr>
+            <tr><td>LME伦铜总库存</td><td><strong>31.23万吨</strong></td><td>11月5日</td><td>三日累增超4万吨</td><td>历史低位区间</td></tr>
+            <tr><td>LME注销仓单占比</td><td>11.60%</td><td>11月5日</td><td>从高位回落</td><td>-</td></tr>
+            <tr><td>上期所仓单</td><td><strong>10600吨</strong></td><td>11月3日</td><td>周度-399吨</td><td>-</td></tr>
+            <tr><td>上期所总库存（周度）</td><td><strong>44612吨</strong></td><td>11月3日</td><td>周度-9744吨</td><td>持续去库</td></tr>
+            <tr><td>COMEX铜库存</td><td>约190万吨（折算）</td><td>11月下旬</td><td>因关税集中囤积</td><td>相对高位</td></tr>
+            <tr><td>国内社会库存（SMM口径）</td><td>约35万吨</td><td>11月初</td><td>环比去库</td><td>年内低位</td></tr>
+        </table>
+
+        <h3>库存特征解读</h3>
+        <p><strong>LME库存三日累增超4万吨——是利多信号还是利空？</strong>表面看是累增，但需注意：①LME总库存31万吨仍是历史低位（全球铜年消费约2800万吨，交易所库存仅够全球4—5天消费）；②累增与美国关税政策有关——部分企业将LME库存运往COMEX或转入美国仓库以应对关税，LME看到的是"迁徙"而非"新增供应"；③注销仓单占比从高位回落至11.6%，说明之前排队取货的企业已完成提货。</p>
+        <p><strong>上期所周度去库9744吨——国内需求仍在消化</strong>。上期所总库存+仓单双降，说明国内现货市场供需偏紧，企业有主动补库意愿。</p>
+        <p><strong>COMEX库存相对高位</strong>——主要是关税政策推动的库存集中，一旦关税落地，美国库存可能向全球释放，需警惕。</p>
+
+        <h3>库存趋势：近3个月</h3>
+        <p>6—8月：LME库存从约20万吨低位持续回升至30万吨区间（美国关税预期驱动企业提前备货）；9月：LME库存见顶回落；10—11月：LME库存再次出现累增（三日+4万吨），但上期所持续去库。整体判断：全球库存总量不充裕，结构上"美高欧低中去库"——库存迁徙而非供应充裕。</p>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            全球仓库里的铜加起来也就3000多万吨用量的4—5天，非常少。最近LME的铜库在增加，但不是因为铜多了，而是因为美国要加关税，有些企业把铜搬到美国仓库去了。中国这边仓库一直在变少，说明国内抢着要铜。
+        </div>
+    </div>
+
+    <!-- 四、供需交叉验证与研判 -->
+    <div class="section">
+        <h2>四、供需交叉验证与未来1—3个月研判</h2>
+
+        <h3>1. 当前供需匹配度：紧平衡</h3>
+        <table class="data-table">
+            <tr><th>维度</th><th>状态</th><th>关键数据</th></tr>
+            <tr><td>铜矿供给增速</td><td>几乎停滞</td><td>+0.5%（Cochilco预测）</td></tr>
+            <tr><td>精炼铜需求增速</td><td>结构增长</td><td>+1.9%（ICSG测算）</td></tr>
+            <tr><td>全球精炼铜过剩</td><td>大幅收窄</td><td>2025年46.9万吨 → 2026年约25万吨</td></tr>
+            <tr><td>全球交易所库存</td><td>历史低位</td><td>LME 31万吨 + SHFE 4.5万吨</td></tr>
+            <tr><td>供需错配方向</td><td><strong>供不应求趋势加剧</strong></td><td>矿端+0.5% vs 需求+1.9%</td></tr>
+        </table>
+
+        <h3>2. 未来1—3个月（2026年11月—2027年1月）供需变动预期</h3>
+        <p><strong>供给端边际变化</strong>：</p>
+        <ul>
+            <li>智利2027年有望恢复+4%增长（新矿山投产+检修结束），但需到2027年中才兑现，短期无解</li>
+            <li>四季度国内电解铜生产相对稳定，硫酸价格下行有利于冶炼端</li>
+            <li>刚果金、赞比亚等非主流产铜国产量恢复，但增量有限</li>
+        </ul>
+        <p><strong>需求端边际变化</strong>：</p>
+        <ul>
+            <li>11月进入传统淡季，终端以刚需采购为主</li>
+            <li>但电网、AI算力等"非周期性"需求不受淡季影响，持续释放</li>
+            <li>若美国关税落地，短期可能扰动全球贸易流向，但中期推高全球整体价格</li>
+            <li>年底稳增长政策若落地，地产链企稳将给铜价带来强力催化</li>
+        </ul>
+        <p><strong>库存端边际变化</strong>：</p>
+        <ul>
+            <li>LME库存当前累增是"迁徙"而非"新增"，2027年Q1后可能再度去库</li>
+            <li>上期所预计维持去库态势至年底</li>
+            <li>COMEX高库存需关注：关税落地后美国企业若不再囤货，库存可能向全球释放</li>
+        </ul>
+
+        <h3>3. 研判结论</h3>
+        <div class="highlight-box">
+            <p><strong>供需错配矛盾：矿端紧平衡 + 需求结构增量 + 低库存三重共振，供不应求格局正在形成。</strong></p>
+            <p>短期（11月）：淡季需求压制价格上行空间，但矿端紧平衡+低库存托底，区间震荡为主。</p>
+            <p>中期（12月—2027年Q1）：若美国关税落地、年底稳增长政策发力、智利2027年新矿山投产不及预期，铜价有望突破LME 15000美元/吨、沪铜110000元/吨。</p>
+        </div>
+
+        <h3>4. 机构观点汇总</h3>
+        <table class="data-table">
+            <tr><th>机构</th><th>核心观点</th><th>目标价</th></tr>
+            <tr><td>中金公司</td><td>铜价上涨更具确定性，有望向15000美元新高迈进</td><td>LME 15000美元/吨+</td></tr>
+            <tr><td>高盛</td><td>2026年底LME铜目标价13735美元，2027年均价13800美元</td><td>13735→13800</td></tr>
+            <tr><td>美国银行</td><td>上调2026年预测11%至11313美元，2027年预测13501美元</td><td>11313→13501</td></tr>
+            <tr><td>摩根大通</td><td>四季度LME铜预测上调至11000美元，供应约束持续</td><td>11000美元/吨</td></tr>
+            <tr><td>德意志银行</td><td>铜价半年涨幅或超50%，2027年Q2目标22050美元</td><td>22050美元/吨</td></tr>
+            <tr><td>Sucden</td><td>库存集中于美国，全球其他地区供应偏紧，矿端脆弱</td><td>中性偏多，年底上看14830</td></tr>
+            <tr><td>国内期货公司普遍观点</td><td>矿端偏紧+库存低位提供底部支撑，短期区间震荡，趋势行情待需求改善</td><td>区间震荡后偏强</td></tr>
+        </table>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            现在全球铜的情况可以用一句话形容——"做蛋糕的越来越慢，吃蛋糕的越来越多"。全球做铜的产量一年才多0.5%，但要用铜的地方一年要多吃1.9%，而且蛋糕房里的存货（全球仓库的铜）只有全年用量的4—5天。这种情况下，价格下跌没空间，上涨只是时间问题。国际大投行基本都看涨，只是时间和幅度有分歧。
+        </div>
+    </div>
+
+    <!-- 风险提示 -->
+    <div class="risk-box">
+        <h2>&#9888; 风险提示</h2>
+        <p><strong>看多铜价的风险（价格下跌风险）：</strong></p>
+        <ul>
+            <li>智利2027年新矿山投产超预期（如Codelco新矿产能快速爬坡）</li>
+            <li>美国铜关税推迟或取消，COMEX囤积库存向全球释放</li>
+            <li>全球经济衰退风险加剧，需求断崖式下滑</li>
+            <li>国内稳增长政策"放水"不及预期，地产链持续拖累</li>
+            <li>新能源补贴全面退坡后行业增速大幅放缓</li>
+            <li>智利矿山罢工、极端天气等短期因素缓解后产量快速恢复</li>
+        </ul>
+        <p><strong>对紧平衡判断的风险：</strong></p>
+        <ul>
+            <li>全球精炼铜实际过剩量超过25万吨（ICSG最新数据若上调过剩预估）</li>
+            <li>全球隐性库存暴露（如部分国家国有储备释放）</li>
+            <li>铜价过高引发下游替代（如线缆用铝替代铜）</li>
+        </ul>
+    </div>
+
+    <!-- 综合研判与操作建议 -->
+    <div class="advice-box">
+        <h2>&#10004; 综合研判与操作建议</h2>
+
+        <h3>情景推演（2026年11月—2027年1月）</h3>
+        <div class="scenario-box scenario-base">
+            <div class="scenario-title">基准情景（概率50%）：105000—115000元/吨震荡偏强</div>
+            <p>矿端紧平衡+低库存托底，淡季需求压制上行速度，年底稳增长政策若落地则向上突破概率增大。</p>
+        </div>
+        <div class="scenario-box scenario-bull">
+            <div class="scenario-title">乐观情景（概率25%）：突破115000元/吨</div>
+            <p>美国关税落地+智利新矿山投产不及预期+年底强刺激政策+AI算力基建加速，多重利多共振。</p>
+        </div>
+        <div class="scenario-box scenario-bear">
+            <div class="scenario-title">悲观情景（概率25%）：回探100000元/吨</div>
+            <p>美国关税推迟+智利产量快速恢复+国内需求持续疲软+全球宏观恶化，短期供需错配阶段性缓解。</p>
+        </div>
+
+        <h3>操作建议</h3>
+        <ol>
+            <li><strong>趋势策略</strong>：105000—108000区间逢低布局CU2703多单，止损102000以下，第一目标115000、第二目标120000</li>
+            <li><strong>观望区间</strong>：108000—115000为震荡区间，区间内观望或低仓位短线</li>
+            <li><strong>做空条件</strong>：仅当LME+COMEX联合累破50万吨、且国内稳增长政策明确"放水"信号落空时，方可考虑做空</li>
+            <li><strong>产业套保</strong>：铜下游用户可在100000—105000区间分批买入套保，锁定1—2季度原料成本</li>
+            <li><strong>风险控制</strong>：单笔仓位不超过25%，严格止损</li>
+        </ol>
+
+        <h3>关键观察指标</h3>
+        <ul>
+            <li>LME铜库存（基准31万吨：持续降至20万吨以下=强利多；累破40万吨=警惕）</li>
+            <li>上期所总库存（基准4.4万吨：持续去库=强利多）</li>
+            <li>美国铜关税政策进展（落地时间+税率）</li>
+            <li>智利月度铜矿产量数据（同比是否持续负增长）</li>
+            <li>国内电网投资完成额、算力基建开工数据</li>
+            <li>年底中央经济工作会议稳增长政策力度</li>
+        </ul>
+
+        <div class="elder-summary">
+            <div class="elder-title">👴 老人总结：</div>
+            铜的基本盘是偏多的——做的人慢，用的人快，仓库又少。短期价格在10.5万到11.5万之间晃悠，很难大跌，向上冲需要催化剂（比如美国真加关税、中国真放水）。聪明的做法是：跌到10.5万以下慢慢买多单，涨到11.5万以上别追高，等哪天风来了（催化剂到了），价格会一下子飞上去。
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p><strong>免责声明</strong>：本分析基于公开信息整理，仅供参考，不构成投资建议。期货交易有风险，入市需谨慎。数据来源：Cochilco智利铜业委员会、ICSG、上海期货交易所、LME、Sucden、高盛、摩根大通、中金公司、美银、德意志银行、新浪财经、同花顺、上海证券报等公开研报与报道。</p>
+        <p><strong>分析日期</strong>：2026年11月6日 | <strong>预测周期</strong>：2026年11月—2027年1月（未来1—3个月）</p>
+    </div>
+</div>
+</body>
+</html>
